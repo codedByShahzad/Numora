@@ -15,7 +15,6 @@ import {
 import { CategoryCard } from "@/components/CategoryCard";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
-import Link from "next/link";
 
 const slugify = (text: string) =>
   text
@@ -41,7 +40,7 @@ type CalcItem = {
   categoryTitle: string;
   href: string;
   keywords: string[];
-  searchText: string; // precomputed searchable string
+  searchText: string;
 };
 
 const HomePage = () => {
@@ -138,7 +137,6 @@ const HomePage = () => {
 
   /**
    * ✅ OPTIONAL: Search aliases / keywords for better results
-   * Add more anytime.
    */
   const CALC_ALIASES: Record<string, string[]> = useMemo(
     () => ({
@@ -186,13 +184,11 @@ const HomePage = () => {
     []
   );
 
-  // ✅ Flatten calculators for search results (FIXED ROUTE + keywords)
+  // ✅ Flatten calculators for search results
   const allCalculators = useMemo<CalcItem[]>(() => {
     return categories.flatMap((cat) =>
       cat.calculators.map((name) => {
         const aliases = CALC_ALIASES[name] ?? [];
-
-        // ✅ FIXED: search now uses /categories/{id}/{calculator}
         const href = `/categories/${cat.id}/${slugify(name)}`;
 
         const keywords = [
@@ -201,7 +197,6 @@ const HomePage = () => {
           cat.title,
           cat.id,
           href,
-          // optional category broad keywords:
           cat.title === "Unit Conversions" ? "convert conversion converter" : "",
           cat.title === "Finance" ? "loan interest emi" : "",
           cat.title === "Health" ? "fitness bmi calories" : "",
@@ -226,9 +221,7 @@ const HomePage = () => {
   const calculatorResults = useMemo(() => {
     const q = query.trim().toLowerCase();
     if (!q) return [];
-    return allCalculators
-      .filter((c) => c.searchText.includes(q))
-      .slice(0, 8);
+    return allCalculators.filter((c) => c.searchText.includes(q)).slice(0, 8);
   }, [allCalculators, query]);
 
   const filteredCategories = useMemo(() => {
@@ -287,6 +280,29 @@ const HomePage = () => {
     if (calculatorResults[0]) onSelectCalculator(calculatorResults[0].href);
   };
 
+  // ✅ helper: clickable card wrapper (prevents <a> inside <a>)
+  const ClickableCard = ({
+    href,
+    className,
+    children,
+  }: {
+    href: string;
+    className: string;
+    children: React.ReactNode;
+  }) => (
+    <div
+      role="link"
+      tabIndex={0}
+      onClick={() => router.push(href)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") router.push(href);
+      }}
+      className={className}
+    >
+      {children}
+    </div>
+  );
+
   return (
     <div className="min-h-screen bg-[#F7FAFF]">
       {/* Hero */}
@@ -312,16 +328,14 @@ const HomePage = () => {
 
             <p className="mt-4 max-w-2xl text-base text-gray-600 sm:text-lg">
               A modern calculator suite for health, finance, conversions, science
-              and daily utilities—built to be simple, accurate, and actually useful.
+              and daily utilities—built to be simple, accurate, and actually
+              useful.
             </p>
 
             {/* Search */}
             <div ref={searchWrapRef} className="mt-8 w-full max-w-2xl text-left">
               <div className="relative w-full">
-                <div
-                  onFocusCapture={() => setOpenResults(true)}
-                  className="w-full"
-                >
+                <div onFocusCapture={() => setOpenResults(true)} className="w-full">
                   <PlaceholdersAndVanishInput
                     placeholders={placeholders}
                     onChange={handleChange}
@@ -382,16 +396,19 @@ const HomePage = () => {
 
               {/* Trust chips */}
               <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-                {["No sign-up required", "Mobile friendly", "Accurate formulas", "Fast results"].map(
-                  (t) => (
-                    <span key={t}>
-                      <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
-                        <Sparkles className="h-4 w-4 text-[#125FF9]" />
-                        {t}
-                      </HoverBorderGradient>
-                    </span>
-                  )
-                )}
+                {[
+                  "No sign-up required",
+                  "Mobile friendly",
+                  "Accurate formulas",
+                  "Fast results",
+                ].map((t) => (
+                  <span key={t}>
+                    <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
+                      <Sparkles className="h-4 w-4 text-[#125FF9]" />
+                      {t}
+                    </HoverBorderGradient>
+                  </span>
+                ))}
               </div>
             </div>
 
@@ -480,31 +497,45 @@ const HomePage = () => {
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="mb-10 flex flex-col items-center text-center">
           <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
-              Handpicked Calculators
-            </HoverBorderGradient>
+            Handpicked Calculators
+          </HoverBorderGradient>
 
           <h2 className="text-2xl mt-4 font-semibold tracking-tight text-gray-900 sm:text-3xl">
             Featured Categories
           </h2>
 
           <p className="mt-2 max-w-xl text-sm text-gray-600 sm:text-base">
-            Start with the most popular calculators trusted by thousands of users for
-            quick, accurate results.
+            Start with the most popular calculators trusted by thousands of users
+            for quick, accurate results.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((item, index) => {
             const badgeConfig = [
-              { text: "Most Used", pill: "bg-emerald-600 text-white", dot: "bg-emerald-200" },
-              { text: "Instant Results", pill: "bg-blue-600 text-white", dot: "bg-blue-200" },
-              { text: "High Traffic", pill: "bg-purple-600 text-white", dot: "bg-purple-200" },
+              {
+                text: "Most Used",
+                pill: "bg-emerald-600 text-white",
+                dot: "bg-emerald-200",
+              },
+              {
+                text: "Instant Results",
+                pill: "bg-blue-600 text-white",
+                dot: "bg-blue-200",
+              },
+              {
+                text: "High Traffic",
+                pill: "bg-purple-600 text-white",
+                dot: "bg-purple-200",
+              },
             ][index];
 
+            const href = `/categories/${item.id}`;
+
             return (
-              <Link
+              <ClickableCard
                 key={item.id}
-                href={`/categories/${item.id}`}
+                href={href}
                 className="
                   group relative isolate block overflow-hidden rounded-3xl
                   border border-black/10 bg-white/70
@@ -512,6 +543,7 @@ const HomePage = () => {
                   backdrop-blur-xl transition
                   hover:-translate-y-1 hover:bg-white/90
                   focus:outline-none focus:ring-2 focus:ring-[#125FF9]/40
+                  cursor-pointer
                 "
               >
                 <div className="pointer-events-none absolute -top-16 right-0 z-0 h-40 w-40 rounded-full bg-[#125FF9]/10 blur-3xl" />
@@ -545,7 +577,7 @@ const HomePage = () => {
                 </div>
 
                 <div className="absolute inset-x-6 bottom-4 z-10 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-              </Link>
+              </ClickableCard>
             );
           })}
         </div>
@@ -554,53 +586,58 @@ const HomePage = () => {
       {/* All Categories */}
       <section className="mx-auto max-w-6xl px-4 pt-14 pb-20">
         <div className="mb-10 flex flex-col items-center text-center">
-         <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
-              Brows Everything
-            </HoverBorderGradient>
+          <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
+            Brows Everything
+          </HoverBorderGradient>
 
           <h2 className="text-2xl font-semibold mt-4 tracking-tight text-gray-900 sm:text-3xl">
             All Categories
           </h2>
 
           <p className="mt-2 max-w-xl text-sm text-gray-600 sm:text-base">
-            Explore the complete collection of calculators—organized by category for
-            faster, easier discovery.
+            Explore the complete collection of calculators—organized by category
+            for faster, easier discovery.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {filteredCategories.map((item) => (
-            <Link
-              key={item.id}
-              href={`/categories/${item.id}`}
-              className="
-                group relative isolate block overflow-hidden rounded-3xl
-                border border-black/10 bg-white/70
-                shadow-[0_20px_40px_-20px_rgba(0,0,0,0.35)]
-                backdrop-blur-xl transition
-                hover:-translate-y-1 hover:bg-white/90
-                focus:outline-none focus:ring-2 focus:ring-[#125FF9]/40
-              "
-            >
-              <div className="pointer-events-none absolute -top-16 right-0 z-0 h-40 w-40 rounded-full bg-[#125FF9]/10 blur-3xl" />
-              <div className="pointer-events-none absolute -bottom-20 left-0 z-0 h-40 w-40 rounded-full bg-[#008FBE]/10 blur-3xl" />
+          {filteredCategories.map((item) => {
+            const href = `/categories/${item.id}`;
 
-              <div className="relative z-10">
-                <CategoryCard
-                  title={item.title}
-                  description={item.description}
-                  icon={item.icon}
-                  calculators={[
-                    `${item.calculators.slice(0, 3).join(" • ")}`,
-                    `${item.count}+ calculators`,
-                  ]}
-                  id={item.id}
-                />
-              </div>
+            return (
+              <ClickableCard
+                key={item.id}
+                href={href}
+                className="
+                  group relative isolate block overflow-hidden rounded-3xl
+                  border border-black/10 bg-white/70
+                  shadow-[0_20px_40px_-20px_rgba(0,0,0,0.35)]
+                  backdrop-blur-xl transition
+                  hover:-translate-y-1 hover:bg-white/90
+                  focus:outline-none focus:ring-2 focus:ring-[#125FF9]/40
+                  cursor-pointer
+                "
+              >
+                <div className="pointer-events-none absolute -top-16 right-0 z-0 h-40 w-40 rounded-full bg-[#125FF9]/10 blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-20 left-0 z-0 h-40 w-40 rounded-full bg-[#008FBE]/10 blur-3xl" />
 
-              <div className="absolute inset-x-6 bottom-4 z-10 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
-            </Link>
-          ))}
+                <div className="relative z-10">
+                  <CategoryCard
+                    title={item.title}
+                    description={item.description}
+                    icon={item.icon}
+                    calculators={[
+                      `${item.calculators.slice(0, 3).join(" • ")}`,
+                      `${item.count}+ calculators`,
+                    ]}
+                    id={item.id}
+                  />
+                </div>
+
+                <div className="absolute inset-x-6 bottom-4 z-10 h-px bg-gradient-to-r from-transparent via-black/10 to-transparent opacity-0 transition group-hover:opacity-100" />
+              </ClickableCard>
+            );
+          })}
         </div>
       </section>
     </div>
