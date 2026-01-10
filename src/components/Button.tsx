@@ -1,20 +1,25 @@
 // components/Button.tsx
 import Link from "next/link";
 
-type CategoryButtonProps = {
-  id: string;
-  title: string;
-};
-
-const Button = ({ id, title }: CategoryButtonProps) => {
+export default function Button({ title, id }: { title: string; id: string }) {
   return (
     <Link
       href={`/categories/${id}`}
-      className="w-full block bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 text-white rounded-xl py-2 text-center"
+      className="
+        inline-flex items-center justify-center
+        rounded-full
+        px-5 py-2.5
+        text-sm font-semibold
+        text-white
+        bg-gradient-to-r from-sky-500 to-indigo-600
+        shadow-sm
+        hover:shadow-md
+        hover:brightness-105
+        transition
+        whitespace-nowrap
+      "
     >
       Explore {title}
     </Link>
   );
-};
-
-export default Button;
+}
