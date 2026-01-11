@@ -9,6 +9,7 @@ import {
   AlertTriangle,
   ArrowLeftRight,
 } from "lucide-react";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 const lengthUnits = {
   m: { label: "Meters", factor: 1 },
@@ -128,10 +129,13 @@ export default function LengthConverterPage() {
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
-              <Ruler className="h-4 w-4 text-[#125FF9]" />
+
+            <div className="flex justify-center">
+              <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
+                <Ruler className="h-4 w-4 text-[#125FF9]" />
               Unit Conversions • Calculator
-            </span>
+              </HoverBorderGradient>
+            </div>
 
             <h1 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
               Length{" "}

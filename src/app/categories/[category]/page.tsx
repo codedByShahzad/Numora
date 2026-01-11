@@ -92,12 +92,6 @@ const calculatorsData: Record<string, CalculatorItem[]> = {
     { title: "Mortgage Calculator", description: "Calculate monthly mortgage payments.", icon: Landmark, id: "mortgage" },
     { title: "Investment Return Calculator", description: "Estimate future value of investments.", icon: TrendingUp, id: "investment-return" },
     { title: "Currency Converter", description: "Convert between currencies using exchange rates.", icon: DollarSign, id: "currency-converter" },
-    {
-    title: "Savings Calculator",
-    description: "Estimate how your savings grow over time.",
-    icon: PiggyBank,
-    id: "savings",
-  },
   ],
   "maths-science": [
     { title: "Scientific Calculator", description: "Perform advanced math operations.", icon: FunctionSquare, id: "scientific" },

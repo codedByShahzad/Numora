@@ -8,6 +8,7 @@ import {
   CheckCircle2,
   AlertTriangle,
 } from "lucide-react";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 type WeightUnit = "kg" | "lbs";
 type HeightUnit = "cm" | "ft-in";
@@ -72,7 +73,10 @@ export default function BMICalculator() {
   };
 
   const onNumChange =
-    (setter: (v: string) => void, { allowDecimal }: { allowDecimal: boolean }) =>
+    (
+      setter: (v: string) => void,
+      { allowDecimal }: { allowDecimal: boolean }
+    ) =>
     (v: string) => {
       const re = allowDecimal ? /^\d*\.?\d*$/ : /^\d*$/;
       if (!re.test(v)) return;
@@ -161,7 +165,7 @@ export default function BMICalculator() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
+      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
@@ -169,6 +173,13 @@ export default function BMICalculator() {
               <Heart className="h-4 w-4 text-[#125FF9]" />
               Health • Calculator
             </span>
+
+            <div className="flex justify-center">
+              <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
+                <Heart className="h-4 w-4 text-[#125FF9]" />
+                Health • Calculator
+              </HoverBorderGradient>
+            </div>
 
             <h1 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
               BMI{" "}
@@ -221,7 +232,9 @@ export default function BMICalculator() {
                               e.target.value
                             )
                           }
-                          placeholder={weightUnit === "kg" ? "e.g. 70" : "e.g. 154"}
+                          placeholder={
+                            weightUnit === "kg" ? "e.g. 70" : "e.g. 154"
+                          }
                           className="w-full bg-transparent text-sm text-gray-900 outline-none"
                         />
                       </div>
@@ -293,9 +306,9 @@ export default function BMICalculator() {
                               inputMode="numeric"
                               value={heightFt}
                               onChange={(e) =>
-                                onNumChange(setHeightFt, { allowDecimal: false })(
-                                  e.target.value
-                                )
+                                onNumChange(setHeightFt, {
+                                  allowDecimal: false,
+                                })(e.target.value)
                               }
                               placeholder="Feet (e.g. 5)"
                               className="w-full bg-transparent text-sm text-gray-900 outline-none"
@@ -307,9 +320,9 @@ export default function BMICalculator() {
                               inputMode="numeric"
                               value={heightIn}
                               onChange={(e) =>
-                                onNumChange(setHeightIn, { allowDecimal: false })(
-                                  e.target.value
-                                )
+                                onNumChange(setHeightIn, {
+                                  allowDecimal: false,
+                                })(e.target.value)
                               }
                               placeholder="Inches (e.g. 8)"
                               className="w-full bg-transparent text-sm text-gray-900 outline-none"
@@ -359,8 +372,7 @@ export default function BMICalculator() {
                           Result
                         </p>
                         <p className="mt-1 text-lg font-semibold text-gray-900">
-                          BMI:{" "}
-                          <span className={cat.color}>{format1(bmi)}</span>
+                          BMI: <span className={cat.color}>{format1(bmi)}</span>
                         </p>
                         <p className="mt-1 text-sm text-gray-600">
                           Category:{" "}
@@ -414,7 +426,8 @@ export default function BMICalculator() {
 
                     <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
                     <p className="mt-4 text-xs text-gray-600">
-                      BMI is a screening measure and doesn’t directly measure body fat. For health decisions, consult a professional.
+                      BMI is a screening measure and doesn’t directly measure
+                      body fat. For health decisions, consult a professional.
                     </p>
                   </div>
                 )}
@@ -435,7 +448,8 @@ export default function BMICalculator() {
             </div>
 
             <p className="mt-6 text-center text-xs text-gray-500">
-              Numora calculators are designed to be simple, fast, and easy to use.
+              Numora calculators are designed to be simple, fast, and easy to
+              use.
             </p>
           </div>
         </div>

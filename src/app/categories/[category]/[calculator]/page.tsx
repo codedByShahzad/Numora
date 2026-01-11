@@ -83,13 +83,7 @@ const calculatorsMeta: Record<
       description: "Find your maximum and target heart rate zones for workouts.",
     },
 
-    // ✅ SEO additions (Coming soon until you build)
-    bmr: { title: "BMR Calculator", description: "Calculate Basal Metabolic Rate (BMR) to understand daily energy needs." },
-    tdee: { title: "TDEE Calculator", description: "Estimate Total Daily Energy Expenditure (TDEE) based on activity level." },
-    "ideal-weight": { title: "Ideal Weight Calculator", description: "Find your ideal weight range using popular formulas." },
-    "waist-hip-ratio": { title: "Waist-to-Hip Ratio Calculator", description: "Calculate WHR to evaluate body composition and health risk." },
-    bsa: { title: "Body Surface Area Calculator", description: "Calculate Body Surface Area (BSA) for medical and fitness use." },
-    "lean-body-mass": { title: "Lean Body Mass Calculator", description: "Estimate lean body mass (LBM) based on your body measurements." },
+    
   },
 
   "unit-conversions": {
@@ -100,11 +94,7 @@ const calculatorsMeta: Record<
     area: { title: "Area Converter", description: "Convert square meters, acres, hectares and more." },
     volume: { title: "Volume Converter", description: "Convert liters, milliliters, gallons, cups and more." },
 
-    // ✅ SEO additions (Coming soon)
-    time: { title: "Time Converter", description: "Convert seconds, minutes, hours, days, weeks and more." },
-    "data-storage": { title: "Data Storage Converter", description: "Convert KB, MB, GB, TB and more." },
-    energy: { title: "Energy Converter", description: "Convert joules, calories, kWh and more." },
-    pressure: { title: "Pressure Converter", description: "Convert PSI, bar, pascal and more." },
+    
   },
 
   finance: {
@@ -115,14 +105,7 @@ const calculatorsMeta: Record<
     "investment-return": { title: "Investment Return Calculator", description: "Estimate future value and returns for your investments." },
     "currency-converter": { title: "Currency Converter", description: "Convert currencies with exchange rates for quick estimates." },
 
-    // ✅ SEO additions (Coming soon)
-    inflation: { title: "Inflation Calculator", description: "Calculate how inflation affects the value of money over time." },
-    retirement: { title: "Retirement Calculator", description: "Estimate how much you need to save for retirement." },
-    salary: { title: "Salary Calculator", description: "Convert salary to hourly, weekly, monthly and yearly income." },
-    cagr: { title: "CAGR Calculator", description: "Calculate Compound Annual Growth Rate (CAGR) for investments." },
-    apr: { title: "APR Calculator", description: "Estimate Annual Percentage Rate (APR) on loans or credit." },
-    depreciation: { title: "Depreciation Calculator", description: "Calculate asset depreciation using common depreciation methods." },
-    "savings-goal": { title: "Savings Goal Calculator", description: "Plan monthly savings required to reach your goal faster." },
+    
   },
 
   "maths-science": {
@@ -133,12 +116,7 @@ const calculatorsMeta: Record<
     geometry: { title: "Geometry Calculator", description: "Calculate area, perimeter, and volume of shapes." },
     statistics: { title: "Statistics Calculator", description: "Find mean, median, mode, variance, and standard deviation." },
 
-    // ✅ SEO additions (Coming soon)
-    percentage: { title: "Percentage Calculator", description: "Calculate percentage increase, decrease, and percent of a number." },
-    fraction: { title: "Fraction Calculator", description: "Add, subtract, multiply, and divide fractions easily." },
-    quadratic: { title: "Quadratic Equation Solver", description: "Solve quadratic equations and find roots instantly." },
-    prime: { title: "Prime Number Checker", description: "Check whether a number is prime and find factors." },
-    log: { title: "Log Calculator", description: "Calculate log base 10, natural log (ln), and custom bases." },
+    
   },
 
   "everyday-life": {
@@ -149,11 +127,7 @@ const calculatorsMeta: Record<
     gpa: { title: "GPA Calculator", description: "Easily calculate your Grade Point Average." },
     "day-calculator": { title: "Day Calculator", description: "Find the number of days between two dates." },
 
-    // ✅ SEO additions (Coming soon)
-    "time-duration": { title: "Time Duration Calculator", description: "Calculate duration between two times with hours and minutes." },
-    "split-bill": { title: "Split Bill Calculator", description: "Split a bill among people with tip and tax included." },
-    "work-hours": { title: "Work Hours Calculator", description: "Calculate work hours between start and end time including breaks." },
-    "due-date": { title: "Due Date Calculator", description: "Estimate due date based on pregnancy weeks and start date." },
+    
   },
 };
 

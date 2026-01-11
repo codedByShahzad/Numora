@@ -588,7 +588,7 @@ export default function HomePage() {
                   icon={item.icon}
                   calculators={item.calculators}
                   id={item.id}
-                  countText={`${item.count}+`}
+                  // countText={`${item.count}+`}
                 />
               </div>
             </ClickableCard>
@@ -645,7 +645,7 @@ export default function HomePage() {
                   icon={item.icon}
                   calculators={item.calculators}
                   id={item.id}
-                  countText={`${item.count}+`}
+                  // countText={`${item.count}+`}
                 />
               </div>
             </ClickableCard>

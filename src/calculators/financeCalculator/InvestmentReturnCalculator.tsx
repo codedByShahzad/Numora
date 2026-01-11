@@ -11,6 +11,7 @@ import {
   CheckCircle2,
   AlertTriangle,
 } from "lucide-react";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 const clamp = (n: number, min: number, max: number) =>
   Math.min(max, Math.max(min, n));
@@ -68,7 +69,10 @@ export default function InvestmentReturnCalculator() {
   };
 
   const onNumericChange =
-    (setter: (v: string) => void, { allowDecimal }: { allowDecimal: boolean }) =>
+    (
+      setter: (v: string) => void,
+      { allowDecimal }: { allowDecimal: boolean }
+    ) =>
     (v: string) => {
       const re = allowDecimal ? /^\d*\.?\d*$/ : /^\d*$/;
       if (!re.test(v)) return;
@@ -122,12 +126,7 @@ export default function InvestmentReturnCalculator() {
 
     const fvPrincipal = P * growth;
 
-    const fvContrib =
-      C > 0
-        ? r === 0
-          ? C * T
-          : C * ((growth - 1) / r)
-        : 0;
+    const fvContrib = C > 0 ? (r === 0 ? C * T : C * ((growth - 1) / r)) : 0;
 
     const futureValue = fvPrincipal + fvContrib;
 
@@ -174,14 +173,16 @@ export default function InvestmentReturnCalculator() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
+      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
-              <TrendingUp className="h-4 w-4 text-[#125FF9]" />
-              Finance • Calculator
-            </span>
+            <div className="flex justify-center">
+              <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
+                <TrendingUp className="h-4 w-4 text-[#125FF9]" />
+                Finance • Calculator
+              </HoverBorderGradient>
+            </div>
 
             <h1 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
               Investment Return{" "}
@@ -191,7 +192,8 @@ export default function InvestmentReturnCalculator() {
             </h1>
 
             <p className="mt-3 text-sm text-gray-600 sm:text-base">
-              Estimate future value, total contributions, and profit with compound growth.
+              Estimate future value, total contributions, and profit with
+              compound growth.
             </p>
 
             <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
@@ -223,13 +225,17 @@ export default function InvestmentReturnCalculator() {
                     </p>
                     <div className="mt-3 flex items-center gap-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
                       <Coins className="h-4 w-4 text-gray-500" />
-                      <span className="text-sm font-semibold text-gray-700">$</span>
+                      <span className="text-sm font-semibold text-gray-700">
+                        $
+                      </span>
                       <input
                         type="text"
                         inputMode="decimal"
                         value={principal}
                         onChange={(e) =>
-                          onNumericChange(setPrincipal, { allowDecimal: true })(e.target.value)
+                          onNumericChange(setPrincipal, { allowDecimal: true })(
+                            e.target.value
+                          )
                         }
                         placeholder="e.g. 10000"
                         className="w-full bg-transparent text-sm text-gray-900 outline-none"
@@ -252,12 +258,16 @@ export default function InvestmentReturnCalculator() {
                         inputMode="decimal"
                         value={rate}
                         onChange={(e) =>
-                          onNumericChange(setRate, { allowDecimal: true })(e.target.value)
+                          onNumericChange(setRate, { allowDecimal: true })(
+                            e.target.value
+                          )
                         }
                         placeholder="e.g. 7.5"
                         className="w-full bg-transparent text-sm text-gray-900 outline-none"
                       />
-                      <span className="text-sm font-semibold text-gray-700">%</span>
+                      <span className="text-sm font-semibold text-gray-700">
+                        %
+                      </span>
                     </div>
                   </div>
 
@@ -276,7 +286,9 @@ export default function InvestmentReturnCalculator() {
                         inputMode="decimal"
                         value={years}
                         onChange={(e) =>
-                          onNumericChange(setYears, { allowDecimal: true })(e.target.value)
+                          onNumericChange(setYears, { allowDecimal: true })(
+                            e.target.value
+                          )
                         }
                         placeholder="e.g. 10"
                         className="w-full bg-transparent text-sm text-gray-900 outline-none"
@@ -294,13 +306,17 @@ export default function InvestmentReturnCalculator() {
                       Extra amount added each year.
                     </p>
                     <div className="mt-3 flex items-center gap-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
-                      <span className="text-sm font-semibold text-gray-700">$</span>
+                      <span className="text-sm font-semibold text-gray-700">
+                        $
+                      </span>
                       <input
                         type="text"
                         inputMode="decimal"
                         value={contribution}
                         onChange={(e) =>
-                          onNumericChange(setContribution, { allowDecimal: true })(e.target.value)
+                          onNumericChange(setContribution, {
+                            allowDecimal: true,
+                          })(e.target.value)
                         }
                         placeholder="e.g. 1000"
                         className="w-full bg-transparent text-sm text-gray-900 outline-none"
@@ -347,12 +363,16 @@ export default function InvestmentReturnCalculator() {
                           Result
                         </p>
                         <p className="mt-1 text-lg font-semibold text-gray-900">
-                          Future value: {formatMoney(currencySymbol, result.futureValue)}
+                          Future value:{" "}
+                          {formatMoney(currencySymbol, result.futureValue)}
                         </p>
                         <p className="mt-1 text-sm text-gray-600">
                           Total contributed:{" "}
                           <span className="font-semibold text-gray-900">
-                            {formatMoney(currencySymbol, result.totalContributed)}
+                            {formatMoney(
+                              currencySymbol,
+                              result.totalContributed
+                            )}
                           </span>{" "}
                           • Profit:{" "}
                           <span className="font-semibold text-gray-900">
@@ -372,7 +392,9 @@ export default function InvestmentReturnCalculator() {
 
                     <div className="mt-5 grid grid-cols-3 gap-3">
                       <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-center">
-                        <div className="text-xs text-gray-600">Future value</div>
+                        <div className="text-xs text-gray-600">
+                          Future value
+                        </div>
                         <div className="mt-1 text-lg font-semibold text-gray-900">
                           {formatMoney(currencySymbol, result.futureValue)}
                         </div>
@@ -393,7 +415,8 @@ export default function InvestmentReturnCalculator() {
 
                     <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
                     <p className="mt-4 text-xs text-gray-600">
-                      Note: This is an estimate. Real returns can vary year to year.
+                      Note: This is an estimate. Real returns can vary year to
+                      year.
                     </p>
                   </div>
                 )}
@@ -401,7 +424,8 @@ export default function InvestmentReturnCalculator() {
             </div>
 
             <p className="mt-6 text-center text-xs text-gray-500">
-              Numora calculators are designed to be simple, fast, and easy to use.
+              Numora calculators are designed to be simple, fast, and easy to
+              use.
             </p>
           </div>
         </div>

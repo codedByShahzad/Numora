@@ -8,6 +8,7 @@ import {
   Copy,
   AlertTriangle,
 } from "lucide-react";
+import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 /* -------------------- Safe Scientific Expression Engine --------------------
 Supports:
@@ -34,7 +35,13 @@ type Token =
   | { type: "post"; value: "!" | "%" };
 
 const PREC: Record<string, number> = { "+": 1, "-": 1, "*": 2, "/": 2, "^": 3 };
-const ASSOC: Record<string, Assoc> = { "+": "L", "-": "L", "*": "L", "/": "L", "^": "R" };
+const ASSOC: Record<string, Assoc> = {
+  "+": "L",
+  "-": "L",
+  "*": "L",
+  "/": "L",
+  "^": "R",
+};
 
 const fmt = (n: number) => {
   if (!Number.isFinite(n)) return "—";
@@ -102,7 +109,10 @@ function tokenizeScientific(input: string): Token[] {
       const prev = tokens[tokens.length - 1];
       const unary =
         c === "-" &&
-        (!prev || prev.type === "op" || prev.type === "lpar" || prev.type === "func");
+        (!prev ||
+          prev.type === "op" ||
+          prev.type === "lpar" ||
+          prev.type === "func");
 
       if (unary) {
         tokens.push({ type: "num", value: 0 });
@@ -248,7 +258,8 @@ function toRPN(tokens: Token[]): Token[] {
 
   while (stack.length) {
     const t = stack.pop()!;
-    if (t.type === "lpar" || t.type === "rpar") throw new Error("Mismatched parentheses.");
+    if (t.type === "lpar" || t.type === "rpar")
+      throw new Error("Mismatched parentheses.");
     out.push(t);
   }
 
@@ -441,9 +452,7 @@ export default function ScientificCalculator() {
     try {
       const v = safeScientificEval(expression, mode);
       setResult(
-        `Expression: ${expression}\n` +
-          `Mode: ${mode}\n` +
-          `Result: ${fmt(v)}`
+        `Expression: ${expression}\n` + `Mode: ${mode}\n` + `Result: ${fmt(v)}`
       );
       setError(null);
     } catch (e: any) {
@@ -462,43 +471,44 @@ export default function ScientificCalculator() {
   };
 
   const keypad = useMemo(
-    () => [
-      // row 1
-      "sin",
-      "cos",
-      "tan",
-      "sqrt",
-      // row 2
-      "log",
-      "ln",
-      "pi",
-      "e",
-      // row 3
-      "7",
-      "8",
-      "9",
-      "÷",
-      // row 4
-      "4",
-      "5",
-      "6",
-      "×",
-      // row 5
-      "1",
-      "2",
-      "3",
-      "-",
-      // row 6
-      "0",
-      ".",
-      "+",
-      "^",
-      // row 7
-      "(",
-      ")",
-      "%",
-      "!",
-    ] as PadKey[],
+    () =>
+      [
+        // row 1
+        "sin",
+        "cos",
+        "tan",
+        "sqrt",
+        // row 2
+        "log",
+        "ln",
+        "pi",
+        "e",
+        // row 3
+        "7",
+        "8",
+        "9",
+        "÷",
+        // row 4
+        "4",
+        "5",
+        "6",
+        "×",
+        // row 5
+        "1",
+        "2",
+        "3",
+        "-",
+        // row 6
+        "0",
+        ".",
+        "+",
+        "^",
+        // row 7
+        "(",
+        ")",
+        "%",
+        "!",
+      ] as PadKey[],
     []
   );
 
@@ -512,14 +522,18 @@ export default function ScientificCalculator() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
+      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
         <div className="mx-auto max-w-3xl">
           {/* Header (same style as Physics) */}
           <div className="text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
-              <Percent className="h-4 w-4 text-[#125FF9]" />
-              Math & Science • Calculator
-            </span>
+            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 shadow-sm"></span>
+
+            <div className="flex justify-center">
+              <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
+                <Percent className="h-4 w-4 text-[#125FF9]" />
+                Math & Science • Calculator
+              </HoverBorderGradient>
+            </div>
 
             <h1 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
               Scientific{" "}
@@ -529,7 +543,8 @@ export default function ScientificCalculator() {
             </h1>
 
             <p className="mt-3 text-sm text-gray-600 sm:text-base">
-              Trigonometry, logarithms, powers, constants, and more — safely evaluated without eval.
+              Trigonometry, logarithms, powers, constants, and more — safely
+              evaluated without eval.
             </p>
 
             <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
@@ -552,8 +567,16 @@ export default function ScientificCalculator() {
               <div className="p-6 sm:p-8">
                 {/* Mode Toggle (like a tab) */}
                 <div className="grid grid-cols-2 gap-2">
-                  <ModeButton active={mode === "DEG"} onClick={() => setMode("DEG")} title="DEG" />
-                  <ModeButton active={mode === "RAD"} onClick={() => setMode("RAD")} title="RAD" />
+                  <ModeButton
+                    active={mode === "DEG"}
+                    onClick={() => setMode("DEG")}
+                    title="DEG"
+                  />
+                  <ModeButton
+                    active={mode === "RAD"}
+                    onClick={() => setMode("RAD")}
+                    title="RAD"
+                  />
                 </div>
 
                 {/* Expression input */}
@@ -562,7 +585,10 @@ export default function ScientificCalculator() {
                     Expression
                   </label>
                   <p className="mt-1 text-xs text-gray-600">
-                    Example: <span className="font-semibold text-gray-900">sin(30) + sqrt(9)</span>
+                    Example:{" "}
+                    <span className="font-semibold text-gray-900">
+                      sin(30) + sqrt(9)
+                    </span>
                   </p>
 
                   <div className="mt-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
@@ -678,7 +704,11 @@ export default function ScientificCalculator() {
 
                     <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
                     <p className="mt-4 text-xs text-gray-600">
-                      Tip: In DEG mode, <span className="font-semibold text-gray-900">sin(30)</span> ≈ 0.5
+                      Tip: In DEG mode,{" "}
+                      <span className="font-semibold text-gray-900">
+                        sin(30)
+                      </span>{" "}
+                      ≈ 0.5
                     </p>
                   </div>
                 )}
@@ -699,7 +729,8 @@ export default function ScientificCalculator() {
             </div>
 
             <p className="mt-6 text-center text-xs text-gray-500">
-              Numora calculators are designed to be simple, fast, and easy to use.
+              Numora calculators are designed to be simple, fast, and easy to
+              use.
             </p>
           </div>
         </div>
