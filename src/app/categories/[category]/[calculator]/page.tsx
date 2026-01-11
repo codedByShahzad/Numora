@@ -30,8 +30,6 @@ import ChemistryCalculator from "@/calculators/MathsandScienceCalulators/Chemist
 import AlgebraCalculator from "@/calculators/MathsandScienceCalulators/AlgebraCalculator";
 import GeometryCalculator from "@/calculators/MathsandScienceCalulators/GeometryCalculator";
 
-// ⚠️ Your import says financeCalculator for Statistics (looks like a path typo)
-import StatisticsCalculator from "@/calculators/financeCalculator/StaticticsCalculator";
 
 import TipCalculator from "@/calculators/EverydayLifeCalculators/TipCalculator";
 import AgeCalculator from "@/calculators/EverydayLifeCalculators/AgeCalculator";
@@ -195,7 +193,6 @@ const calculatorComponents: Record<string, Record<string, React.ComponentType>> 
     chemistry: ChemistryCalculator,
     algebra: AlgebraCalculator,
     geometry: GeometryCalculator,
-    statistics: StatisticsCalculator,
   },
   "everyday-life": {
     tip: TipCalculator,

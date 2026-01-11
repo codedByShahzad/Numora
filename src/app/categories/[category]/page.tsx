@@ -98,12 +98,6 @@ const calculatorsData: Record<string, CalculatorItem[]> = {
     icon: PiggyBank,
     id: "savings",
   },
-    {
-    title: "Statistics Calculator",
-    description: "Calculate mean, median, mode, variance, and standard deviation.",
-    icon: BarChart3,
-    id: "statistics",
-  },
   ],
   "maths-science": [
     { title: "Scientific Calculator", description: "Perform advanced math operations.", icon: FunctionSquare, id: "scientific" },
