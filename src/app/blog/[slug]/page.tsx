@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CalendarDays, Clock, Folder, ArrowUpRight } from "lucide-react";
-import { BLOGS, getBlogBySlug, getRelatedBlogs } from "../../../lib/blog";
+import { BLOGS, getBlogBySlug } from "../../../lib/blog";
 import TocClient from "./TocClient";
 
 // ✅ REQUIRED when using `output: "export"` with dynamic routes
@@ -175,7 +175,19 @@ export default async function BlogDetailPage({
   const blog = getBlogBySlug(slug);
   if (!blog) return notFound();
 
-  const related = getRelatedBlogs(blog.relatedSlugs);
+  // ✅ RELATED POSTS BY CATEGORY (Option B) — UI unchanged
+  // - same category
+  // - exclude current blog
+  // - newest first
+  // - max 6
+  const related = BLOGS.filter(
+    (b) => b.category === blog.category && b.slug !== blog.slug
+  )
+    .sort(
+      (a, b) =>
+        new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+    )
+    .slice(0, 6);
 
   return (
     <div className="relative min-h-[92vh] bg-gray-50">
@@ -311,63 +323,63 @@ export default async function BlogDetailPage({
           </div>
         </section>
 
-        {/* RELATED POSTS */}
-        <section className="mt-10">
-          <div className="flex items-center justify-between">
-            <h3 className="text-lg font-semibold text-slate-900">Related posts</h3>
-            <Link
-              href="/blog"
-              className="text-sm text-blue-600 hover:text-blue-700 font-medium inline-flex items-center gap-1"
-            >
-              View all <ArrowUpRight className="w-4 h-4" />
-            </Link>
+       {/* RELATED POSTS */}
+{related.length > 0 && (
+  <section className="mt-10">
+    <div className="flex items-center justify-between">
+      <h3 className="text-lg font-semibold text-slate-900">Related posts</h3>
+      <Link
+  href="/blog"
+  className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#008FBE] to-[#125FF9] px-4 py-2 text-sm font-medium text-white  hover:shadow-md"
+>
+  <span>View all</span>
+  <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+</Link>
+
+    </div>
+
+    <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {related.map((p) => (
+        <Link
+          key={p.slug}
+          href={`/blog/${p.slug}`}
+          className="group rounded-3xl border border-slate-200 bg-white/80 shadow-sm overflow-hidden hover:border-blue-200 hover:bg-blue-50/30 transition"
+        >
+          <div className="relative h-40">
+            <Image src={p.heroImage} alt={p.title} fill className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-transparent" />
+            <div className="absolute bottom-3 left-3">
+              <span className="px-2.5 py-1 rounded-full text-xs bg-white/90 border border-slate-200 text-slate-700">
+                {p.category}
+              </span>
+            </div>
           </div>
 
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {related.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/blog/${p.slug}`}
-                className="group rounded-3xl border border-slate-200 bg-white/80 shadow-sm overflow-hidden hover:border-blue-200 hover:bg-blue-50/30 transition"
-              >
-                <div className="relative h-40">
-                  <Image
-                    src={p.heroImage}
-                    alt={p.title}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/0 to-transparent" />
-                  <div className="absolute bottom-3 left-3">
-                    <span className="px-2.5 py-1 rounded-full text-xs bg-white/90 border border-slate-200 text-slate-700">
-                      {p.category}
-                    </span>
-                  </div>
-                </div>
+          <div className="p-5">
+            <h4 className="text-base font-semibold text-slate-900 group-hover:text-blue-700 transition line-clamp-2">
+              {p.title}
+            </h4>
+            <p className="mt-2 text-sm text-slate-600 line-clamp-2">
+              {p.subtitle}
+            </p>
 
-                <div className="p-5">
-                  <h4 className="text-base font-semibold text-slate-900 group-hover:text-blue-700 transition line-clamp-2">
-                    {p.title}
-                  </h4>
-                  <p className="mt-2 text-sm text-slate-600 line-clamp-2">
-                    {p.subtitle}
-                  </p>
-
-                  <div className="mt-4 flex items-center gap-4 text-xs text-slate-500">
-                    <span className="inline-flex items-center gap-1">
-                      <CalendarDays className="w-4 h-4" />
-                      {p.publishDate}
-                    </span>
-                    <span className="inline-flex items-center gap-1">
-                      <Clock className="w-4 h-4" />
-                      {p.readingTime}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
+            <div className="mt-4 flex items-center gap-4 text-xs text-slate-500">
+              <span className="inline-flex items-center gap-1">
+                <CalendarDays className="w-4 h-4" />
+                {p.publishDate}
+              </span>
+              <span className="inline-flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                {p.readingTime}
+              </span>
+            </div>
           </div>
-        </section>
+        </Link>
+      ))}
+    </div>
+  </section>
+)}
+
 
         <p className="mt-10 text-center text-sm text-slate-500">
           Numora blogs are designed to be simple, fast, and easy to understand.

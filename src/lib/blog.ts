@@ -45,7 +45,7 @@ export const BLOGS: BlogPost[] = [
       "How AI is reshaping diagnosis, workflows, research, and preventive care — explained clearly.",
     heroImage:
       "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2400&auto=format&fit=crop",
-    category: "Healthcare",
+    category: "Health",
     publishDate: "October 15, 2025",
     publishISO: "2025-10-15T00:00:00.000Z",
     readingTime: "12 min",
