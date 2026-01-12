@@ -169,10 +169,6 @@ export default function BMICalculator() {
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
-              <Heart className="h-4 w-4 text-[#125FF9]" />
-              Health • Calculator
-            </span>
 
             <div className="flex justify-center">
               <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
