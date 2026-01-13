@@ -1215,6 +1215,1042 @@ export const BLOGS: BlogPost[] = [
   ],
   relatedSlugs: ["ai-in-healthcare", "compound-interest-made-simple"],
 },
+ {
+    slug: "bmr-calculator-explained",
+    title: "BMR Calculator Explained (Basal Metabolic Rate in Plain Language)",
+    subtitle:
+      "Understand what BMR is, why it matters, and how to use a BMR calculator to plan calories correctly.",
+    heroImage:
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2400&auto=format&fit=crop",
+    category: "Health",
+    publishDate: "January 14, 2026",
+    publishISO: "2026-01-14T00:00:00.000Z",
+    readingTime: "10 min",
+    guideLabel: "This guide",
+    guideValue: "Clear meaning + practical use",
+    canonicalPath: "/blog/bmr-calculator-explained",
+    seoTitle: "BMR Calculator Explained: What It Means & How to Use It | Numora",
+    seoDescription:
+      "Learn what Basal Metabolic Rate (BMR) means, how calculators estimate it, and how to use it for weight loss or maintenance without confusion.",
+    keywords: [
+      "BMR calculator",
+      "basal metabolic rate",
+      "calorie needs",
+      "TDEE",
+      "health calculators",
+      "Numora",
+    ],
+    ogImage:
+      "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      {
+        id: "introduction",
+        title: "Introduction",
+        content: [
+          {
+            type: "p",
+            text: "BMR (Basal Metabolic Rate) is the amount of energy your body uses just to stay alive — breathing, pumping blood, maintaining temperature, and keeping organs running. Even if you stayed in bed all day, your body would burn calories.",
+          },
+          {
+            type: "p",
+            text: "A BMR calculator gives you an estimate based on inputs like age, height, weight, and sex. It’s not a perfect measurement, but it’s a reliable starting point for setting calorie targets.",
+          },
+        ],
+      },
+      {
+        id: "what-is-bmr",
+        title: "What BMR Really Means",
+        content: [
+          { type: "h3", text: "BMR is not your daily calorie need" },
+          {
+            type: "p",
+            text: "BMR is the baseline. Your actual daily needs are usually higher because you walk, work, train, digest food, and do normal daily activities. That’s where TDEE (Total Daily Energy Expenditure) comes in.",
+          },
+          {
+            type: "quote",
+            text: "BMR = the minimum your body needs to function. TDEE = BMR + your activity.",
+          },
+        ],
+      },
+      {
+        id: "how-calculators-estimate",
+        title: "How BMR Calculators Estimate Your Number",
+        content: [
+          {
+            type: "p",
+            text: "Most calculators use established formulas (like Mifflin-St Jeor) that approximate BMR using body size and age. Bigger bodies usually burn more at rest; as age increases, BMR often decreases slightly.",
+          },
+          {
+            type: "p",
+            text: "The number is an estimate — it won’t capture muscle mass differences, health conditions, or unusual metabolisms. But for planning, it’s accurate enough for most people when used as a starting point.",
+          },
+        ],
+      },
+      {
+        id: "from-bmr-to-tdee",
+        title: "How to Convert BMR into a Practical Daily Target",
+        content: [
+          {
+            type: "p",
+            text: "To plan your calories, multiply your BMR by an activity factor (sedentary, lightly active, active, etc.). This gives TDEE — a practical estimate of how many calories you burn in a day.",
+          },
+          {
+            type: "ul",
+            items: [
+              "Sedentary: mostly sitting, minimal exercise",
+              "Lightly active: light movement or 1–3 workouts/week",
+              "Active: frequent workouts + active day",
+              "Very active: intense training + physically demanding work",
+            ],
+          },
+        ],
+      },
+      {
+        id: "fat-loss-maintenance-gain",
+        title: "Fat Loss, Maintenance, or Muscle Gain",
+        content: [
+          {
+            type: "p",
+            text: "Once you have TDEE, you adjust based on your goal. For fat loss, a small deficit works best for consistency. For muscle gain, a small surplus is usually enough.",
+          },
+          {
+            type: "p",
+            text: "Avoid aggressive changes. The best target is the one you can follow for weeks — not a number that burns you out in three days.",
+          },
+        ],
+      },
+      {
+        id: "common-mistakes",
+        title: "Common Mistakes to Avoid",
+        content: [
+          {
+            type: "ul",
+            items: [
+              "Using BMR as your daily calories (it’s too low for most people).",
+              "Changing targets daily based on one weigh-in.",
+              "Ignoring activity level and focusing only on the formula.",
+              "Thinking one calculator result is “exact.”",
+            ],
+          },
+        ],
+      },
+      {
+        id: "conclusion",
+        title: "Conclusion",
+        content: [
+          {
+            type: "p",
+            text: "BMR gives you a clean baseline. Combine it with activity to estimate TDEE, then adjust based on goals. The best results come from small changes you can repeat consistently.",
+          },
+        ],
+      },
+    ],
+    relatedSlugs: ["bmi-explained", "sleep-and-recovery"],
+  },
+  {
+    slug: "why-calculators-are-better-than-guessing",
+    title: "Why Calculators Beat Guessing (Especially for Health and Money)",
+    subtitle:
+      "A simple argument for clarity: calculators reduce mental load and improve decision-making.",
+    heroImage:
+      "https://images.unsplash.com/photo-1516382799247-87df95d790b7?q=80&w=2400&auto=format&fit=crop",
+    category: "Categories",
+    publishDate: "January 30, 2026",
+    publishISO: "2026-01-30T00:00:00.000Z",
+    readingTime: "9 min",
+    guideLabel: "This guide",
+    guideValue: "Clarity > stress",
+    canonicalPath: "/blog/why-calculators-are-better-than-guessing",
+    seoTitle: "Why Calculators Are Better Than Guessing | Numora",
+    seoDescription:
+      "Learn how calculators improve decisions by reducing errors, standardizing inputs, and making planning easier in real life.",
+    keywords: ["calculators", "planning", "accuracy", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1516382799247-87df95d790b7?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      { id: "intro", title: "Introduction", content: [
+        { type: "p", text: "Guessing feels fast, but it often creates hidden cost: wrong targets, wrong budgets, and repeated confusion. Calculators turn decisions into clear numbers." },
+      ]},
+      { id: "less-error", title: "Less Error, More Confidence", content: [
+        { type: "p", text: "A good calculator standardizes the formula and removes common mistakes. You focus on decisions, not manual math." },
+      ]},
+      { id: "better-habits", title: "Better Habits Through Repeatable Inputs", content: [
+        { type: "p", text: "When you measure consistently, you learn faster. Calculators help you repeat the same process — and that consistency improves results." },
+        { type: "quote", text: "Repeatable systems build predictable outcomes." },
+      ]},
+      { id: "conclusion", title: "Conclusion", content: [
+        { type: "p", text: "Calculators don’t just give answers — they give clarity. And clarity makes action easier." },
+      ]},
+    ],
+    relatedSlugs: ["how-to-choose-the-right-calculator", "simple-budgeting-system"],
+  },
+
+  {
+    slug: "how-to-read-calculator-results",
+    title: "How to Read Calculator Results Without Misusing Them",
+    subtitle:
+      "Numbers are useful — but only with context. Learn how to interpret calculator outputs responsibly.",
+    heroImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2400&auto=format&fit=crop",
+    category: "Categories",
+    publishDate: "January 31, 2026",
+    publishISO: "2026-01-31T00:00:00.000Z",
+    readingTime: "10 min",
+    guideLabel: "This guide",
+    guideValue: "Context makes numbers useful",
+    canonicalPath: "/blog/how-to-read-calculator-results",
+    seoTitle: "How to Read Calculator Results (Interpretation Guide) | Numora",
+    seoDescription:
+      "A simple guide to interpreting calculator results responsibly, avoiding overconfidence, and using trends for better decisions.",
+    keywords: ["calculator results", "interpretation", "context", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      { id: "intro", title: "Introduction", content: [
+        { type: "p", text: "A calculator output is an estimate or a computed value based on your inputs. The number is useful — but it’s not magic. The meaning comes from context." },
+      ]},
+      { id: "estimates", title: "Understand Estimates vs Exact Values", content: [
+        { type: "p", text: "Unit conversions are exact. Health and finance calculators often include estimates based on averages. Know which type you’re using." },
+      ]},
+      { id: "trends", title: "Trends Beat One-Time Results", content: [
+        { type: "p", text: "One measurement can be noisy. Tracking trends (weekly/monthly) gives better decisions, especially for health and spending." },
+        { type: "quote", text: "One result informs. A trend guides." },
+      ]},
+      { id: "conclusion", title: "Conclusion", content: [
+        { type: "p", text: "Use calculators for clarity, then apply common sense and context. When in doubt, track trends and adjust slowly." },
+      ]},
+    ],
+    relatedSlugs: ["how-to-choose-the-right-calculator", "bmi-explained"],
+  },
+ // =========================================================
+  // EVERYDAY LIFE (3)
+  // =========================================================
+  {
+    slug: "time-zone-converter-guide",
+    title: "Time Zone Converter Guide: Schedule Calls Without Confusion",
+    subtitle:
+      "A clean way to convert time zones, avoid DST mistakes, and plan meetings confidently.",
+    heroImage:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2400&auto=format&fit=crop",
+    category: "Everyday Life",
+    publishDate: "January 26, 2026",
+    publishISO: "2026-01-26T00:00:00.000Z",
+    readingTime: "10 min",
+    guideLabel: "This guide",
+    guideValue: "Practical scheduling clarity",
+    canonicalPath: "/blog/time-zone-converter-guide",
+    seoTitle: "Time Zone Converter Guide: Avoid DST Mistakes | Numora",
+    seoDescription:
+      "Learn how time zone conversion works, how DST affects times, and how to schedule calls correctly using a converter.",
+    keywords: ["time zone converter", "DST", "meeting planning", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      { id: "intro", title: "Introduction", content: [
+        { type: "p", text: "Time zones create scheduling errors when people assume offsets stay the same year-round. DST (daylight saving time) changes offsets for many regions." },
+        { type: "p", text: "A time zone converter removes guessing — especially when working across countries." },
+      ]},
+      { id: "how-it-works", title: "How Time Zones Work (Simple View)", content: [
+        { type: "p", text: "Time zones are based on UTC offsets (like UTC+5). Conversion means translating a local time to UTC, then to another local time." },
+        { type: "quote", text: "Convert to UTC first, then to the target zone — that’s the clean logic." },
+      ]},
+      { id: "dst", title: "DST: The Most Common Source of Mistakes", content: [
+        { type: "p", text: "Some countries shift their clocks seasonally. That means a city may be UTC+1 in winter and UTC+2 in summer." },
+        { type: "p", text: "This is why the same “difference” between two cities can change across months." },
+      ]},
+      { id: "best-practices", title: "Best Practices for Scheduling", content: [
+        { type: "ul", items: [
+          "Always include the time zone in messages (e.g., 7 PM PKT / 9 AM EST).",
+          "Use a converter when DST season starts/ends.",
+          "Confirm date + time together (day shifts happen!).",
+        ]},
+      ]},
+      { id: "conclusion", title: "Conclusion", content: [
+        { type: "p", text: "Time zone conversion is easy when you respect UTC offsets and DST. A converter helps you schedule confidently and avoid costly mistakes." },
+      ]},
+    ],
+    relatedSlugs: ["digital-privacy-basics", "kitchen-measurements-conversion"],
+  },
+
+  {
+    slug: "kitchen-measurements-conversion",
+    title: "Kitchen Measurement Conversions: Cups, Tablespoons, and Grams",
+    subtitle:
+      "A practical guide to cooking conversions and why ingredients don’t convert equally by volume.",
+    heroImage:
+      "https://images.unsplash.com/photo-1506368083636-6defb67639a7?q=80&w=2400&auto=format&fit=crop",
+    category: "Everyday Life",
+    publishDate: "January 27, 2026",
+    publishISO: "2026-01-27T00:00:00.000Z",
+    readingTime: "11 min",
+    guideLabel: "This guide",
+    guideValue: "Cooking accuracy without stress",
+    canonicalPath: "/blog/kitchen-measurements-conversion",
+    seoTitle: "Kitchen Conversion Guide: Cups, Tbsp, Tsp, Grams | Numora",
+    seoDescription:
+      "Learn cooking conversions: teaspoons, tablespoons, cups, ml, and why grams differ by ingredient. Includes practical tips.",
+    keywords: ["kitchen conversions", "cups to grams", "tablespoons", "teaspoons", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1506368083636-6defb67639a7?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      { id: "intro", title: "Introduction", content: [
+        { type: "p", text: "Cooking conversions get confusing because cups measure volume, grams measure weight, and different ingredients have different densities." },
+      ]},
+      { id: "basic-conversions", title: "Basic Volume Conversions", content: [
+        { type: "ul", items: [
+          "1 tsp = 5 ml",
+          "1 tbsp = 15 ml",
+          "1 cup ≈ 240 ml (common standard)",
+        ]},
+      ]},
+      { id: "cups-to-grams", title: "Why Cups → Grams Depends on Ingredient", content: [
+        { type: "p", text: "A cup of flour does not weigh the same as a cup of sugar. This is why recipe accuracy improves with grams for baking." },
+        { type: "quote", text: "Volume is consistent; weight changes by ingredient." },
+      ]},
+      { id: "practical-tips", title: "Practical Tips for Better Results", content: [
+        { type: "ul", items: [
+          "For baking, prefer grams when possible.",
+          "If using cups, measure consistently (spoon and level flour).",
+          "Use a conversion calculator for quick, reliable results.",
+        ]},
+      ]},
+      { id: "conclusion", title: "Conclusion", content: [
+        { type: "p", text: "Kitchen conversions are easy when you separate volume from weight. Use standard ml conversions, and use ingredient-specific grams when accuracy matters." },
+      ]},
+    ],
+    relatedSlugs: ["meters-feet-conversion-guide", "kg-lbs-conversion-explained"],
+  },
+
+  {
+    slug: "daily-water-intake-guide",
+    title: "Daily Water Intake: A Simple Way to Estimate What You Need",
+    subtitle:
+      "Hydration made practical — what affects water needs and how to use a water intake calculator wisely.",
+    heroImage:
+      "https://images.unsplash.com/photo-1523362628745-0c100150b504?q=80&w=2400&auto=format&fit=crop",
+    category: "Everyday Life",
+    publishDate: "January 28, 2026",
+    publishISO: "2026-01-28T00:00:00.000Z",
+    readingTime: "10 min",
+    guideLabel: "This guide",
+    guideValue: "Practical hydration, not myths",
+    canonicalPath: "/blog/daily-water-intake-guide",
+    seoTitle: "Daily Water Intake Guide: Calculator + Practical Tips | Numora",
+    seoDescription:
+      "A simple guide to hydration: what changes water needs, how to estimate intake, and how to avoid common mistakes.",
+    keywords: ["water intake", "hydration", "daily water calculator", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1523362628745-0c100150b504?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      { id: "intro", title: "Introduction", content: [
+        { type: "p", text: "Water needs aren’t one-size-fits-all. Activity, climate, body size, and diet change how much you need daily." },
+        { type: "p", text: "A calculator gives a practical estimate — but real-life signals and consistency matter most." },
+      ]},
+      { id: "what-changes-needs", title: "What Changes Your Water Needs", content: [
+        { type: "ul", items: [
+          "Hot weather and humidity",
+          "Exercise and sweating",
+          "High-protein or high-salt diet",
+          "Illness/fever",
+        ]},
+      ]},
+      { id: "simple-estimate", title: "A Simple Estimate Approach", content: [
+        { type: "p", text: "Many calculators estimate intake based on body weight and activity level. Treat it as a baseline, then adjust if you’re unusually active or in hot climates." },
+        { type: "quote", text: "Aim for consistency, then adjust for environment and activity." },
+      ]},
+      { id: "common-mistakes", title: "Common Mistakes", content: [
+        { type: "ul", items: [
+          "Drinking a lot at once instead of spreading through the day",
+          "Ignoring electrolytes during heavy sweating",
+          "Confusing thirst with habit (or ignoring thirst completely)",
+        ]},
+      ]},
+      { id: "conclusion", title: "Conclusion", content: [
+        { type: "p", text: "Use a water intake calculator as a baseline, drink consistently through the day, and adjust for heat and activity. Simple, practical, effective." },
+      ]},
+    ],
+    relatedSlugs: ["sleep-and-recovery", "digital-privacy-basics"],
+  },
+
+  // =========================================================
+  // CATEGORIES (3)  ✅ your website has this category too
+  // =========================================================
+  {
+    slug: "how-to-choose-the-right-calculator",
+    title: "How to Choose the Right Calculator (And Get Accurate Results)",
+    subtitle:
+      "A simple guide to picking the right calculator type and avoiding common input mistakes.",
+    heroImage:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2400&auto=format&fit=crop",
+    category: "Categories",
+    publishDate: "January 29, 2026",
+    publishISO: "2026-01-29T00:00:00.000Z",
+    readingTime: "10 min",
+    guideLabel: "This guide",
+    guideValue: "Accuracy through clarity",
+    canonicalPath: "/blog/how-to-choose-the-right-calculator",
+    seoTitle: "How to Choose the Right Calculator (Accuracy Guide) | Numora",
+    seoDescription:
+      "Pick the right calculator category and avoid common mistakes in units, rounding, and inputs. A simple accuracy guide.",
+    keywords: ["calculator guide", "unit mistakes", "accurate results", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      { id: "intro", title: "Introduction", content: [
+        { type: "p", text: "Calculators are only as accurate as the inputs you provide. Most wrong results come from unit mix-ups, missing fields, or rounding too early." },
+      ]},
+      { id: "pick-category", title: "Pick the Correct Category First", content: [
+        { type: "p", text: "Use Health calculators for body metrics, Finance for money and growth, Unit Conversions for measurement swaps, and Maths & Science for formulas and percentage logic." },
+      ]},
+      { id: "units", title: "Units: The #1 Source of Errors", content: [
+        { type: "ul", items: [
+          "Don’t mix cm with meters in the same field",
+          "Don’t use pounds when the calculator expects kg (or vice versa)",
+          "Confirm temperature scale (°C vs °F)",
+        ]},
+      ]},
+      { id: "rounding", title: "Avoid Rounding Too Early", content: [
+        { type: "p", text: "Rounding early compounds error. Use full precision during calculation, then round final outputs for display." },
+        { type: "quote", text: "Precision inside, simplicity outside." },
+      ]},
+      { id: "conclusion", title: "Conclusion", content: [
+        { type: "p", text: "Choose the right calculator, keep units consistent, and round at the end. That’s how you get reliable results every time." },
+      ]},
+    ],
+    relatedSlugs: ["percentage-calculator-guide", "meters-feet-conversion-guide"],
+  },
+
+  
+  {
+    slug: "scientific-notation-explained",
+    title: "Scientific Notation Explained: Make Big Numbers Easy",
+    subtitle:
+      "A simple guide to scientific notation, powers of 10, and why it’s used in science and calculators.",
+    heroImage:
+      "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2400&auto=format&fit=crop",
+    category: "Maths & Science",
+    publishDate: "January 25, 2026",
+    publishISO: "2026-01-25T00:00:00.000Z",
+    readingTime: "10 min",
+    guideLabel: "This guide",
+    guideValue: "Simple logic + examples",
+    canonicalPath: "/blog/scientific-notation-explained",
+    seoTitle: "Scientific Notation Explained (Easy Powers of 10 Guide) | Numora",
+    seoDescription:
+      "Learn scientific notation with simple examples: converting numbers, multiplying/dividing, and understanding powers of 10.",
+    keywords: ["scientific notation", "powers of 10", "math science", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      { id: "intro", title: "Introduction", content: [
+        { type: "p", text: "Scientific notation is a way to write very large or very small numbers in a clean, readable form. It’s widely used in physics, chemistry, and calculators." },
+      ]},
+      { id: "format", title: "The Format (What It Looks Like)", content: [
+        { type: "p", text: "Scientific notation looks like: a × 10^n, where ‘a’ is between 1 and 10. Example: 5,200 = 5.2 × 10^3." },
+        { type: "quote", text: "Move the decimal; count the steps; that count is your exponent." },
+      ]},
+      { id: "convert", title: "How to Convert Numbers", content: [
+        { type: "ul", items: ["5200 → 5.2 × 10^3", "0.0041 → 4.1 × 10^-3", "73,000,000 → 7.3 × 10^7"] },
+      ]},
+      { id: "operations", title: "Multiplying & Dividing", content: [
+        { type: "p", text: "When multiplying: multiply the ‘a’ values and add exponents. When dividing: divide ‘a’ and subtract exponents." },
+      ]},
+      { id: "why-used", title: "Why It’s Useful", content: [
+        { type: "p", text: "It reduces errors, keeps numbers readable, and makes it easier to compare magnitudes quickly." },
+      ]},
+      { id: "conclusion", title: "Conclusion", content: [
+        { type: "p", text: "Scientific notation is just decimal movement + powers of 10. Once you practice a few examples, it becomes automatic." },
+      ]},
+    ],
+    relatedSlugs: ["percentage-calculator-guide", "ratio-and-proportion-guide"],
+  },
+
+  {
+    slug: "percentage-calculator-guide",
+    title: "Percentage Calculator Guide: The Easiest Way to Avoid Mistakes",
+    subtitle:
+      "Percentages made simple: increase/decrease, percent of a number, and common real-world cases.",
+    heroImage:
+      "https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=2400&auto=format&fit=crop",
+    category: "Maths & Science",
+    publishDate: "January 23, 2026",
+    publishISO: "2026-01-23T00:00:00.000Z",
+    readingTime: "11 min",
+    guideLabel: "This guide",
+    guideValue: "Simple rules + common use cases",
+    canonicalPath: "/blog/percentage-calculator-guide",
+    seoTitle: "Percentage Calculator Guide: Increase, Decrease, Percent Of | Numora",
+    seoDescription:
+      "Learn percentage basics with clear examples: percent of a number, percent change, and how to avoid common mistakes using a calculator.",
+    keywords: ["percentage calculator", "percent increase", "percent decrease", "math basics", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      {
+        id: "intro",
+        title: "Introduction",
+        content: [
+          { type: "p", text: "Percentages show up everywhere: discounts, marks, growth, tax, and performance. The math is simple, but mistakes happen when people mix up the direction or the base number." },
+          { type: "p", text: "This guide gives you the few rules you actually need — and how a percentage calculator helps you stay consistent." },
+        ],
+      },
+      {
+        id: "percent-of",
+        title: "Percent of a Number",
+        content: [
+          { type: "p", text: "To find X% of Y, convert percent to decimal: X% = X/100, then multiply." },
+          { type: "ul", items: ["20% of 150 = 0.2 × 150 = 30", "5% of 900 = 45"] },
+        ],
+      },
+      {
+        id: "percent-change",
+        title: "Percent Increase / Decrease",
+        content: [
+          { type: "p", text: "Percent change = (new − old) / old × 100. The ‘old’ value is the base." },
+          { type: "quote", text: "Most percent-change mistakes happen because people use the wrong base." },
+        ],
+      },
+      {
+        id: "reverse-percentage",
+        title: "Reverse Percentage (Find the Original)",
+        content: [
+          { type: "p", text: "If a price after discount is known, you can find original by dividing by the remaining percentage." },
+          { type: "p", text: "Example: after 20% off, price is 800. Remaining = 80%. Original = 800 / 0.8 = 1000." },
+        ],
+      },
+      {
+        id: "common-cases",
+        title: "Common Real-World Use Cases",
+        content: [
+          { type: "ul", items: ["Discounts and sale prices", "Tax and VAT calculations", "Grade percentages", "Growth rates (followers, revenue, savings)"] },
+        ],
+      },
+      {
+        id: "conclusion",
+        title: "Conclusion",
+        content: [
+          { type: "p", text: "Percentages are easy when the base is clear. Use a calculator for speed and consistency, especially for percent change and reverse calculations." },
+        ],
+      },
+    ],
+    relatedSlugs: ["scientific-notation-explained", "ratio-and-proportion-guide"],
+  },
+
+
+
+  {
+    slug: "celsius-fahrenheit-conversion",
+    title: "Celsius to Fahrenheit Conversion: The Formula That Actually Sticks",
+    subtitle:
+      "Convert °C ↔ °F using a simple rule, plus quick reference points you’ll remember.",
+    heroImage:
+      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=2400&auto=format&fit=crop",
+    category: "Unit Conversions",
+    publishDate: "January 21, 2026",
+    publishISO: "2026-01-21T00:00:00.000Z",
+    readingTime: "9 min",
+    guideLabel: "This guide",
+    guideValue: "Formula + memorable anchors",
+    canonicalPath: "/blog/celsius-fahrenheit-conversion",
+    seoTitle: "Celsius to Fahrenheit Conversion (°C ↔ °F) | Numora",
+    seoDescription:
+      "Learn how to convert Celsius to Fahrenheit and back, with simple formulas, examples, and reference temperatures you’ll remember.",
+    keywords: ["celsius to fahrenheit", "fahrenheit to celsius", "temperature conversion", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      {
+        id: "intro",
+        title: "Introduction",
+        content: [
+          { type: "p", text: "Temperature conversion confuses people because the scales don’t align nicely. But once you know the formula, it becomes automatic." },
+          { type: "p", text: "This guide gives you the exact formula plus anchor points that make estimation easy without a calculator." },
+        ],
+      },
+      {
+        id: "c-to-f",
+        title: "Celsius to Fahrenheit (°C → °F)",
+        content: [
+          { type: "p", text: "Use: °F = (°C × 9/5) + 32. That’s the exact conversion." },
+          { type: "ul", items: ["0°C = 32°F", "10°C = 50°F", "20°C = 68°F", "30°C = 86°F"] },
+        ],
+      },
+      {
+        id: "f-to-c",
+        title: "Fahrenheit to Celsius (°F → °C)",
+        content: [
+          { type: "p", text: "Use: °C = (°F − 32) × 5/9. Subtract 32 first, then scale down." },
+          { type: "ul", items: ["32°F = 0°C", "50°F ≈ 10°C", "68°F ≈ 20°C", "86°F ≈ 30°C"] },
+        ],
+      },
+      {
+        id: "quick-estimates",
+        title: "Quick Estimation Trick",
+        content: [
+          { type: "p", text: "For rough mental math: double °C and add 30 (works best near 0–30°C). It’s not exact, but good for quick sense-making." },
+          { type: "quote", text: "Exact math for accuracy, anchor points for speed." },
+        ],
+      },
+      {
+        id: "conclusion",
+        title: "Conclusion",
+        content: [
+          { type: "p", text: "Use °F = (°C × 9/5) + 32 and °C = (°F − 32) × 5/9. Memorize a few anchors and conversions stop being stressful." },
+        ],
+      },
+    ],
+    relatedSlugs: ["meters-feet-conversion-guide", "kg-lbs-conversion-explained"],
+  },
+
+ 
+  {
+    slug: "tdee-calculator-guide",
+    title: "TDEE Calculator Guide: Your Real Daily Calorie Burn",
+    subtitle:
+      "TDEE explains why your calorie needs change with lifestyle, steps, and workouts — and how to set targets that work.",
+    heroImage:
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2400&auto=format&fit=crop",
+    category: "Health",
+    publishDate: "January 15, 2026",
+    publishISO: "2026-01-15T00:00:00.000Z",
+    readingTime: "11 min",
+    guideLabel: "This guide",
+    guideValue: "Practical calorie planning",
+    canonicalPath: "/blog/tdee-calculator-guide",
+    seoTitle: "TDEE Calculator Guide: Calories for Maintenance, Loss & Gain | Numora",
+    seoDescription:
+      "Understand TDEE (Total Daily Energy Expenditure), what affects it, and how to use a TDEE calculator for consistent results.",
+    keywords: ["TDEE calculator", "maintenance calories", "calorie deficit", "BMR", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      {
+        id: "intro",
+        title: "Introduction",
+        content: [
+          {
+            type: "p",
+            text: "TDEE means Total Daily Energy Expenditure — the total calories you burn in a day. It includes your resting needs plus movement, workouts, and digestion.",
+          },
+          {
+            type: "p",
+            text: "If your calorie target feels confusing, TDEE is the missing link. A TDEE calculator gives you a realistic baseline for planning fat loss, maintenance, or lean gain.",
+          },
+        ],
+      },
+      {
+        id: "what-makes-up-tdee",
+        title: "What Makes Up TDEE",
+        content: [
+          {
+            type: "ul",
+            items: [
+              "BMR: calories used at rest",
+              "NEAT: daily movement (walking, chores, steps)",
+              "Exercise: training and sports",
+              "TEF: energy used to digest food",
+            ],
+          },
+          {
+            type: "p",
+            text: "NEAT is often the biggest difference between people. Two people can eat the same and train the same, but one moves more all day — and burns more.",
+          },
+        ],
+      },
+      {
+        id: "why-your-needs-change",
+        title: "Why Your Calorie Needs Change Over Time",
+        content: [
+          {
+            type: "p",
+            text: "Calorie burn isn’t fixed. Work stress, sleep, steps, training intensity, and even how much you sit can shift your daily burn noticeably.",
+          },
+          {
+            type: "p",
+            text: "That’s why consistent tracking and small adjustments beat guessing. Your goal is to find a baseline, then calibrate with real results.",
+          },
+        ],
+      },
+      {
+        id: "how-to-use-a-tdee-calculator",
+        title: "How to Use a TDEE Calculator Correctly",
+        content: [
+          {
+            type: "p",
+            text: "Pick the activity level that matches your full day — not your best week. If you choose “very active” but you mostly sit, your estimate will be too high.",
+          },
+          {
+            type: "quote",
+            text: "Choose the activity level you can repeat for the next month — not the version of you on a perfect week.",
+          },
+        ],
+      },
+      {
+        id: "set-targets",
+        title: "Setting Targets for Different Goals",
+        content: [
+          {
+            type: "ul",
+            items: [
+              "Maintenance: eat near TDEE and keep weight stable",
+              "Fat loss: small deficit under TDEE (more consistent than extreme cuts)",
+              "Muscle gain: small surplus over TDEE + strength training",
+            ],
+          },
+          {
+            type: "p",
+            text: "If you’re unsure, start closer to maintenance, then adjust. Overly aggressive targets are the fastest way to quit.",
+          },
+        ],
+      },
+      {
+        id: "calibrate",
+        title: "How to Calibrate Your TDEE in Real Life",
+        content: [
+          {
+            type: "p",
+            text: "Use your estimate for 2–3 weeks. Track body weight trend (not single-day changes). If weight is going up faster than expected, lower intake slightly; if it’s dropping too fast, increase a little.",
+          },
+          {
+            type: "p",
+            text: "Calibration is normal. The calculator gives you a starting point — your body gives you the final feedback.",
+          },
+        ],
+      },
+      {
+        id: "conclusion",
+        title: "Conclusion",
+        content: [
+          {
+            type: "p",
+            text: "TDEE is the most useful calorie number because it reflects real daily life. Use it as a baseline, set a realistic goal, and calibrate with trends. Simple, repeatable, effective.",
+          },
+        ],
+      },
+    ],
+    relatedSlugs: ["bmr-calculator-explained", "bmi-explained"],
+  },
+
+  {
+    slug: "waist-to-hip-ratio-explained",
+    title: "Waist-to-Hip Ratio Explained: A Simple Health Signal",
+    subtitle:
+      "WHR helps you understand fat distribution and risk trends — plus how to use a calculator correctly.",
+    heroImage:
+      "https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=2400&auto=format&fit=crop",
+    category: "Health",
+    publishDate: "January 16, 2026",
+    publishISO: "2026-01-16T00:00:00.000Z",
+    readingTime: "10 min",
+    guideLabel: "This guide",
+    guideValue: "Simple measurements, smarter context",
+    canonicalPath: "/blog/waist-to-hip-ratio-explained",
+    seoTitle: "Waist-to-Hip Ratio (WHR) Explained + Calculator Guide | Numora",
+    seoDescription:
+      "Learn what WHR means, why fat distribution matters, how to measure correctly, and how to interpret WHR responsibly.",
+    keywords: ["waist to hip ratio", "WHR calculator", "health risk", "body measurements", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      {
+        id: "intro",
+        title: "Introduction",
+        content: [
+          {
+            type: "p",
+            text: "Many people focus only on weight, but where fat is stored also matters. Waist-to-hip ratio (WHR) is a simple measurement that helps estimate fat distribution.",
+          },
+          {
+            type: "p",
+            text: "WHR doesn’t diagnose anything, but it can be a useful signal when combined with other metrics like BMI, activity, and blood markers.",
+          },
+        ],
+      },
+      {
+        id: "what-is-whr",
+        title: "What Is WHR?",
+        content: [
+          {
+            type: "p",
+            text: "WHR is calculated by dividing waist circumference by hip circumference. A higher ratio generally suggests more fat stored around the abdomen.",
+          },
+          {
+            type: "quote",
+            text: "WHR is about distribution — not just total weight.",
+          },
+        ],
+      },
+      {
+        id: "how-to-measure",
+        title: "How to Measure Correctly",
+        content: [
+          {
+            type: "ul",
+            items: [
+              "Waist: measure around the narrowest point or just above the belly button (be consistent).",
+              "Hips: measure around the widest part of the hips/glutes.",
+              "Keep the tape snug but not tight, and measure after exhaling normally.",
+            ],
+          },
+        ],
+      },
+      {
+        id: "why-it-matters",
+        title: "Why WHR Matters",
+        content: [
+          {
+            type: "p",
+            text: "Abdominal fat is often linked with higher risk trends compared to fat stored in lower body areas. WHR is a simple way to capture this pattern without advanced tools.",
+          },
+          {
+            type: "p",
+            text: "It’s especially useful for tracking progress when weight changes slowly but body shape is improving through movement and nutrition.",
+          },
+        ],
+      },
+      {
+        id: "limitations",
+        title: "Limitations & Smart Use",
+        content: [
+          {
+            type: "p",
+            text: "WHR can be affected by measurement inconsistency. Focus on trends and use the same measuring method each time.",
+          },
+          {
+            type: "p",
+            text: "Also remember: WHR doesn’t replace medical advice. It’s one signal — useful for awareness, not self-diagnosis.",
+          },
+        ],
+      },
+      {
+        id: "conclusion",
+        title: "Conclusion",
+        content: [
+          {
+            type: "p",
+            text: "WHR is simple: measure waist and hips, divide, track trends. Combined with healthy habits, it’s a practical way to understand body changes beyond the scale.",
+          },
+        ],
+      },
+    ],
+    relatedSlugs: ["bmi-explained", "tdee-calculator-guide"],
+  },
+
+  // =========================================================
+  // FINANCE (3)
+  // =========================================================
+  {
+    slug: "loan-emi-calculator-guide",
+    title: "Loan EMI Calculator Guide: Understand Your Monthly Payment",
+    subtitle:
+      "EMI explained clearly: principal, interest rate, tenure, and how to compare options with confidence.",
+    heroImage:
+      "https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=2400&auto=format&fit=crop",
+    category: "Finance",
+    publishDate: "January 17, 2026",
+    publishISO: "2026-01-17T00:00:00.000Z",
+    readingTime: "11 min",
+    guideLabel: "This guide",
+    guideValue: "Clear EMI math + practical decisions",
+    canonicalPath: "/blog/loan-emi-calculator-guide",
+    seoTitle: "Loan EMI Calculator Guide: Payment, Interest & Tenure | Numora",
+    seoDescription:
+      "Learn how EMI works, how interest and tenure change your payment, and how to use an EMI calculator to compare loans.",
+    keywords: ["EMI calculator", "loan payment", "interest rate", "tenure", "personal finance", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      {
+        id: "intro",
+        title: "Introduction",
+        content: [
+          { type: "p", text: "EMI (Equated Monthly Installment) is the fixed amount you pay each month for a loan. It includes both interest and principal repayment." },
+          { type: "p", text: "An EMI calculator helps you understand affordability, compare offers, and avoid choosing a tenure that looks easy monthly but costs more overall." },
+        ],
+      },
+      {
+        id: "emi-components",
+        title: "What Makes Up EMI?",
+        content: [
+          { type: "ul", items: ["Principal: the amount you borrowed", "Interest: the cost of borrowing", "Tenure: how long you take to repay"] },
+          { type: "p", text: "Early in the loan, a larger portion of EMI goes to interest. Over time, more of your EMI goes toward principal." },
+        ],
+      },
+      {
+        id: "tenure-tradeoff",
+        title: "Tenure Tradeoff: Lower EMI vs Higher Total Cost",
+        content: [
+          { type: "p", text: "Longer tenure lowers monthly EMI but usually increases total interest paid. Shorter tenure raises EMI but reduces overall cost." },
+          { type: "quote", text: "Lower monthly payment can hide a higher total price." },
+        ],
+      },
+      {
+        id: "compare-loans",
+        title: "How to Compare Two Loan Offers",
+        content: [
+          { type: "p", text: "Compare not only EMI, but total repayment and total interest. A small rate difference can save a lot over long tenures." },
+          { type: "ul", items: ["Compare rate + tenure together", "Check total interest", "Prefer flexible prepayment options if possible"] },
+        ],
+      },
+      {
+        id: "prepayment",
+        title: "Prepayment: When It Helps Most",
+        content: [
+          { type: "p", text: "Prepaying earlier can reduce interest significantly because interest is calculated on remaining principal. Even small early prepayments can shorten tenure and reduce cost." },
+        ],
+      },
+      {
+        id: "conclusion",
+        title: "Conclusion",
+        content: [
+          { type: "p", text: "Use an EMI calculator to check monthly affordability, but also compare total interest. The best loan is the one that fits your budget and minimizes unnecessary long-term cost." },
+        ],
+      },
+    ],
+    relatedSlugs: ["compound-interest-made-simple", "simple-budgeting-system"],
+  },
+
+  {
+    slug: "savings-goal-calculator",
+    title: "Savings Goal Calculator: Reach Your Target Without Guessing",
+    subtitle:
+      "How to plan monthly saving, timelines, and realistic goals using simple math and consistent habits.",
+    heroImage:
+      "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=2400&auto=format&fit=crop",
+    category: "Finance",
+    publishDate: "January 18, 2026",
+    publishISO: "2026-01-18T00:00:00.000Z",
+    readingTime: "10 min",
+    guideLabel: "This guide",
+    guideValue: "Goal planning made simple",
+    canonicalPath: "/blog/savings-goal-calculator",
+    seoTitle: "Savings Goal Calculator: Monthly Plan, Timeline & Examples | Numora",
+    seoDescription:
+      "A clear guide to savings goals: how to calculate monthly savings needed, set timelines, and stay consistent without stress.",
+    keywords: ["savings goal calculator", "monthly savings", "financial planning", "budgeting", "Numora"],
+    ogImage:
+      "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      {
+        id: "intro",
+        title: "Introduction",
+        content: [
+          { type: "p", text: "Savings goals fail when they’re vague. A calculator turns “I should save more” into a real plan: monthly amount + timeline." },
+          { type: "p", text: "Once the numbers are clear, saving becomes a routine — not a constant mental debate." },
+        ],
+      },
+      {
+        id: "inputs",
+        title: "The Inputs That Control Your Plan",
+        content: [
+          { type: "ul", items: ["Target amount", "Current savings", "Time available (months)", "Optional: expected interest or return"] },
+          { type: "p", text: "Time is usually the biggest lever. If monthly saving feels too high, extend the timeline or reduce the target — then build up gradually." },
+        ],
+      },
+      {
+        id: "monthly-plan",
+        title: "How Monthly Saving Is Calculated",
+        content: [
+          { type: "p", text: "At a basic level, it’s (target - current) / months. If you include growth/interest, the required monthly amount may reduce slightly — but don’t depend on high assumptions." },
+          { type: "quote", text: "Conservative planning beats optimistic guessing." },
+        ],
+      },
+      {
+        id: "make-it-automatic",
+        title: "Make Saving Automatic (So You Don’t Rely on Willpower)",
+        content: [
+          { type: "p", text: "Automate transfers on payday. Saving first is easier than saving whatever is “left” at the end of the month." },
+          { type: "ul", items: ["Separate savings account", "Auto-transfer on salary day", "Track progress monthly (not daily)"] },
+        ],
+      },
+      {
+        id: "avoid-common-mistakes",
+        title: "Common Mistakes",
+        content: [
+          { type: "ul", items: ["Setting a target without a deadline", "Saving inconsistently", "Using a high return assumption", "Not accounting for irregular expenses"] },
+        ],
+      },
+      {
+        id: "conclusion",
+        title: "Conclusion",
+        content: [
+          { type: "p", text: "A savings goal calculator gives clarity: how much, how long, and what to change. With a realistic plan and automation, goals become achievable." },
+        ],
+      },
+    ],
+    relatedSlugs: ["simple-budgeting-system", "compound-interest-made-simple"],
+  },
+
+  {
+    slug: "inflation-explained-simply",
+    title: "Inflation Explained Simply: Why Prices Rise and Money Feels Smaller",
+    subtitle:
+      "Inflation in plain language — what it does to savings, salaries, and how to think in ‘real value’.",
+    heroImage:
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2400&auto=format&fit=crop",
+    category: "Finance",
+    publishDate: "January 19, 2026",
+    publishISO: "2026-01-19T00:00:00.000Z",
+    readingTime: "12 min",
+    guideLabel: "This guide",
+    guideValue: "Clear thinking about real value",
+    canonicalPath: "/blog/inflation-explained-simply",
+    seoTitle: "Inflation Explained Simply: Real Value, Savings & Planning | Numora",
+    seoDescription:
+      "Understand inflation, how it reduces purchasing power, and how to plan savings and goals with real value in mind.",
+    keywords: ["inflation explained", "purchasing power", "real value", "savings", "Numora finance"],
+    ogImage:
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2400&auto=format&fit=crop",
+    sections: [
+      {
+        id: "intro",
+        title: "Introduction",
+        content: [
+          { type: "p", text: "Inflation means prices rise over time — and the same money buys less. That’s why savings that don’t grow can feel smaller every year." },
+          { type: "p", text: "This guide explains inflation without jargon and shows how to plan using real value instead of just bigger numbers." },
+        ],
+      },
+      {
+        id: "what-inflation-is",
+        title: "What Inflation Is",
+        content: [
+          { type: "p", text: "Inflation is the average increase in prices across the economy. It doesn’t mean every price rises equally, but overall costs trend upward." },
+          { type: "quote", text: "Inflation is a purchasing power problem, not just a price problem." },
+        ],
+      },
+      {
+        id: "why-it-happens",
+        title: "Why Inflation Happens (Simple Reasons)",
+        content: [
+          { type: "ul", items: ["Demand rises faster than supply", "Costs increase (fuel, logistics, wages)", "Currency supply and policy factors", "Global shocks and shortages"] },
+        ],
+      },
+      {
+        id: "real-vs-nominal",
+        title: "Nominal vs Real: The Concept That Changes Everything",
+        content: [
+          { type: "p", text: "Nominal is the number you see. Real adjusts for inflation. If your savings grow 8% but inflation is 6%, your real growth is closer to 2%." },
+          { type: "p", text: "Thinking in real terms helps you plan goals that actually protect future lifestyle." },
+        ],
+      },
+      {
+        id: "what-to-do",
+        title: "What You Can Do (Without Overcomplicating)",
+        content: [
+          { type: "ul", items: ["Build an emergency fund", "Reduce high-interest debt first", "Avoid unrealistic return assumptions", "Focus on long-term consistency"] },
+          { type: "p", text: "The goal isn’t to “beat inflation perfectly.” It’s to avoid losing purchasing power by doing nothing." },
+        ],
+      },
+      {
+        id: "conclusion",
+        title: "Conclusion",
+        content: [
+          { type: "p", text: "Inflation quietly reduces purchasing power. Once you understand real value, your saving and investing decisions become simpler and more realistic." },
+        ],
+      },
+    ],
+    relatedSlugs: ["compound-interest-made-simple", "simple-budgeting-system"],
+  },
 
 ];
 
