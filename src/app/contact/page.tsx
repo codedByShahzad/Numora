@@ -125,9 +125,9 @@ export default function ContactPage() {
                 />
               </div>
 
-              <div className="mt-6 rounded-2xl border border-black/10 bg-[hsl(51,97%,86%)] p-5">
+              <div className="mt-6 rounded-2xl border border-black/10 bg-[hsl(200,100%,85%)] p-5">
                 <div className="flex items-start gap-3">
-                  <div className="mt-0.5 grid h- w-10 place-items-center rounded-2xl border border-black/10 bg-white shadow-sm">
+                  <div className="mt-0.5 grid p-2 place-items-center rounded-2xl border border-black/10 bg-white shadow-sm">
                     <MessageSquareText className="h-5 w-5 text-[#125FF9]" />
                   </div>
                   <div>
@@ -138,11 +138,11 @@ export default function ContactPage() {
                       Do you want to build a website or tool that can generate revenue through Google AdSense, affiliate marketing, or other online channels? I help create modern, high-performance, and revenue-focused platforms.
                     </p>
 
-                    <div className="mt-4 flex flex-wrap gap-2 bg-[hsl(51,97%,86%)]">
+                    <div className="mt-4 flex flex-wrap gap-2 bg-[hsl(205,97%,86%)]">
                       {["Let's work together to turn your idea into a profitable online business."].map((x) => (
                         <span
                           key={x}
-                          className="rounded-full border border-black/10 bg-[hsl(34,97%,86%)] px-3 py-1 text-xs text-center text-gray-700 shadow-sm"
+                          className="rounded-full border border-black/10 bg-[hsl(159,97%,86%)] px-3 py-1 text-xs text-center text-gray-700 shadow-sm"
                         >
                           {x}
                         </span>
