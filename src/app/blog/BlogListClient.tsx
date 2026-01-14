@@ -134,7 +134,7 @@ const filteredBlogs = useMemo(() => {
           </div>
 
           <h1 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight text-slate-900">
-            Guides built for <span className="text-blue-600">clarity</span>
+            Blogs built for <span className="text-blue-600">clarity</span>
           </h1>
 
           <p className="mt-4 text-slate-600 leading-relaxed">
