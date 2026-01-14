@@ -4,6 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CalendarDays, Clock, Folder, ArrowUpRight } from "lucide-react";
 import { BLOGS, getBlogBySlug } from "../../../lib/blog";
+import type { BlogBlock, BlogSection } from "../../../lib/blog";
+
 import TocClient from "./TocClient";
 
 // ✅ REQUIRED when using `output: "export"` with dynamic routes
@@ -105,11 +107,8 @@ function GridBackground() {
   );
 }
 
-function SectionRenderer({
-  section,
-}: {
-  section: { id: string; title: string; content: any[] };
-}) {
+function SectionRenderer({ section }: { section: BlogSection }) {
+
   return (
     <section id={section.id} className="scroll-mt-28">
       <h2 className="text-xl md:text-2xl font-semibold text-slate-900 tracking-tight">
@@ -117,7 +116,7 @@ function SectionRenderer({
       </h2>
 
       <div className="mt-4 space-y-4">
-        {section.content.map((block: any, idx: number) => {
+        {section.content.map((block: BlogBlock, idx: number) => {
           if (block.type === "p") {
             return (
               <p key={idx} className="text-slate-600 leading-relaxed">
@@ -254,8 +253,9 @@ export default async function BlogDetailPage({
               <div className="rounded-3xl border border-slate-200 bg-white/80 shadow-sm p-6 md:p-8">
                 <div className="space-y-10">
                   {blog.sections.map((s) => (
-                    <SectionRenderer key={s.id} section={s as any} />
-                  ))}
+  <SectionRenderer key={s.id} section={s} />
+))}
+
                 </div>
               </div>
             </div>

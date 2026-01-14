@@ -455,10 +455,12 @@ export default function ScientificCalculator() {
         `Expression: ${expression}\n` + `Mode: ${mode}\n` + `Result: ${fmt(v)}`
       );
       setError(null);
-    } catch (e: any) {
-      setError(e?.message ?? "Invalid expression.");
-      setResult("");
-    }
+   } catch (e: unknown) {
+  const msg = e instanceof Error ? e.message : "Invalid expression.";
+  setError(msg);
+  setResult("");
+}
+
   };
 
   const copyResult = async () => {

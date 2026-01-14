@@ -228,14 +228,7 @@ export default function TipCalculator() {
     });
   };
 
-  const copySummary = async () => {
-    if (!result) return;
-    try {
-      await navigator.clipboard.writeText(result.summary);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1200);
-    } catch {}
-  };
+
 
   return (
     <div className="min-h-[92vh] bg-[#F7FAFF] text-gray-900">

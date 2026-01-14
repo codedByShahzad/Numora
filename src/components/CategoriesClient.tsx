@@ -2,22 +2,15 @@
 
 import React, { useMemo, useState } from "react";
 import { CategoryCard } from "@/components/CategoryCard";
-import {
-  Heart,
-  Scale,
-  DollarSign,
-  Beaker,
-  Clock,
-  Search,
-  Sparkles,
-} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { Heart, Scale, DollarSign, Beaker, Clock } from "lucide-react";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
 
 type Cat = {
   id: string;
   title: string;
   description: string;
-  icon: any;
+  icon: LucideIcon;
   calculators: string[];
   badge?: string;
 };
@@ -31,53 +24,57 @@ const slugify = (text: string) =>
     .replace(/\s+/g, "-");
 
 export default function CategoriesClient() {
-  const categories: Cat[] = [
-    {
-      id: "health",
-      title: "Health",
-      description:
-        "Calculate BMI, water intake, calories, and other health metrics for a better lifestyle.",
-      icon: Heart,
-      calculators: ["BMI Calculator", "Water Intake", "Calorie Counter"],
-      badge: "Most used",
-    },
-    {
-      id: "unit-conversions",
-      title: "Unit Conversions",
-      description:
-        "Convert between different units of measurement including height, weight, distance, and temperature.",
-      icon: Scale,
-      calculators: ["Height", "Weight", "Distance", "Temperature"],
-      badge: "Essential",
-    },
-    {
-      id: "finance",
-      title: "Finance",
-      description:
-        "Calculate loans, EMI, discounts, and currency conversions for smart financial planning.",
-      icon: DollarSign,
-      calculators: ["Loan Calculator", "EMI", "Discount", "Currency"],
-      badge: "Popular",
-    },
-    {
-      id: "maths-science",
-      title: "Maths & Science",
-      description:
-        "Advanced scientific calculations, physics formulas, and chemistry computations.",
-      icon: Beaker,
-      calculators: ["Scientific", "Physics", "Chemistry"],
-      badge: "Pro",
-    },
-    {
-      id: "everyday-life",
-      title: "Everyday Life",
-      description:
-        "Simple daily calculations including tip calculator, age calculator, and time zones.",
-      icon: Clock,
-      calculators: ["Tip Calculator", "Age Calculator", "Time Zone"],
-      badge: "Quick tools",
-    },
-  ];
+  // ✅ Make categories stable (prevents deps changing every render)
+  const categories: Cat[] = useMemo(
+    () => [
+      {
+        id: "health",
+        title: "Health",
+        description:
+          "Calculate BMI, water intake, calories, and other health metrics for a better lifestyle.",
+        icon: Heart,
+        calculators: ["BMI Calculator", "Water Intake", "Calorie Counter"],
+        badge: "Most used",
+      },
+      {
+        id: "unit-conversions",
+        title: "Unit Conversions",
+        description:
+          "Convert between different units of measurement including height, weight, distance, and temperature.",
+        icon: Scale,
+        calculators: ["Height", "Weight", "Distance", "Temperature"],
+        badge: "Essential",
+      },
+      {
+        id: "finance",
+        title: "Finance",
+        description:
+          "Calculate loans, EMI, discounts, and currency conversions for smart financial planning.",
+        icon: DollarSign,
+        calculators: ["Loan Calculator", "EMI", "Discount", "Currency"],
+        badge: "Popular",
+      },
+      {
+        id: "maths-science",
+        title: "Maths & Science",
+        description:
+          "Advanced scientific calculations, physics formulas, and chemistry computations.",
+        icon: Beaker,
+        calculators: ["Scientific", "Physics", "Chemistry"],
+        badge: "Pro",
+      },
+      {
+        id: "everyday-life",
+        title: "Everyday Life",
+        description:
+          "Simple daily calculations including tip calculator, age calculator, and time zones.",
+        icon: Clock,
+        calculators: ["Tip Calculator", "Age Calculator", "Time Zone"],
+        badge: "Quick tools",
+      },
+    ],
+    []
+  );
 
   const [query, setQuery] = useState("");
 
@@ -91,7 +88,7 @@ export default function CategoriesClient() {
       const inCalcs = c.calculators.some((x) => x.toLowerCase().includes(q));
       return inTitle || inDesc || inCalcs;
     });
-  }, [query]);
+  }, [query, categories]);
 
   return (
     <section className="relative overflow-hidden">

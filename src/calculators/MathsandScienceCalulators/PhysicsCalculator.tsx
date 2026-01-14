@@ -290,10 +290,12 @@ export default function PhysicsCalculator() {
           `Result: ${fmt(res)} ${currentFormula.unit}`
       );
       setError(null);
-    } catch (e: any) {
-      setError(e?.message ?? "Invalid input.");
-      setResult("");
-    }
+   } catch (e: unknown) {
+  const msg = e instanceof Error ? e.message : "Invalid input.";
+  setError(msg);
+  setResult("");
+}
+
   };
 
   return (

@@ -1,7 +1,13 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
+
+type MousePos = {
+  x: number | null;
+  y: number | null;
+};
 
 export const MaskContainer = ({
   children,
@@ -10,32 +16,45 @@ export const MaskContainer = ({
   revealSize = 600,
   className,
 }: {
-  children?: string | React.ReactNode;
-  revealText?: string | React.ReactNode;
+  children?: React.ReactNode;
+  revealText?: React.ReactNode;
   size?: number;
   revealSize?: number;
   className?: string;
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [mousePosition, setMousePosition] = useState<any>({ x: null, y: null });
-  const containerRef = useRef<any>(null);
-  const updateMousePosition = (e: any) => {
-    const rect = containerRef.current.getBoundingClientRect();
+
+  // ✅ typed state (no any)
+  const [mousePosition, setMousePosition] = useState<MousePos>({
+    x: null,
+    y: null,
+  });
+
+  // ✅ typed ref (no any)
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // ✅ typed event (no any)
+  const updateMousePosition = (e: MouseEvent) => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const rect = el.getBoundingClientRect();
     setMousePosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
   useEffect(() => {
-    containerRef.current.addEventListener("mousemove", updateMousePosition);
+    const el = containerRef.current;
+    if (!el) return;
+
+    el.addEventListener("mousemove", updateMousePosition);
+
     return () => {
-      if (containerRef.current) {
-        containerRef.current.removeEventListener(
-          "mousemove",
-          updateMousePosition,
-        );
-      }
+      el.removeEventListener("mousemove", updateMousePosition);
     };
   }, []);
-  let maskSize = isHovered ? revealSize : size;
+
+  // ✅ const (no prefer-const warning)
+  const maskSize = isHovered ? revealSize : size;
 
   return (
     <motion.div
@@ -51,8 +70,8 @@ export const MaskContainer = ({
       <motion.div
         className="absolute flex h-full w-full items-center justify-center bg-black text-6xl [mask-image:url(/mask.svg)] [mask-repeat:no-repeat] [mask-size:40px] dark:bg-white"
         animate={{
-          maskPosition: `${mousePosition.x - maskSize / 2}px ${
-            mousePosition.y - maskSize / 2
+          maskPosition: `${(mousePosition.x ?? 0) - maskSize / 2}px ${
+            (mousePosition.y ?? 0) - maskSize / 2
           }px`,
           maskSize: `${maskSize}px`,
         }}
@@ -62,13 +81,10 @@ export const MaskContainer = ({
         }}
       >
         <div className="absolute inset-0 z-0 h-full w-full bg-black opacity-50 dark:bg-white" />
+
         <div
-          onMouseEnter={() => {
-            setIsHovered(true);
-          }}
-          onMouseLeave={() => {
-            setIsHovered(false);
-          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           className="relative z-20 mx-auto max-w-4xl text-center text-4xl font-bold"
         >
           {children}

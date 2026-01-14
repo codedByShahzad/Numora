@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useMemo, useState, useRef, useEffect } from "react";
+ import type { LucideIcon } from "lucide-react";
+
 import { useRouter } from "next/navigation";
 import {
   Heart,
@@ -32,11 +34,12 @@ type Cat = {
   id: string;
   title: string;
   description: string;
-  icon: any;
+  icon: LucideIcon; // ✅ fixed
   calculators: string[];
   count: number;
   badge: string;
 };
+
 
 type CalcItem = {
   name: string;

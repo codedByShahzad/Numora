@@ -79,11 +79,20 @@ export default function ContactForm() {
         setErrorMsg(msg);
         setStatus("error");
       }
-    } catch (error: any) {
-      console.error("Form submission error:", error);
-      setErrorMsg(error?.message || "Network error");
-      setStatus("error");
-    }
+    } catch (error: unknown) {
+  console.error("Form submission error:", error);
+
+  const msg =
+    error instanceof Error
+      ? error.message
+      : typeof error === "string"
+      ? error
+      : "Network error";
+
+  setErrorMsg(msg);
+  setStatus("error");
+}
+
   };
 
   return (

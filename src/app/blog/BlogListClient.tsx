@@ -43,49 +43,62 @@ export default function BlogListClient() {
   }, []);
 
   // ✅ Build searchable text (title + subtitle + category + slug)
-  const searchableBlogs = useMemo(() => {
-    return BLOGS.map((b) => {
-      const cat = b.category ?? "";
-      const haystack = [
-        b.title,
-        b.subtitle,
-        cat,
-        slugify(cat),
-        b.slug,
-        b.publishDate,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
+  // const searchableBlogs = useMemo(() => {
+  //   return BLOGS.map((b) => {
+  //     const cat = b.category ?? "";
+  //     const haystack = [
+  //       b.title,
+  //       b.subtitle,
+  //       cat,
+  //       slugify(cat),
+  //       b.slug,
+  //       b.publishDate,
+  //     ]
+  //       .filter(Boolean)
+  //       .join(" ")
+  //       .toLowerCase();
 
-      return { ...b, _search: haystack };
-    });
-  }, []);
+  //     return { ...b, _search: haystack };
+  //   });
+  // }, []);
 
   // ✅ Filter by query:
   // - If query matches a category name -> show those blogs
   // - Otherwise do normal search across title/subtitle/category
-  const filteredBlogs = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return BLOGS;
+const filteredBlogs = useMemo(() => {
+  const q = query.trim().toLowerCase();
+  if (!q) return BLOGS;
 
-    // category match
-    const categoryHit = categories.find(
-      (c) => c.toLowerCase() === q || slugify(c) === q
+  // category match
+  const categoryHit = categories.find(
+    (c) => c.toLowerCase() === q || slugify(c) === q
+  );
+
+  if (categoryHit) {
+    return BLOGS.filter(
+      (b) => (b.category ?? "").toLowerCase() === categoryHit.toLowerCase()
     );
+  }
 
-    if (categoryHit) {
-      return BLOGS.filter(
-        (b) =>
-          (b.category ?? "").toLowerCase() === categoryHit.toLowerCase()
-      );
-    }
+  // normal search (no _search field)
+  return BLOGS.filter((b) => {
+    const cat = b.category ?? "";
+    const haystack = [
+      b.title,
+      b.subtitle,
+      cat,
+      slugify(cat),
+      b.slug,
+      b.publishDate,
+    ]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase();
 
-    // normal search
-    return searchableBlogs
-      .filter((b) => b._search.includes(q))
-      .map(({ _search, ...rest }) => rest);
-  }, [query, categories, searchableBlogs]);
+    return haystack.includes(q);
+  });
+}, [query, categories]);
+
 
   // ✅ Aceternity UI placeholders: include categories + common searches
   const placeholders = useMemo(() => {

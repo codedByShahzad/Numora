@@ -1,5 +1,7 @@
 // app/about/page.tsx
 import type { Metadata } from "next";
+import type { LucideIcon } from "lucide-react";
+
 import Link from "next/link";
 import {
   Calculator,
@@ -19,7 +21,6 @@ import {
   Globe,
   Star,
   Quote,
-  HelpCircle,
 } from "lucide-react";
 import FAQAccordion from "@/components/FAQAccordion";
 
@@ -65,11 +66,12 @@ export const metadata: Metadata = {
 
 type Feature = {
   id: string;
-  icon: any;
+  icon: LucideIcon;
   title: string;
   description: string;
   chips: string[];
 };
+
 
 export default function AboutPage() {
   const features: Feature[] = [

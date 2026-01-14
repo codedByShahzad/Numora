@@ -145,17 +145,7 @@ export default function GPACalculator() {
     setCopied(false);
   };
 
-  const copyGPA = async () => {
-    if (!result) return;
-    try {
-      await navigator.clipboard.writeText(result.summary);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 1200);
-    } catch {
-      // ignore
-    }
-  };
-
+ 
   return (
     <div className="min-h-[92vh] bg-[#F7FAFF] text-gray-900">
       {/* SaaS background */}

@@ -29,7 +29,6 @@ import {
   CalendarDays,
   Sparkles,
   ArrowUpRight,
-  BarChart3
 } from "lucide-react";
 
 import type { Metadata } from "next";

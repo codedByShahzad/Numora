@@ -138,8 +138,9 @@ function convertTimeZones({
     (desiredDate.getTime() - shownDate.getTime()) / (1000 * 60 * 60 * 24)
   );
 
-  let delta = desiredMinutes - shownMinutes + dayDiff * 24 * 60;
-  const corrected = new Date(approx.getTime() + delta * 60 * 1000);
+  const delta = desiredMinutes - shownMinutes + dayDiff * 24 * 60;
+const corrected = new Date(approx.getTime() + delta * 60 * 1000);
+
 
   const formatTime24 = (date: Date, zone: string) =>
     new Intl.DateTimeFormat("en-US", {

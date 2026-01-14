@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import {
   ArrowLeftRight,
   Copy,
@@ -57,10 +57,7 @@ export default function CurrencyConverterPage() {
     []
   );
 
-  const currencies = useMemo(
-    () => Object.keys(rates) as Currency[],
-    [rates]
-  );
+  const currencies = useMemo(() => Object.keys(rates) as Currency[], [rates]);
 
   const [amount, setAmount] = useState("");
   const [fromCurrency, setFromCurrency] = useState<Currency>("USD");
@@ -75,9 +72,8 @@ export default function CurrencyConverterPage() {
 
   const [copied, setCopied] = useState(false);
 
-  const formatConverted = (n: number, currency: Currency) => {
-    // JPY often displayed without decimals; but we keep 2 for consistency.
-    // You can special-case if you want.
+  // ✅ removed unused param "currency"
+  const formatConverted = (n: number) => {
     return n.toLocaleString(undefined, {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
@@ -87,13 +83,13 @@ export default function CurrencyConverterPage() {
   const formatInput = (v: number) =>
     v.toLocaleString(undefined, { maximumFractionDigits: 6 });
 
-  const getRateFromTo = (from: Currency, to: Currency) => {
-    // Since rates are relative to USD:
-    // 1 FROM in USD = 1 / rates[from]
-    // 1 USD to TO = rates[to]
-    // So 1 FROM to TO = (1 / rates[from]) * rates[to]
-    return (1 / rates[from]) * rates[to];
-  };
+  // ✅ stable function so useMemo deps warning is gone
+  const getRateFromTo = useCallback(
+    (from: Currency, to: Currency) => {
+      return (1 / rates[from]) * rates[to];
+    },
+    [rates]
+  );
 
   const swap = () => {
     setCopied(false);
@@ -131,8 +127,7 @@ export default function CurrencyConverterPage() {
     const rateLine = `1 ${fromCurrency} = ${formatInput(rate)} ${toCurrency}`;
 
     const summary = `${formatInput(amt)} ${fromCurrency} = ${formatConverted(
-      converted,
-      toCurrency
+      converted
     )} ${toCurrency}`;
 
     setError(null);
@@ -151,9 +146,10 @@ export default function CurrencyConverterPage() {
   const fromMeta = currencyMeta[fromCurrency];
   const toMeta = currencyMeta[toCurrency];
 
+  // ✅ deps fixed
   const liveRate = useMemo(
     () => getRateFromTo(fromCurrency, toCurrency),
-    [fromCurrency, toCurrency, rates]
+    [fromCurrency, toCurrency, getRateFromTo]
   );
 
   return (
@@ -172,11 +168,10 @@ export default function CurrencyConverterPage() {
           <div className="text-center">
             <div className="flex justify-center">
               <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
-               <Coins className="h-4 w-4 text-[#125FF9]" />
-              Finance • Converter
+                <Coins className="h-4 w-4 text-[#125FF9]" />
+                Finance • Converter
               </HoverBorderGradient>
             </div>
-
 
             <h1 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
               Currency{" "}
@@ -356,8 +351,7 @@ export default function CurrencyConverterPage() {
                         </p>
 
                         <p className="mt-1 text-lg font-semibold text-gray-900">
-                          {toMeta.symbol}{" "}
-                          {formatConverted(result.converted, toCurrency)}{" "}
+                          {toMeta.symbol} {formatConverted(result.converted)}{" "}
                           <span className="text-gray-500 font-medium">
                             ({toCurrency})
                           </span>
@@ -368,7 +362,8 @@ export default function CurrencyConverterPage() {
                         </p>
 
                         <p className="mt-2 text-xs text-gray-500">
-                          Note: Rates here are sample (static). For live rates, connect an exchange-rate API.
+                          Note: Rates here are sample (static). For live rates,
+                          connect an exchange-rate API.
                         </p>
                       </div>
 
@@ -392,7 +387,8 @@ export default function CurrencyConverterPage() {
             </div>
 
             <p className="mt-6 text-center text-xs text-gray-500">
-              Numora calculators are designed to be simple, fast, and easy to use.
+              Numora calculators are designed to be simple, fast, and easy to
+              use.
             </p>
           </div>
         </div>

@@ -154,8 +154,7 @@ function safeEvaluate(expr: string): number {
 
 /* ------------------------------- UI Helpers ------------------------------- */
 
-const clamp = (n: number, min: number, max: number) =>
-  Math.min(max, Math.max(min, n));
+
 
 const safeNum = (v: string) => {
   if (v.trim() === "") return NaN;
@@ -219,7 +218,7 @@ export default function AlgebraCalculator() {
 
   const onNumChange =
     (setter: (v: string) => void, allowDecimal: boolean) => (v: string) => {
-      const re = allowDecimal ? /^\d*\.?\d*$/ : /^\d*$/;
+      
       // allow negative numbers for coefficients
       const reNeg = allowDecimal ? /^-?\d*\.?\d*$/ : /^-?\d*$/;
 
@@ -242,10 +241,13 @@ export default function AlgebraCalculator() {
       const v = safeEvaluate(expression);
       setError(null);
       setResult(`Expression: ${expression}\nResult: ${fmt(v)}`);
-    } catch (e: any) {
-      setError(e?.message || "Invalid expression.");
-      setResult("");
-    }
+    } catch (e: unknown) {
+  const msg =
+    e instanceof Error ? e.message : "Invalid expression.";
+  setError(msg);
+  setResult("");
+}
+
   };
 
   const solveLinear = () => {
