@@ -5,14 +5,43 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Numora", // default tab title
-    template: "%s", // dynamic format
+    default: "Numora – Fast Everyday Calculators",
+    template: "%s | Numora",
   },
   description:
-    "Numora - Your trusted hub for health, finance, unit conversions, math, science, and everyday life calculators.",
+    "Numora helps you calculate BMI, calories, EMI, interest, and unit conversions instantly with clean breakdowns and standard formulas.",
+
+  metadataBase: new URL("https://numorrra.netlify.app"),
+
   icons: {
-    icon: "/logo.png"
-  }
+    icon: "/logo.png",
+  },
+
+  openGraph: {
+    title: "Numora – Fast Everyday Calculators",
+    description:
+      "Health, finance, unit conversions, math, science, and everyday calculators in one fast, clean platform.",
+    url: "/",
+    siteName: "Numora",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Numora – Fast Everyday Calculators",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Numora – Fast Everyday Calculators",
+    description:
+      "Fast, clean calculators for health, finance, conversions, and everyday life.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({

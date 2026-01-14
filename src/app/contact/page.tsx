@@ -11,25 +11,49 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact Us",
+  title: "Contact",
   description:
     "Get in touch with Numora. Have questions, feedback, or suggestions? Fill out our contact form and we’ll respond as soon as possible.",
+
   keywords: [
     "Numora contact",
     "calculator support",
     "feedback",
-    "frontend developer",
-    "React developer",
-    "Next.js developer",
+    "bug report",
+    "calculator request",
+    "partnerships",
   ],
+
+  alternates: {
+    canonical: "/contact",
+  },
+
   openGraph: {
-    title: "Contact Us | Numora",
+    title: "Contact Numora",
     description:
-      "Have questions, feedback, or want to hire a frontend developer? Contact Numora today.",
+      "Have questions, feedback, or want a new calculator added? Contact Numora and we’ll reply as soon as possible.",
+    url: "/contact",
     siteName: "Numora",
     type: "website",
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Numora – Contact",
+      },
+    ],
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Numora",
+    description:
+      "Send feedback, report an issue, request a calculator, or reach the Numora team.",
+    images: ["/og.png"],
   },
 };
+
 
 export default function ContactPage() {
   return (

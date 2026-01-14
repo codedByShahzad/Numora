@@ -15,7 +15,9 @@ export function generateStaticParams() {
 export const dynamicParams = false;
 
 /** ✅ Change this to your real domain */
-const SITE_URL = "https://numora.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://numorrra.netlify.app";
+
 
 function toISODateSafe(dateStr?: string) {
   if (!dateStr) return undefined;
@@ -32,27 +34,43 @@ export async function generateMetadata({
   const { slug } = await params;
   const blog = getBlogBySlug(slug);
 
+  // Not found
   if (!blog) {
     return {
       metadataBase: new URL(SITE_URL),
-      title: "Blog Not Found | Numora",
+      title: "Blog Not Found",
       description:
         "Simple, accurate, and clean blogs by Numora — calculators, finance, health, and productivity.",
       alternates: { canonical: "/blog" },
       robots: { index: false, follow: false },
       openGraph: {
-        type: "website",
+        title: "Blog Not Found",
+        description:
+          "Simple, accurate, and clean blogs by Numora — calculators, finance, health, and productivity.",
+        url: "/blog",
         siteName: "Numora",
-        url: `${SITE_URL}/blog`,
+        type: "website",
+        images: [
+          { url: "/og.png", width: 1200, height: 630, alt: "Numora" },
+        ],
       },
-      twitter: { card: "summary_large_image" },
+      twitter: {
+        card: "summary_large_image",
+        title: "Blog Not Found",
+        description:
+          "Simple, accurate, and clean blogs by Numora — calculators, finance, health, and productivity.",
+        images: ["/og.png"],
+      },
     };
   }
 
   const title = blog.seoTitle ?? blog.title;
   const description = blog.seoDescription ?? blog.subtitle;
+
+  // ✅ keep canonical as PATH (like your other pages)
   const canonicalPath = blog.canonicalPath ?? `/blog/${blog.slug}`;
-  const url = `${SITE_URL}${canonicalPath}`;
+
+  // ✅ allow absolute or relative hero image
   const image = blog.ogImage ?? blog.heroImage;
 
   const publishedTime =
@@ -70,17 +88,19 @@ export async function generateMetadata({
       "finance",
       "health",
     ],
-    alternates: { canonical: url },
+    alternates: { canonical: canonicalPath },
     robots: { index: true, follow: true },
+
     openGraph: {
       type: "article",
       siteName: "Numora",
-      url,
+      url: canonicalPath,
       title,
       description,
       images: [{ url: image, width: 1200, height: 630, alt: title }],
       publishedTime,
     },
+
     twitter: {
       card: "summary_large_image",
       title,

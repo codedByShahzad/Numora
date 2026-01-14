@@ -191,11 +191,42 @@ export async function generateMetadata(
       description: "Use this free calculator on Numora.",
     };
 
+  const url = `/categories/${category}/${calculator}`;
+  const title = `${meta.title} (${displayCategory})`;
+
   return {
-    title: `${meta.title} | ${displayCategory}`,
+    title,
     description: meta.description,
+
+    alternates: {
+      canonical: url,
+    },
+
+    openGraph: {
+      title,
+      description: meta.description,
+      url,
+      siteName: "Numora",
+      type: "website",
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: "Numora – Fast Everyday Calculators",
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: meta.description,
+      images: ["/og.png"],
+    },
   };
 }
+
 
 /* ------------------------------ Page ------------------------------ */
 export default function CalculatorPage({ params }: CalculatorPageProps) {

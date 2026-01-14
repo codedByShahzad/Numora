@@ -52,9 +52,40 @@ export async function generateMetadata(
   { params }: CategoryPageProps
 ): Promise<Metadata> {
   const displayTitle = displayTitleMap[params.category] || "Category";
+
+  const title = `${displayTitle} Calculators | Numora`;
+  const description = `Explore ${displayTitle.toLowerCase()} calculators on Numora. Fast results, clear breakdowns, and reliable formulas.`;
+
   return {
-    title: `${displayTitle} Calculators`,
-    description: `Explore ${displayTitle.toLowerCase()} calculators on Numora. Fast results, clear breakdowns, and reliable formulas.`,
+    title,
+    description,
+
+    alternates: {
+      canonical: `/categories/${params.category}`,
+    },
+
+    openGraph: {
+      title,
+      description,
+      url: `/categories/${params.category}`,
+      siteName: "Numora",
+      type: "website",
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          alt: "Numora – Fast Everyday Calculators",
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: ["/og.png"],
+    },
   };
 }
 

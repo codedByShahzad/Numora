@@ -25,9 +25,10 @@ import {
 import FAQAccordion from "@/components/FAQAccordion";
 
 export const metadata: Metadata = {
-  title: "About Numora",
+  title: "About",
   description:
-    "Learn about Numora — your trusted hub for quick, accurate, and user-friendly calculators. Explore our mission and discover health, finance, science, and everyday life tools designed to simplify your decisions.",
+    "Learn about Numora — your trusted hub for quick, accurate, and user-friendly calculators.",
+
   keywords: [
     "About Numora",
     "online calculators",
@@ -39,30 +40,37 @@ export const metadata: Metadata = {
     "GPA calculator",
     "everyday calculators",
   ],
+
+  alternates: {
+    canonical: "/about",
+  },
+
   openGraph: {
     title: "About Numora",
     description:
-      "Numora is your trusted hub for health, finance, science, and everyday life calculators. Learn about our mission to simplify complex calculations.",
-    url: "https://yourdomain.com/about",
+      "Numora is your trusted hub for health, finance, science, and everyday life calculators.",
+    url: "/about",
     siteName: "Numora",
     images: [
       {
-        url: "https://yourdomain.com/og-about.png",
+        url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "About Numora - Free Online Calculators",
+        alt: "Numora – Fast Everyday Calculators",
       },
     ],
     type: "website",
   },
+
   twitter: {
     card: "summary_large_image",
     title: "About Numora",
     description:
-      "Discover Numora’s mission and explore our free calculators for health, finance, science, and daily life.",
-    images: ["https://yourdomain.com/og-about.png"],
+      "Fast, accurate calculators for health, finance, science, and everyday life.",
+    images: ["/og.png"],
   },
 };
+
 
 type Feature = {
   id: string;
