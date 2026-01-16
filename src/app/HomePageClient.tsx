@@ -308,7 +308,7 @@ export default function HomePageClient() {
             </h1>
 
             <p className="mt-4 text-base text-gray-600 sm:text-lg">
-              From BMI and calories to EMI and conversions — Numora gives you quick
+              From BMI and calories to EMI and conversions — Numoro gives you quick
               results with clean breakdowns and standard formulas.
             </p>
 

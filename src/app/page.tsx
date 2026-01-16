@@ -4,7 +4,7 @@ import HomePageClient from "./HomePageClient";
 export const metadata: Metadata = {
   title: "Fast Online Calculators for Health, Finance & Conversions",
   description:
-    "Use Numora’s free calculators for BMI, calories, EMI, interest, and unit conversions. Fast, accurate, and easy to use.",
+    "Use Numoro’s free calculators for BMI, calories, EMI, interest, and unit conversions. Fast, accurate, and easy to use.",
 
   alternates: {
     canonical: "/",
@@ -15,14 +15,14 @@ export const metadata: Metadata = {
     description:
       "Calculate BMI, calories, EMI, interest, and conversions instantly with clean breakdowns and standard formulas.",
     url: "/",
-    siteName: "Numora",
+    siteName: "Numoro",
     type: "website",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Numora – Fast Everyday Calculators",
+        alt: "Numoro – Fast Everyday Calculators",
       },
     ],
   },
