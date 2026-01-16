@@ -324,7 +324,7 @@ export default function WeightConverterPage() {
             </div>
 
             <p className="mt-6 text-center text-xs text-gray-500">
-              Numora converters are designed to be simple, fast, and accurate.
+              Numoro converters are designed to be simple, fast, and accurate.
             </p>
           </div>
         </div>

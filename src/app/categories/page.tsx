@@ -3,26 +3,26 @@ import type { Metadata } from "next";
 import CategoriesClient from "../../components/CategoriesClient";
 
 export const metadata: Metadata = {
-  title: "Calculator Categories for Health, Finance & Conversions | Numora",
+  title: "Calculator Categories for Health, Finance & Conversions | Numoro",
   description:
-    "Browse all calculator categories on Numora including Health, Finance, Unit Conversions, Math & Science, and Everyday Life tools.",
+    "Browse all calculator categories on Numoro including Health, Finance, Unit Conversions, Math & Science, and Everyday Life tools.",
 
   alternates: {
     canonical: "/categories",
   },
 
   openGraph: {
-    title: "Calculator Categories | Numora",
+    title: "Calculator Categories | Numoro",
     description:
-      "Explore all calculator categories on Numora — health, finance, conversions, maths, science, and everyday tools.",
+      "Explore all calculator categories on Numoro — health, finance, conversions, maths, science, and everyday tools.",
     url: "/categories",
-    siteName: "Numora",
+    siteName: "Numoro",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Numora – Fast Everyday Calculators",
+        alt: "Numoro – Fast Everyday Calculators",
       },
     ],
     type: "website",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Calculator Categories | Numora",
+    title: "Calculator Categories | Numoro",
     description:
       "Health, finance, conversions, maths, science, and everyday calculators — all in one place.",
     images: ["/og.png"],

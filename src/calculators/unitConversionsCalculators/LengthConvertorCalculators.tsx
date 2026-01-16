@@ -376,7 +376,7 @@ export default function LengthConverterPage() {
             </div>
 
             <p className="mt-6 text-center text-xs text-gray-500">
-              Numora converters are designed to be simple, fast, and easy to use.
+              Numoro converters are designed to be simple, fast, and easy to use.
             </p>
           </div>
         </div>

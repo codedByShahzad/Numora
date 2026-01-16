@@ -50,10 +50,10 @@ const AboutContent = () => {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-3xl font-bold text-slate-800 mb-4">
-            About <span className="text-cyan-600">Numora</span>
+            About <span className="text-cyan-600">Numoro</span>
           </h1>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed">
-            Numora is your trusted hub for quick, accurate, and user-friendly
+            Numoro is your trusted hub for quick, accurate, and user-friendly
             calculators. Whether you’re managing your health, finances, studies,
             or everyday life, our mission is to make complex calculations
             simple, accurate, and always free.
@@ -66,10 +66,10 @@ const AboutContent = () => {
             Our Mission
           </h2>
           <p className="text-gray-600 leading-relaxed">
-            At Numora, we believe that everyone should have access to tools that
+            At Numoro, we believe that everyone should have access to tools that
             make decision-making easier. From calculating your monthly mortgage
             payments to finding your GPA or converting units for a science
-            project, Numora ensures accuracy and simplicity in every
+            project, Numoro ensures accuracy and simplicity in every
             calculation.
           </p>
         </div>
@@ -106,7 +106,7 @@ const AboutContent = () => {
             Simple. Accurate. Free.
           </h2>
           <p className="text-gray-600 max-w-xl mx-auto">
-            That’s the Numora promise. No matter what you’re calculating, our
+            That’s the Numoro promise. No matter what you’re calculating, our
             tools are designed to make your life easier.
           </p>
         </div>

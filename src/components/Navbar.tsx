@@ -21,8 +21,8 @@ const Navbar = () => {
         
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" width={25} height={25} alt="Numora logo" />
-          <h1 className="text-xl font-semibold text-gray-900">Numora</h1>
+          <Image src="/logo.png" width={25} height={25} alt="Numoro logo" />
+          <h1 className="text-xl font-semibold text-gray-900">Numoro</h1>
         </Link>
 
         {/* Desktop Menu */}

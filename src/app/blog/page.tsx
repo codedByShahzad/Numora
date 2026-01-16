@@ -4,32 +4,32 @@ import BlogListClient from "./BlogListClient";
 export const metadata: Metadata = {
   title: "Blog",
   description:
-    "Clear explainers, product notes, and practical guides on health, finance, conversions, and everyday calculations — in Numora style.",
+    "Clear explainers, product notes, and practical guides on health, finance, conversions, and everyday calculations — in Numoro style.",
 
   alternates: {
     canonical: "/blog",
   },
 
   openGraph: {
-    title: "Blog | Numora",
+    title: "Blog | Numoro",
     description:
       "Clear explainers, product notes, and practical guides on health, finance, conversions, and everyday calculations.",
     url: "/blog",
-    siteName: "Numora",
+    siteName: "Numoro",
     type: "website",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Numora Blog",
+        alt: "Numoro Blog",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Numora",
+    title: "Blog | Numoro",
     description:
       "Practical guides and clear explainers for calculators and everyday problem solving.",
     images: ["/og.png"],

@@ -40,25 +40,25 @@ export async function generateMetadata({
       metadataBase: new URL(SITE_URL),
       title: "Blog Not Found",
       description:
-        "Simple, accurate, and clean blogs by Numora — calculators, finance, health, and productivity.",
+        "Simple, accurate, and clean blogs by Numoro — calculators, finance, health, and productivity.",
       alternates: { canonical: "/blog" },
       robots: { index: false, follow: false },
       openGraph: {
         title: "Blog Not Found",
         description:
-          "Simple, accurate, and clean blogs by Numora — calculators, finance, health, and productivity.",
+          "Simple, accurate, and clean blogs by Numoro — calculators, finance, health, and productivity.",
         url: "/blog",
-        siteName: "Numora",
+        siteName: "Numoro",
         type: "website",
         images: [
-          { url: "/og.png", width: 1200, height: 630, alt: "Numora" },
+          { url: "/og.png", width: 1200, height: 630, alt: "Numoro" },
         ],
       },
       twitter: {
         card: "summary_large_image",
         title: "Blog Not Found",
         description:
-          "Simple, accurate, and clean blogs by Numora — calculators, finance, health, and productivity.",
+          "Simple, accurate, and clean blogs by Numoro — calculators, finance, health, and productivity.",
         images: ["/og.png"],
       },
     };
@@ -81,7 +81,7 @@ export async function generateMetadata({
     title,
     description,
     keywords: blog.keywords ?? [
-      "Numora",
+      "Numoro",
       "blog",
       blog.category,
       "calculators",
@@ -93,7 +93,7 @@ export async function generateMetadata({
 
     openGraph: {
       type: "article",
-      siteName: "Numora",
+      siteName: "Numoro",
       url: canonicalPath,
       title,
       description,
@@ -334,7 +334,7 @@ export default async function BlogDetailPage({
 
                 <div className="mt-6 rounded-2xl border border-blue-100 bg-blue-50/60 p-4">
                   <p className="text-sm text-slate-700">
-                    Numora blogs follow the same promise:
+                    Numoro blogs follow the same promise:
                     <span className="font-semibold"> simple, accurate, clean.</span>
                   </p>
                 </div>
@@ -402,7 +402,7 @@ export default async function BlogDetailPage({
 
 
         <p className="mt-10 text-center text-sm text-slate-500">
-          Numora blogs are designed to be simple, fast, and easy to understand.
+          Numoro blogs are designed to be simple, fast, and easy to understand.
         </p>
       </div>
     </div>

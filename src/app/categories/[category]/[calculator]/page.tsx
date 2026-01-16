@@ -188,7 +188,7 @@ export async function generateMetadata(
   const meta =
     calculatorsMeta[category]?.[calculator] || {
       title: "Calculator",
-      description: "Use this free calculator on Numora.",
+      description: "Use this free calculator on Numoro.",
     };
 
   const url = `/categories/${category}/${calculator}`;
@@ -206,14 +206,14 @@ export async function generateMetadata(
       title,
       description: meta.description,
       url,
-      siteName: "Numora",
+      siteName: "Numoro",
       type: "website",
       images: [
         {
           url: "/og.png",
           width: 1200,
           height: 630,
-          alt: "Numora – Fast Everyday Calculators",
+          alt: "Numoro – Fast Everyday Calculators",
         },
       ],
     },

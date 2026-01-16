@@ -268,7 +268,7 @@ export default function AgeCalculator() {
 
             {/* Footer note */}
             <p className="mt-6 text-center text-xs text-gray-500">
-              Numora calculators are designed to be simple, fast, and easy to
+              Numoro calculators are designed to be simple, fast, and easy to
               use.
             </p>
           </div>

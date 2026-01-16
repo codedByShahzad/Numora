@@ -54,7 +54,7 @@ export const BLOGS: BlogPost[] = [
 
     // ✅ SEO fields
     canonicalPath: "/blog/ai-in-healthcare",
-    seoTitle: "AI in Healthcare: Use Cases, Risks & Future (Clear Guide) | Numora",
+    seoTitle: "AI in Healthcare: Use Cases, Risks & Future (Clear Guide) | Numoro",
     seoDescription:
       "Learn how AI is used in healthcare: imaging, workflows, prediction, privacy, ethics, and what the future looks like — explained in simple terms.",
     keywords: [
@@ -65,7 +65,7 @@ export const BLOGS: BlogPost[] = [
       "healthcare data privacy",
       "AI ethics",
       "predictive analytics healthcare",
-      "Numora blog",
+      "Numoro blog",
     ],
     ogImage:
       "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2400&auto=format&fit=crop",
@@ -275,7 +275,7 @@ export const BLOGS: BlogPost[] = [
 
     // ✅ SEO fields
     canonicalPath: "/blog/compound-interest-made-simple",
-    seoTitle: "Compound Interest Explained Simply (Examples + Tips) | Numora",
+    seoTitle: "Compound Interest Explained Simply (Examples + Tips) | Numoro",
     seoDescription:
       "A clear, jargon-free guide to compound interest: how it works, why time matters, contributions, frequency, and common mistakes to avoid.",
     keywords: [
@@ -284,7 +284,7 @@ export const BLOGS: BlogPost[] = [
       "compounding frequency",
       "investment contributions",
       "personal finance basics",
-      "Numora finance blog",
+      "Numoro finance blog",
     ],
     ogImage:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2400&auto=format&fit=crop",
@@ -475,7 +475,7 @@ export const BLOGS: BlogPost[] = [
 
     // ✅ SEO fields
     canonicalPath: "/blog/bmi-explained",
-    seoTitle: "BMI Calculator Guide: Meaning, Ranges & Limitations | Numora",
+    seoTitle: "BMI Calculator Guide: Meaning, Ranges & Limitations | Numoro",
     seoDescription:
       "BMI explained with simple examples: how it’s calculated, adult ranges, common limitations, and how to use BMI responsibly as a health signal.",
     keywords: [
@@ -484,7 +484,7 @@ export const BLOGS: BlogPost[] = [
       "BMI ranges",
       "BMI limitations",
       "health metrics",
-      "Numora health blog",
+      "Numoro health blog",
     ],
     ogImage:
       "https://images.unsplash.com/photo-1576671081837-49000212a370?q=80&w=2400&auto=format&fit=crop",
@@ -679,7 +679,7 @@ export const BLOGS: BlogPost[] = [
 
   // ✅ SEO fields
   canonicalPath: "/blog/sleep-and-recovery",
-  seoTitle: "Sleep & Recovery: Routines, Caffeine Timing, and Better Rest | Numora",
+  seoTitle: "Sleep & Recovery: Routines, Caffeine Timing, and Better Rest | Numoro",
   seoDescription:
     "Learn how sleep actually works, what improves recovery, and the simplest routines that reliably improve sleep quality—without gimmicks.",
   keywords: [
@@ -689,7 +689,7 @@ export const BLOGS: BlogPost[] = [
     "caffeine timing",
     "circadian rhythm",
     "sleep routine",
-    "Numora health blog",
+    "Numoro health blog",
   ],
   ogImage:
     "https://images.unsplash.com/photo-1525097487452-6278ff080c31?q=80&w=2400&auto=format&fit=crop",
@@ -863,7 +863,7 @@ export const BLOGS: BlogPost[] = [
 
   // ✅ SEO fields
   canonicalPath: "/blog/simple-budgeting-system",
-  seoTitle: "Simple Budgeting System: Categories, Rules & Tracking | Numora",
+  seoTitle: "Simple Budgeting System: Categories, Rules & Tracking | Numoro",
   seoDescription:
     "A practical budgeting approach that’s easy to follow: category setup, weekly check-ins, and rules that keep you consistent without spreadsheets.",
   keywords: [
@@ -872,7 +872,7 @@ export const BLOGS: BlogPost[] = [
     "personal finance",
     "money categories",
     "spending plan",
-    "Numora finance blog",
+    "Numoro finance blog",
   ],
   ogImage:
     "https://images.unsplash.com/photo-1554224154-22dec7ec8818?q=80&w=2400&auto=format&fit=crop",
@@ -1051,7 +1051,7 @@ export const BLOGS: BlogPost[] = [
 
   // ✅ SEO fields
   canonicalPath: "/blog/digital-privacy-basics",
-  seoTitle: "Digital Privacy Basics: Passwords, 2FA, Permissions & Safety | Numora",
+  seoTitle: "Digital Privacy Basics: Passwords, 2FA, Permissions & Safety | Numoro",
   seoDescription:
     "A clear guide to digital privacy: strong passwords, 2FA, safer browsing, app permissions, and habits that reduce real-world risk.",
   keywords: [
@@ -1061,7 +1061,7 @@ export const BLOGS: BlogPost[] = [
     "password manager",
     "app permissions",
     "phishing prevention",
-    "Numora blog",
+    "Numoro blog",
   ],
   ogImage:
     "https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=2400&auto=format&fit=crop",
@@ -1229,7 +1229,7 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Clear meaning + practical use",
     canonicalPath: "/blog/bmr-calculator-explained",
-    seoTitle: "BMR Calculator Explained: What It Means & How to Use It | Numora",
+    seoTitle: "BMR Calculator Explained: What It Means & How to Use It | Numoro",
     seoDescription:
       "Learn what Basal Metabolic Rate (BMR) means, how calculators estimate it, and how to use it for weight loss or maintenance without confusion.",
     keywords: [
@@ -1238,7 +1238,7 @@ export const BLOGS: BlogPost[] = [
       "calorie needs",
       "TDEE",
       "health calculators",
-      "Numora",
+      "Numoro",
     ],
     ogImage:
       "https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2400&auto=format&fit=crop",
@@ -1361,10 +1361,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Clarity > stress",
     canonicalPath: "/blog/why-calculators-are-better-than-guessing",
-    seoTitle: "Why Calculators Are Better Than Guessing | Numora",
+    seoTitle: "Why Calculators Are Better Than Guessing | Numoro",
     seoDescription:
       "Learn how calculators improve decisions by reducing errors, standardizing inputs, and making planning easier in real life.",
-    keywords: ["calculators", "planning", "accuracy", "Numora"],
+    keywords: ["calculators", "planning", "accuracy", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1516382799247-87df95d790b7?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1399,10 +1399,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Context makes numbers useful",
     canonicalPath: "/blog/how-to-read-calculator-results",
-    seoTitle: "How to Read Calculator Results (Interpretation Guide) | Numora",
+    seoTitle: "How to Read Calculator Results (Interpretation Guide) | Numoro",
     seoDescription:
       "A simple guide to interpreting calculator results responsibly, avoiding overconfidence, and using trends for better decisions.",
-    keywords: ["calculator results", "interpretation", "context", "Numora"],
+    keywords: ["calculator results", "interpretation", "context", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1439,10 +1439,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Practical scheduling clarity",
     canonicalPath: "/blog/time-zone-converter-guide",
-    seoTitle: "Time Zone Converter Guide: Avoid DST Mistakes | Numora",
+    seoTitle: "Time Zone Converter Guide: Avoid DST Mistakes | Numoro",
     seoDescription:
       "Learn how time zone conversion works, how DST affects times, and how to schedule calls correctly using a converter.",
-    keywords: ["time zone converter", "DST", "meeting planning", "Numora"],
+    keywords: ["time zone converter", "DST", "meeting planning", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1486,10 +1486,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Cooking accuracy without stress",
     canonicalPath: "/blog/kitchen-measurements-conversion",
-    seoTitle: "Kitchen Conversion Guide: Cups, Tbsp, Tsp, Grams | Numora",
+    seoTitle: "Kitchen Conversion Guide: Cups, Tbsp, Tsp, Grams | Numoro",
     seoDescription:
       "Learn cooking conversions: teaspoons, tablespoons, cups, ml, and why grams differ by ingredient. Includes practical tips.",
-    keywords: ["kitchen conversions", "cups to grams", "tablespoons", "teaspoons", "Numora"],
+    keywords: ["kitchen conversions", "cups to grams", "tablespoons", "teaspoons", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1506368083636-6defb67639a7?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1535,10 +1535,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Practical hydration, not myths",
     canonicalPath: "/blog/daily-water-intake-guide",
-    seoTitle: "Daily Water Intake Guide: Calculator + Practical Tips | Numora",
+    seoTitle: "Daily Water Intake Guide: Calculator + Practical Tips | Numoro",
     seoDescription:
       "A simple guide to hydration: what changes water needs, how to estimate intake, and how to avoid common mistakes.",
-    keywords: ["water intake", "hydration", "daily water calculator", "Numora"],
+    keywords: ["water intake", "hydration", "daily water calculator", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1523362628745-0c100150b504?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1589,10 +1589,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Accuracy through clarity",
     canonicalPath: "/blog/how-to-choose-the-right-calculator",
-    seoTitle: "How to Choose the Right Calculator (Accuracy Guide) | Numora",
+    seoTitle: "How to Choose the Right Calculator (Accuracy Guide) | Numoro",
     seoDescription:
       "Pick the right calculator category and avoid common mistakes in units, rounding, and inputs. A simple accuracy guide.",
-    keywords: ["calculator guide", "unit mistakes", "accurate results", "Numora"],
+    keywords: ["calculator guide", "unit mistakes", "accurate results", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1635,10 +1635,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Simple logic + examples",
     canonicalPath: "/blog/scientific-notation-explained",
-    seoTitle: "Scientific Notation Explained (Easy Powers of 10 Guide) | Numora",
+    seoTitle: "Scientific Notation Explained (Easy Powers of 10 Guide) | Numoro",
     seoDescription:
       "Learn scientific notation with simple examples: converting numbers, multiplying/dividing, and understanding powers of 10.",
-    keywords: ["scientific notation", "powers of 10", "math science", "Numora"],
+    keywords: ["scientific notation", "powers of 10", "math science", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1679,10 +1679,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Simple rules + common use cases",
     canonicalPath: "/blog/percentage-calculator-guide",
-    seoTitle: "Percentage Calculator Guide: Increase, Decrease, Percent Of | Numora",
+    seoTitle: "Percentage Calculator Guide: Increase, Decrease, Percent Of | Numoro",
     seoDescription:
       "Learn percentage basics with clear examples: percent of a number, percent change, and how to avoid common mistakes using a calculator.",
-    keywords: ["percentage calculator", "percent increase", "percent decrease", "math basics", "Numora"],
+    keywords: ["percentage calculator", "percent increase", "percent decrease", "math basics", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1752,10 +1752,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Formula + memorable anchors",
     canonicalPath: "/blog/celsius-fahrenheit-conversion",
-    seoTitle: "Celsius to Fahrenheit Conversion (°C ↔ °F) | Numora",
+    seoTitle: "Celsius to Fahrenheit Conversion (°C ↔ °F) | Numoro",
     seoDescription:
       "Learn how to convert Celsius to Fahrenheit and back, with simple formulas, examples, and reference temperatures you’ll remember.",
-    keywords: ["celsius to fahrenheit", "fahrenheit to celsius", "temperature conversion", "Numora"],
+    keywords: ["celsius to fahrenheit", "fahrenheit to celsius", "temperature conversion", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1817,10 +1817,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Practical calorie planning",
     canonicalPath: "/blog/tdee-calculator-guide",
-    seoTitle: "TDEE Calculator Guide: Calories for Maintenance, Loss & Gain | Numora",
+    seoTitle: "TDEE Calculator Guide: Calories for Maintenance, Loss & Gain | Numoro",
     seoDescription:
       "Understand TDEE (Total Daily Energy Expenditure), what affects it, and how to use a TDEE calculator for consistent results.",
-    keywords: ["TDEE calculator", "maintenance calories", "calorie deficit", "BMR", "Numora"],
+    keywords: ["TDEE calculator", "maintenance calories", "calorie deficit", "BMR", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -1945,10 +1945,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Simple measurements, smarter context",
     canonicalPath: "/blog/waist-to-hip-ratio-explained",
-    seoTitle: "Waist-to-Hip Ratio (WHR) Explained + Calculator Guide | Numora",
+    seoTitle: "Waist-to-Hip Ratio (WHR) Explained + Calculator Guide | Numoro",
     seoDescription:
       "Learn what WHR means, why fat distribution matters, how to measure correctly, and how to interpret WHR responsibly.",
-    keywords: ["waist to hip ratio", "WHR calculator", "health risk", "body measurements", "Numora"],
+    keywords: ["waist to hip ratio", "WHR calculator", "health risk", "body measurements", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1554284126-aa88f22d8b74?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -2053,10 +2053,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Clear EMI math + practical decisions",
     canonicalPath: "/blog/loan-emi-calculator-guide",
-    seoTitle: "Loan EMI Calculator Guide: Payment, Interest & Tenure | Numora",
+    seoTitle: "Loan EMI Calculator Guide: Payment, Interest & Tenure | Numoro",
     seoDescription:
       "Learn how EMI works, how interest and tenure change your payment, and how to use an EMI calculator to compare loans.",
-    keywords: ["EMI calculator", "loan payment", "interest rate", "tenure", "personal finance", "Numora"],
+    keywords: ["EMI calculator", "loan payment", "interest rate", "tenure", "personal finance", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1554224155-1696413565d3?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -2124,10 +2124,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Goal planning made simple",
     canonicalPath: "/blog/savings-goal-calculator",
-    seoTitle: "Savings Goal Calculator: Monthly Plan, Timeline & Examples | Numora",
+    seoTitle: "Savings Goal Calculator: Monthly Plan, Timeline & Examples | Numoro",
     seoDescription:
       "A clear guide to savings goals: how to calculate monthly savings needed, set timelines, and stay consistent without stress.",
-    keywords: ["savings goal calculator", "monthly savings", "financial planning", "budgeting", "Numora"],
+    keywords: ["savings goal calculator", "monthly savings", "financial planning", "budgeting", "Numoro"],
     ogImage:
       "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?q=80&w=2400&auto=format&fit=crop",
     sections: [
@@ -2195,10 +2195,10 @@ export const BLOGS: BlogPost[] = [
     guideLabel: "This guide",
     guideValue: "Clear thinking about real value",
     canonicalPath: "/blog/inflation-explained-simply",
-    seoTitle: "Inflation Explained Simply: Real Value, Savings & Planning | Numora",
+    seoTitle: "Inflation Explained Simply: Real Value, Savings & Planning | Numoro",
     seoDescription:
       "Understand inflation, how it reduces purchasing power, and how to plan savings and goals with real value in mind.",
-    keywords: ["inflation explained", "purchasing power", "real value", "savings", "Numora finance"],
+    keywords: ["inflation explained", "purchasing power", "real value", "savings", "Numoro finance"],
     ogImage:
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2400&auto=format&fit=crop",
     sections: [

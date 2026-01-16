@@ -27,10 +27,10 @@ import FAQAccordion from "@/components/FAQAccordion";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about Numora — your trusted hub for quick, accurate, and user-friendly calculators.",
+    "Learn about Numoro — your trusted hub for quick, accurate, and user-friendly calculators.",
 
   keywords: [
-    "About Numora",
+    "About Numoro",
     "online calculators",
     "free calculators",
     "BMI calculator",
@@ -46,17 +46,17 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "About Numora",
+    title: "About Numoro",
     description:
-      "Numora is your trusted hub for health, finance, science, and everyday life calculators.",
+      "Numoro is your trusted hub for health, finance, science, and everyday life calculators.",
     url: "/about",
-    siteName: "Numora",
+    siteName: "Numoro",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Numora – Fast Everyday Calculators",
+        alt: "Numoro – Fast Everyday Calculators",
       },
     ],
     type: "website",
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "About Numora",
+    title: "About Numoro",
     description:
       "Fast, accurate calculators for health, finance, science, and everyday life.",
     images: ["/og.png"],
@@ -160,7 +160,7 @@ export default function AboutPage() {
       name: "Product Designer",
       role: "SaaS team",
       quote:
-        "Numora feels like a polished product — quick answers, clean breakdowns, zero distractions.",
+        "Numoro feels like a polished product — quick answers, clean breakdowns, zero distractions.",
     },
     {
       name: "Student",
@@ -178,8 +178,8 @@ export default function AboutPage() {
 
   const faqs = [
     {
-      q: "Are Numora calculators free to use?",
-      a: "Yes. Numora is built to be accessible — core calculators are free and designed for quick, everyday use.",
+      q: "Are Numoro calculators free to use?",
+      a: "Yes. Numoro is built to be accessible — core calculators are free and designed for quick, everyday use.",
     },
     {
       q: "How do you ensure accuracy?",
@@ -214,7 +214,7 @@ export default function AboutPage() {
         <section className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
             <Sparkles className="h-4 w-4 text-[#125FF9]" />
-            About Numora
+            About Numoro
           </span>
 
           <h1 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
@@ -225,14 +225,14 @@ export default function AboutPage() {
           </h1>
 
           <p className="mt-4 text-base text-gray-600 sm:text-lg leading-relaxed">
-            Numora is a modern calculator platform built for people who want answers they can rely on
+            Numoro is a modern calculator platform built for people who want answers they can rely on
             — without clutter, confusing steps, or outdated interfaces. Each tool is designed with
             clear inputs, consistent formatting, and helpful context so you understand the result,
             not just the number.
             <br />
             <span className="font-medium text-gray-700">
               Whether you’re checking health metrics, planning finances, converting units, or solving
-              everyday problems — Numora keeps it simple, fast, and easy to trust.
+              everyday problems — Numoro keeps it simple, fast, and easy to trust.
             </span>
           </p>
 
@@ -300,7 +300,7 @@ export default function AboutPage() {
             <div className="absolute left-0 top-0 h-[4px] w-full bg-gradient-to-r from-[#008FBE] to-[#125FF9]" />
             <h2 className="text-xl font-semibold text-gray-900">Our mission</h2>
             <p className="mt-3 text-sm leading-relaxed text-gray-600">
-              We’re building Numora to make practical calculations accessible to everyone — with a
+              We’re building Numoro to make practical calculations accessible to everyone — with a
               clean interface, validated inputs, and results that are easy to understand. The goal
               isn’t just speed; it’s confidence.
             </p>
@@ -372,7 +372,7 @@ export default function AboutPage() {
               Our calculator categories
             </h2>
             <p className="mt-2 text-sm text-gray-600 sm:text-base">
-              Numora is organized into practical categories so you can find the right tool instantly.
+              Numoro is organized into practical categories so you can find the right tool instantly.
             </p>
           </div>
 
@@ -486,7 +486,7 @@ export default function AboutPage() {
               Frequently asked questions
             </h2>
             <p className="mt-2 text-sm text-gray-600 sm:text-base">
-              Quick answers about Numora and how we build calculators.
+              Quick answers about Numoro and how we build calculators.
             </p>
           </div>
 
@@ -509,7 +509,7 @@ export default function AboutPage() {
                 Simple. Accurate. Free.
               </h2>
               <p className="mt-2 text-sm text-gray-600 sm:text-base">
-                That’s the Numora promise — no matter what you’re calculating.
+                That’s the Numoro promise — no matter what you’re calculating.
               </p>
 
               <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -517,7 +517,7 @@ export default function AboutPage() {
                   href="/"
                   className="group inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-[#008FBE] to-[#125FF9] px-5 py-3 text-sm font-semibold text-white shadow-[0_18px_44px_-26px_rgba(18,95,249,0.55)] transition hover:opacity-95 sm:w-auto"
                 >
-                  Start using Numora
+                  Start using Numoro
                   <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
 

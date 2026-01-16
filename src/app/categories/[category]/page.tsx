@@ -53,8 +53,8 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const displayTitle = displayTitleMap[params.category] || "Category";
 
-  const title = `${displayTitle} Calculators | Numora`;
-  const description = `Explore ${displayTitle.toLowerCase()} calculators on Numora. Fast results, clear breakdowns, and reliable formulas.`;
+  const title = `${displayTitle} Calculators | Numoro`;
+  const description = `Explore ${displayTitle.toLowerCase()} calculators on Numoro. Fast results, clear breakdowns, and reliable formulas.`;
 
   return {
     title,
@@ -68,14 +68,14 @@ export async function generateMetadata(
       title,
       description,
       url: `/categories/${params.category}`,
-      siteName: "Numora",
+      siteName: "Numoro",
       type: "website",
       images: [
         {
           url: "/og.png",
           width: 1200,
           height: 630,
-          alt: "Numora – Fast Everyday Calculators",
+          alt: "Numoro – Fast Everyday Calculators",
         },
       ],
     },

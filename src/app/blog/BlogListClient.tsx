@@ -130,7 +130,7 @@ const filteredBlogs = useMemo(() => {
         <div className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white/70 shadow-sm text-sm text-slate-600">
             <Folder className="w-4 h-4 text-blue-600" />
-            Numora Blog
+            Numoro Blog
           </div>
 
           <h1 className="mt-6 text-4xl md:text-5xl font-semibold tracking-tight text-slate-900">
@@ -138,7 +138,7 @@ const filteredBlogs = useMemo(() => {
           </h1>
 
           <p className="mt-4 text-slate-600 leading-relaxed">
-            Clean explainers and practical posts — designed to match the Numora experience.
+            Clean explainers and practical posts — designed to match the Numoro experience.
           </p>
 
           {/* ✅ Aceternity UI Search */}
@@ -268,7 +268,7 @@ const filteredBlogs = useMemo(() => {
         ) : null}
 
         <p className="mt-10 text-center text-sm text-slate-500">
-          Numora blogs are designed to be simple, fast, and easy to understand.
+          Numoro blogs are designed to be simple, fast, and easy to understand.
         </p>
       </div>
     </div>

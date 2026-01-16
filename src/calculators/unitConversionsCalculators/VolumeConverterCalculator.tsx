@@ -372,7 +372,7 @@ export default function VolumeConverterPage() {
             </div>
 
             <p className="mt-6 text-center text-xs text-gray-500">
-              Numora converters are designed to be simple, fast, and clear.
+              Numoro converters are designed to be simple, fast, and clear.
             </p>
           </div>
         </div>

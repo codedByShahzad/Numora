@@ -13,10 +13,10 @@ import {
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Numora. Have questions, feedback, or suggestions? Fill out our contact form and we’ll respond as soon as possible.",
+    "Get in touch with Numoro. Have questions, feedback, or suggestions? Fill out our contact form and we’ll respond as soon as possible.",
 
   keywords: [
-    "Numora contact",
+    "Numoro contact",
     "calculator support",
     "feedback",
     "bug report",
@@ -29,27 +29,27 @@ export const metadata: Metadata = {
   },
 
   openGraph: {
-    title: "Contact Numora",
+    title: "Contact Numoro",
     description:
-      "Have questions, feedback, or want a new calculator added? Contact Numora and we’ll reply as soon as possible.",
+      "Have questions, feedback, or want a new calculator added? Contact Numoro and we’ll reply as soon as possible.",
     url: "/contact",
-    siteName: "Numora",
+    siteName: "Numoro",
     type: "website",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "Numora – Contact",
+        alt: "Numoro – Contact",
       },
     ],
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "Contact Numora",
+    title: "Contact Numoro",
     description:
-      "Send feedback, report an issue, request a calculator, or reach the Numora team.",
+      "Send feedback, report an issue, request a calculator, or reach the Numoro team.",
     images: ["/og.png"],
   },
 };
@@ -75,7 +75,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
             <Sparkles className="h-4 w-4 text-[#125FF9]" />
-            Contact Numora
+            Contact Numoro
           </span>
 
           <h1 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">

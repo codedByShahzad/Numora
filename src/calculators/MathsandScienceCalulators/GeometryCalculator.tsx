@@ -404,7 +404,7 @@ export default function GeometryCalculator() {
           </div>
 
           <p className="mt-6 text-center text-xs text-gray-500">
-            Numora calculators — clean, fast, and accurate.
+            Numoro calculators — clean, fast, and accurate.
           </p>
         </div>
       </div>

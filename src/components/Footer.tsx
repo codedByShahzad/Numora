@@ -39,7 +39,7 @@ const Footer = () => {
             <div className="flex items-center gap-3">
               <Image src={logo} alt="logo" className=" w-8" />
               <h2 className="text-2xl font-semibold text-gray-900">
-                Numora
+                Numoro
               </h2>
             </div>
 
@@ -96,7 +96,7 @@ const Footer = () => {
               <div>
                 <p className="text-sm text-gray-500">Mail Us</p>
                 <p className="hover:text-cyan-700 transition">
-                  support@numora.app
+                  support@Numoro.app
                 </p>
               </div>
 
@@ -118,7 +118,7 @@ const Footer = () => {
         {/* BOTTOM BAR */}
         <div className="mt-12 border-t border-gray-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} Numora. All rights reserved.
+            © {new Date().getFullYear()} Numoro. All rights reserved.
           </p>
 
           <div className="flex items-center gap-5 text-sm text-gray-500">
