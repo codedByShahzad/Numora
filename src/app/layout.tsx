@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Numoro helps you calculate BMI, calories, EMI, interest, and unit conversions instantly with clean breakdowns and standard formulas.",
 
-  metadataBase: new URL("https://numorrra.netlify.app"),
+  metadataBase: new URL("https://numoro.net"),
 
   icons: {
     icon: "/logo.png",

@@ -276,7 +276,8 @@ export default function HomePageClient() {
   return (
     <div className="min-h-screen bg-[#F7FAFF] text-gray-900">
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden">
+      {/* ✅ Fix: give HERO a higher stacking context so dropdown stays above later sections */}
+      <section className="relative z-[60] overflow-hidden">
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-b from-white via-[#F7FAFF] to-white" />
           <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] [background-size:72px_72px]" />
@@ -291,7 +292,7 @@ export default function HomePageClient() {
           />
         </div>
 
-        <div className="relative mx-auto max-w-6xl px-4 pt-14 pb-10 sm:pt-20 sm:pb-14">
+        <div className="relative mx-auto max-w-6xl px-4 pt-14 pb-10 sm:pt-20 md::pb-[7rem]">
           <div className="mx-auto max-w-3xl text-center">
             <div className="flex justify-center items-center">
               <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
@@ -313,7 +314,7 @@ export default function HomePageClient() {
             </p>
 
             <div ref={searchWrapRef} className="mt-7 w-full text-left">
-              <div className="relative">
+              <div className="relative pb-[7rem]">
                 <div onFocusCapture={() => setOpenResults(true)} className="w-full">
                   <PlaceholdersAndVanishInput
                     placeholders={placeholders}
@@ -325,7 +326,7 @@ export default function HomePageClient() {
                 {openResults && query.trim() && (
                   <div
                     className="
-                      absolute top-full inset-x-0 mt-3 z-50
+                      absolute top-full inset-x-0 mt-3 mb-20 z-[9999]
                       overflow-hidden rounded-2xl
                       border border-black/10 bg-white/92
                       shadow-[0_24px_70px_-28px_rgba(0,0,0,0.35)]
@@ -612,7 +613,7 @@ export default function HomePageClient() {
             All categories
           </h2>
 
-          <p className="mx-auto mt-2 max-w-xl text-sm text-gray-600 sm:text-base">
+        <p className="mx-auto mt-2 max-w-xl text-sm text-gray-600 sm:text-base">
             Explore calculators by category — health, finance, science,
             conversions, and more.
           </p>
