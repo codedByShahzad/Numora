@@ -1,7 +1,13 @@
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/Footer";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+
+/* ✅ ADD THIS */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   title: {
