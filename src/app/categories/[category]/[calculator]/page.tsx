@@ -1,4 +1,5 @@
 // app/categories/[category]/[calculator]/page.tsx
+import type React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -30,7 +31,6 @@ import ChemistryCalculator from "@/calculators/MathsandScienceCalulators/Chemist
 import AlgebraCalculator from "@/calculators/MathsandScienceCalulators/AlgebraCalculator";
 import GeometryCalculator from "@/calculators/MathsandScienceCalulators/GeometryCalculator";
 
-
 import TipCalculator from "@/calculators/EverydayLifeCalculators/TipCalculator";
 import AgeCalculator from "@/calculators/EverydayLifeCalculators/AgeCalculator";
 import TimeZoneConverter from "@/calculators/EverydayLifeCalculators/TimezoneConverterCalculator";
@@ -39,9 +39,11 @@ import GPACalculator from "@/calculators/EverydayLifeCalculators/GpaCalculator";
 import DayCalculator from "@/calculators/EverydayLifeCalculators/DayCalculator";
 
 /* ------------------------------ Types ------------------------------ */
-interface CalculatorPageProps {
-  params: { category: string; calculator: string };
-}
+type RouteParams = { category: string; calculator: string };
+
+type CalculatorPageProps = {
+  params: Promise<RouteParams>;
+};
 
 /* ------------------------------ Category titles ------------------------------ */
 const displayTitleMap: Record<string, string> = {
@@ -60,83 +62,155 @@ const calculatorsMeta: Record<
   health: {
     bmi: {
       title: "BMI Calculator",
-      description: "Calculate Body Mass Index (BMI) and check your fitness level instantly.",
+      description:
+        "Calculate Body Mass Index (BMI) and check your fitness level instantly.",
     },
     "water-intake": {
       title: "Water Intake Calculator",
-      description: "Find out how much water you should drink daily based on your body and routine.",
+      description:
+        "Find out how much water you should drink daily based on your body and routine.",
     },
     calorie: {
       title: "Calorie Calculator",
-      description: "Estimate your daily calorie needs for weight loss, maintenance, or gain.",
+      description:
+        "Estimate your daily calorie needs for weight loss, maintenance, or gain.",
     },
     "body-fat": {
       title: "Body Fat Calculator",
-      description: "Calculate body fat percentage and track fitness progress over time.",
+      description:
+        "Calculate body fat percentage and track fitness progress over time.",
     },
     "steps-to-calories": {
       title: "Steps to Calories Calculator",
-      description: "Convert steps into calories burned based on walking activity and body stats.",
+      description:
+        "Convert steps into calories burned based on walking activity and body stats.",
     },
     "heart-rate": {
       title: "Heart Rate Calculator",
-      description: "Find your maximum and target heart rate zones for workouts.",
+      description:
+        "Find your maximum and target heart rate zones for workouts.",
     },
-
-    
   },
 
   "unit-conversions": {
-    length: { title: "Length Converter", description: "Convert meters, kilometers, miles, feet, inches and more." },
-    weight: { title: "Weight Converter", description: "Convert kilograms, pounds, grams, ounces and more." },
-    temperature: { title: "Temperature Converter", description: "Convert Celsius, Fahrenheit, and Kelvin easily." },
-    speed: { title: "Speed Converter", description: "Convert km/h, mph, m/s, knots and more." },
-    area: { title: "Area Converter", description: "Convert square meters, acres, hectares and more." },
-    volume: { title: "Volume Converter", description: "Convert liters, milliliters, gallons, cups and more." },
-
-    
+    length: {
+      title: "Length Converter",
+      description: "Convert meters, kilometers, miles, feet, inches and more.",
+    },
+    weight: {
+      title: "Weight Converter",
+      description: "Convert kilograms, pounds, grams, ounces and more.",
+    },
+    temperature: {
+      title: "Temperature Converter",
+      description: "Convert Celsius, Fahrenheit, and Kelvin easily.",
+    },
+    speed: {
+      title: "Speed Converter",
+      description: "Convert km/h, mph, m/s, knots and more.",
+    },
+    area: {
+      title: "Area Converter",
+      description: "Convert square meters, acres, hectares and more.",
+    },
+    volume: {
+      title: "Volume Converter",
+      description: "Convert liters, milliliters, gallons, cups and more.",
+    },
   },
 
   finance: {
-    "simple-interest": { title: "Simple Interest Calculator", description: "Calculate simple interest earned or paid on a principal amount." },
-    "compound-interest": { title: "Compound Interest Calculator", description: "See how your money grows with compounding interest over time." },
-    "loan-emi": { title: "Loan EMI Calculator", description: "Estimate monthly EMI payments and total interest for your loan." },
-    mortgage: { title: "Mortgage Calculator", description: "Calculate monthly mortgage payments and loan cost breakdown." },
-    "investment-return": { title: "Investment Return Calculator", description: "Estimate future value and returns for your investments." },
-    "currency-converter": { title: "Currency Converter", description: "Convert currencies with exchange rates for quick estimates." },
-
-    
+    "simple-interest": {
+      title: "Simple Interest Calculator",
+      description:
+        "Calculate simple interest earned or paid on a principal amount.",
+    },
+    "compound-interest": {
+      title: "Compound Interest Calculator",
+      description:
+        "See how your money grows with compounding interest over time.",
+    },
+    "loan-emi": {
+      title: "Loan EMI Calculator",
+      description: "Estimate monthly EMI payments and total interest for your loan.",
+    },
+    mortgage: {
+      title: "Mortgage Calculator",
+      description: "Calculate monthly mortgage payments and loan cost breakdown.",
+    },
+    "investment-return": {
+      title: "Investment Return Calculator",
+      description:
+        "Estimate future value and returns for your investments.",
+    },
+    "currency-converter": {
+      title: "Currency Converter",
+      description:
+        "Convert currencies with exchange rates for quick estimates.",
+    },
   },
 
   "maths-science": {
-    scientific: { title: "Scientific Calculator", description: "Perform advanced scientific and math operations." },
-    physics: { title: "Physics Calculator", description: "Solve physics problems including motion, force, and energy." },
-    chemistry: { title: "Chemistry Calculator", description: "Calculate molar mass, solution concentration, and more." },
-    algebra: { title: "Algebra Calculator", description: "Solve equations, inequalities, and simplify expressions." },
-    geometry: { title: "Geometry Calculator", description: "Calculate area, perimeter, and volume of shapes." },
-    statistics: { title: "Statistics Calculator", description: "Find mean, median, mode, variance, and standard deviation." },
-
-    
+    scientific: {
+      title: "Scientific Calculator",
+      description: "Perform advanced scientific and math operations.",
+    },
+    physics: {
+      title: "Physics Calculator",
+      description: "Solve physics problems including motion, force, and energy.",
+    },
+    chemistry: {
+      title: "Chemistry Calculator",
+      description: "Calculate molar mass, solution concentration, and more.",
+    },
+    algebra: {
+      title: "Algebra Calculator",
+      description: "Solve equations, inequalities, and simplify expressions.",
+    },
+    geometry: {
+      title: "Geometry Calculator",
+      description: "Calculate area, perimeter, and volume of shapes.",
+    },
+    statistics: {
+      title: "Statistics Calculator",
+      description:
+        "Find mean, median, mode, variance, and standard deviation.",
+    },
   },
 
   "everyday-life": {
-    tip: { title: "Tip Calculator", description: "Quickly calculate tips and split bills." },
-    age: { title: "Age Calculator", description: "Find your age in years, months, and days." },
-    "time-zone": { title: "Time Zone Converter", description: "Convert time between different zones worldwide." },
-    discount: { title: "Discount Calculator", description: "Calculate discounts and final prices when shopping." },
-    gpa: { title: "GPA Calculator", description: "Easily calculate your Grade Point Average." },
-    "day-calculator": { title: "Day Calculator", description: "Find the number of days between two dates." },
-
-    
+    tip: {
+      title: "Tip Calculator",
+      description: "Quickly calculate tips and split bills.",
+    },
+    age: {
+      title: "Age Calculator",
+      description: "Find your age in years, months, and days.",
+    },
+    "time-zone": {
+      title: "Time Zone Converter",
+      description: "Convert time between different zones worldwide.",
+    },
+    discount: {
+      title: "Discount Calculator",
+      description: "Calculate discounts and final prices when shopping.",
+    },
+    gpa: {
+      title: "GPA Calculator",
+      description: "Easily calculate your Grade Point Average.",
+    },
+    "day-calculator": {
+      title: "Day Calculator",
+      description: "Find the number of days between two dates.",
+    },
   },
 };
 
 /* ------------------------------ Component Registry ------------------------------ */
-/**
- * ✅ Only map calculators you already built.
- * New SEO calculators will show "Coming Soon" until you add the component.
- */
-const calculatorComponents: Record<string, Record<string, React.ComponentType>> = {
+const calculatorComponents: Record<
+  string,
+  Record<string, React.ComponentType>
+> = {
   health: {
     bmi: BMICalculator,
     "water-intake": WaterIntakeCalculator,
@@ -182,7 +256,7 @@ const calculatorComponents: Record<string, Record<string, React.ComponentType>> 
 export async function generateMetadata(
   { params }: CalculatorPageProps
 ): Promise<Metadata> {
-  const { category, calculator } = params;
+  const { category, calculator } = await params;
 
   const displayCategory = displayTitleMap[category] || "Category";
   const meta =
@@ -227,10 +301,9 @@ export async function generateMetadata(
   };
 }
 
-
 /* ------------------------------ Page ------------------------------ */
-export default function CalculatorPage({ params }: CalculatorPageProps) {
-  const { category, calculator } = params;
+export default async function CalculatorPage({ params }: CalculatorPageProps) {
+  const { category, calculator } = await params;
 
   const Component = calculatorComponents[category]?.[calculator];
 
@@ -245,22 +318,20 @@ export default function CalculatorPage({ params }: CalculatorPageProps) {
     return (
       <div className="min-h-screen bg-[#F7FAFF] text-gray-900">
         <div className="mx-auto max-w-3xl px-4 py-20 text-center">
-          <h1 className="text-3xl font-semibold tracking-tight">
-            {meta.title}
-          </h1>
+          <h1 className="text-3xl font-semibold tracking-tight">{meta.title}</h1>
           <p className="mt-3 text-gray-600">{meta.description}</p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link
               href={`/categories/${category}`}
-              className="rounded-full bg-gradient-to-r from-[#008FBE] to-[#125FF9] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:brightness-105 transition"
+              className="rounded-full bg-gradient-to-r from-[#008FBE] to-[#125FF9] px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:brightness-105"
             >
               Back to {displayTitleMap[category] ?? "Category"}
             </Link>
 
             <Link
               href="/categories"
-              className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm hover:bg-gray-50 transition"
+              className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-gray-50"
             >
               Browse all categories
             </Link>
