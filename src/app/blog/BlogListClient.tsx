@@ -122,7 +122,7 @@ const filteredBlogs = useMemo(() => {
   };
 
   return (
-    <div className="relative min-h-[92vh] px-6 py-16 bg-gray-50 overflow-hidden">
+    <div className="relative min-h-[92vh] px-4 md:px-6 py-8 md:py-16 bg-gray-50 overflow-hidden">
       <GridBackground />
 
       <div className="max-w-7xl mx-auto">

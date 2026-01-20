@@ -101,7 +101,7 @@ export default function CategoriesClient() {
         <div className="pointer-events-none absolute -bottom-20 left-0 z-0 h-40 w-40 rounded-full bg-[#008FBE]/10 blur-3xl" />
       </div>
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-8 md:px-12 lg:px-20 py-14 sm:py-16 md:py-20">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
         {/* Hero */}
         <div className="mx-auto max-w-3xl text-center">
           <div className="flex justify-center items-center">

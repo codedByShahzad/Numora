@@ -203,9 +203,7 @@ export default function CalorieCalculator() {
   const canCalculate =
     weight.trim() !== "" &&
     age.trim() !== "" &&
-    (heightUnit === "cm"
-      ? heightCm.trim() !== ""
-      : heightFt.trim() !== "");
+    (heightUnit === "cm" ? heightCm.trim() !== "" : heightFt.trim() !== "");
 
   return (
     <div className="min-h-[92vh] bg-[#F7FAFF] text-gray-900">
@@ -217,15 +215,15 @@ export default function CalorieCalculator() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
+      {/* ✅ responsive outer padding (prevents edge-touching on mobile) */}
+      <div className="mx-auto max-w-5xl ">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
-
             <div className="flex justify-center">
               <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
                 <Flame className="h-4 w-4 text-[#125FF9]" />
-              Health • Calculator
+                Health • Calculator
               </HoverBorderGradient>
             </div>
 
@@ -257,7 +255,7 @@ export default function CalorieCalculator() {
             <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/80 shadow-[0_22px_60px_-34px_rgba(0,0,0,0.35)] backdrop-blur-xl">
               <div className="h-[4px] w-full bg-gradient-to-r from-[#008FBE] to-[#125FF9]" />
 
-              <div className="p-6 sm:p-8">
+              <div className="p-5 sm:p-8">
                 {/* Inputs */}
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {/* Weight */}
@@ -268,20 +266,24 @@ export default function CalorieCalculator() {
                     <p className="mt-1 text-xs text-gray-600">Choose kg or lb.</p>
 
                     <div className="mt-3 flex items-center gap-3">
-                      <div className="flex-1 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                      {/* ✅ consistent height so dropdown stays aligned */}
+                      <div className="flex-1 h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                         <input
                           type="text"
                           inputMode="decimal"
                           value={weight}
                           onChange={(e) =>
-                            onNumChange(setWeight, { allowDecimal: true })(e.target.value)
+                            onNumChange(setWeight, { allowDecimal: true })(
+                              e.target.value
+                            )
                           }
                           placeholder={weightUnit === "kg" ? "e.g. 70" : "e.g. 154"}
                           className="w-full bg-transparent text-sm text-gray-900 outline-none"
                         />
                       </div>
 
-                      <div className="relative w-28 rounded-2xl border border-black/10 bg-white px-3 py-3 shadow-sm">
+                      {/* ✅ dropdown fixed (height + flex center + chevron position) */}
+                      <div className="relative h-12 w-28 sm:w-24 rounded-2xl border border-black/10 bg-white px-3 shadow-sm flex items-center">
                         <select
                           value={weightUnit}
                           onChange={(e) => {
@@ -290,7 +292,7 @@ export default function CalorieCalculator() {
                             setResult(null);
                             setCopied(false);
                           }}
-                          className="w-full appearance-none bg-transparent text-sm text-gray-900 outline-none pr-6"
+                          className="h-full w-full appearance-none bg-transparent text-sm text-gray-900 outline-none pr-8"
                         >
                           <option value="kg">kg</option>
                           <option value="lbs">lbs</option>
@@ -308,7 +310,8 @@ export default function CalorieCalculator() {
                     <p className="mt-1 text-xs text-gray-600">cm or ft/in.</p>
 
                     <div className="mt-3">
-                      <div className="relative w-full rounded-2xl border border-black/10 bg-white px-3 py-3 shadow-sm mb-3">
+                      {/* ✅ height unit dropdown fixed */}
+                      <div className="relative h-12 w-full rounded-2xl border border-black/10 bg-white px-3 shadow-sm mb-3 flex items-center">
                         <select
                           value={heightUnit}
                           onChange={(e) => {
@@ -317,7 +320,7 @@ export default function CalorieCalculator() {
                             setResult(null);
                             setCopied(false);
                           }}
-                          className="w-full appearance-none bg-transparent text-sm text-gray-900 outline-none pr-6"
+                          className="h-full w-full appearance-none bg-transparent text-sm text-gray-900 outline-none pr-8"
                         >
                           <option value="cm">Centimeters (cm)</option>
                           <option value="ft-in">Feet / Inches (ft/in)</option>
@@ -326,39 +329,45 @@ export default function CalorieCalculator() {
                       </div>
 
                       {heightUnit === "cm" ? (
-                        <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                        <div className="h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                           <input
                             type="text"
                             inputMode="decimal"
                             value={heightCm}
                             onChange={(e) =>
-                              onNumChange(setHeightCm, { allowDecimal: true })(e.target.value)
+                              onNumChange(setHeightCm, { allowDecimal: true })(
+                                e.target.value
+                              )
                             }
                             placeholder="e.g. 175"
                             className="w-full bg-transparent text-sm text-gray-900 outline-none"
                           />
                         </div>
                       ) : (
-                        <div className="grid grid-cols-2 gap-3">
-                          <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          <div className="h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                             <input
                               type="text"
                               inputMode="numeric"
                               value={heightFt}
                               onChange={(e) =>
-                                onNumChange(setHeightFt, { allowDecimal: false })(e.target.value)
+                                onNumChange(setHeightFt, { allowDecimal: false })(
+                                  e.target.value
+                                )
                               }
                               placeholder="Feet (e.g. 5)"
                               className="w-full bg-transparent text-sm text-gray-900 outline-none"
                             />
                           </div>
-                          <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                          <div className="h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                             <input
                               type="text"
                               inputMode="numeric"
                               value={heightIn}
                               onChange={(e) =>
-                                onNumChange(setHeightIn, { allowDecimal: false })(e.target.value)
+                                onNumChange(setHeightIn, { allowDecimal: false })(
+                                  e.target.value
+                                )
                               }
                               placeholder="Inches (e.g. 8)"
                               className="w-full bg-transparent text-sm text-gray-900 outline-none"
@@ -375,7 +384,7 @@ export default function CalorieCalculator() {
                       Age
                     </label>
                     <p className="mt-1 text-xs text-gray-600">In years.</p>
-                    <div className="mt-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                    <div className="mt-3 h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                       <input
                         type="text"
                         inputMode="numeric"
@@ -446,7 +455,8 @@ export default function CalorieCalculator() {
                       Affects your daily maintenance calories (TDEE).
                     </p>
 
-                    <div className="mt-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm">
+                    {/* ✅ activity dropdown fixed (height + chevron) */}
+                    <div className="mt-3 relative h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm flex items-center">
                       <select
                         value={activity}
                         onChange={(e) => {
@@ -455,7 +465,7 @@ export default function CalorieCalculator() {
                           setResult(null);
                           setCopied(false);
                         }}
-                        className="w-full bg-transparent text-sm text-gray-900 outline-none"
+                        className="h-full w-full appearance-none bg-transparent text-sm text-gray-900 outline-none pr-8"
                       >
                         {Object.keys(activityMeta).map((k) => {
                           const key = k as ActivityKey;
@@ -467,6 +477,7 @@ export default function CalorieCalculator() {
                           );
                         })}
                       </select>
+                      <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                     </div>
 
                     <p className="mt-2 text-xs text-gray-500">
@@ -560,14 +571,27 @@ export default function CalorieCalculator() {
 
                     {/* targets */}
                     <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                      <Card label="Cut (−500)" value={`${formatInt(result.cut)} kcal`} sub="Faster fat loss" />
-                      <Card label="Mild cut (−250)" value={`${formatInt(result.mildCut)} kcal`} sub="Easier to sustain" />
-                      <Card label="Lean bulk (+250)" value={`${formatInt(result.bulk)} kcal`} sub="Muscle gain support" />
+                      <Card
+                        label="Cut (−500)"
+                        value={`${formatInt(result.cut)} kcal`}
+                        sub="Faster fat loss"
+                      />
+                      <Card
+                        label="Mild cut (−250)"
+                        value={`${formatInt(result.mildCut)} kcal`}
+                        sub="Easier to sustain"
+                      />
+                      <Card
+                        label="Lean bulk (+250)"
+                        value={`${formatInt(result.bulk)} kcal`}
+                        sub="Muscle gain support"
+                      />
                     </div>
 
                     <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
                     <p className="mt-4 text-xs text-gray-600">
-                      Uses the Mifflin–St Jeor equation to estimate BMR, then multiplies by an activity factor for TDEE.
+                      Uses the Mifflin–St Jeor equation to estimate BMR, then
+                      multiplies by an activity factor for TDEE.
                     </p>
                   </div>
                 )}
@@ -607,7 +631,15 @@ export default function CalorieCalculator() {
   );
 }
 
-function Card({ label, value, sub }: { label: string; value: string; sub: string }) {
+function Card({
+  label,
+  value,
+  sub,
+}: {
+  label: string;
+  value: string;
+  sub: string;
+}) {
   return (
     <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-center shadow-sm">
       <div className="text-xs text-gray-600">{label}</div>

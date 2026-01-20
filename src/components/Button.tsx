@@ -6,9 +6,9 @@ export default function Button({ title, id }: { title: string; id: string }) {
     <Link
       href={`/categories/${id}`}
       className="
-        inline-flex items-center justify-center
-        rounded-full
-        px-5 py-2.5
+        flex w-full items-center justify-center
+        rounded-lg
+        px-5 py-3
         text-sm font-semibold
         text-white
         bg-gradient-to-r from-sky-500 to-indigo-600
@@ -16,10 +16,11 @@ export default function Button({ title, id }: { title: string; id: string }) {
         hover:shadow-md
         hover:brightness-105
         transition
-        whitespace-nowrap
       "
     >
-      Explore {title}
+      <span className="truncate max-w-full">
+        Explore {title}
+      </span>
     </Link>
   );
 }

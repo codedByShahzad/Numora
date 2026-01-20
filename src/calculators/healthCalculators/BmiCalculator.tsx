@@ -165,7 +165,7 @@ export default function BMICalculator() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
+      <div className="mx-auto">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
@@ -205,7 +205,7 @@ export default function BMICalculator() {
             <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/80 shadow-[0_22px_60px_-34px_rgba(0,0,0,0.35)] backdrop-blur-xl">
               <div className="h-[4px] w-full bg-gradient-to-r from-[#008FBE] to-[#125FF9]" />
 
-              <div className="p-6 sm:p-8">
+              <div className="p-4 sm:p-8">
                 {/* Inputs */}
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   {/* Weight */}

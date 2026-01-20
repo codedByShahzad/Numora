@@ -16,19 +16,12 @@ export default function TocClient({
     const el = document.getElementById(id);
     if (!el) return;
 
-    el.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    el.scrollIntoView({ behavior: "smooth", block: "start" });
 
     // update hash without jump
-    if (history.replaceState) {
-      history.replaceState(null, "", `#${id}`);
-    } else {
-      window.location.hash = id;
-    }
+    if (history.replaceState) history.replaceState(null, "", `#${id}`);
+    else window.location.hash = id;
 
-    // set active immediately for instant UI feedback
     setActiveId(id);
   };
 
@@ -43,57 +36,31 @@ export default function TocClient({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // pick the most visible intersecting entry
         const visible = entries
           .filter((e) => e.isIntersecting)
-          .sort(
-            (a, b) =>
-              (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0)
-          );
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0));
 
         const nextId = (visible[0]?.target as HTMLElement | undefined)?.id;
         if (nextId) setActiveId(nextId);
       },
       {
         root: null,
-        // tuned for your sticky top-24 + scroll-mt-28
         rootMargin: "-30% 0px -60% 0px",
         threshold: [0.08, 0.15, 0.25, 0.35, 0.5],
       }
     );
 
     elements.forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, [ids]);
 
-  // ✅ keep active item visible inside the TOC scroll container
-  useEffect(() => {
-    if (!activeId) return;
-    const nav = navRef.current;
-    if (!nav) return;
-
-    const btn = nav.querySelector<HTMLButtonElement>(
-      `button[data-toc-id="${activeId}"]`
-    );
-    if (!btn) return;
-
-    // only nudge if it's outside view
-    const navRect = nav.getBoundingClientRect();
-    const btnRect = btn.getBoundingClientRect();
-
-    const isAbove = btnRect.top < navRect.top;
-    const isBelow = btnRect.bottom > navRect.bottom;
-
-    if (isAbove || isBelow) {
-      btn.scrollIntoView({ block: "nearest" });
-    }
-  }, [activeId]);
+  // ✅ DO NOT auto-scroll TOC while user scrolls the page (THIS WAS CAUSING THE BUG)
+  // If you want this behavior only on desktop, I can add a safe version.
 
   return (
     <nav
       ref={navRef}
-      className="mt-3 space-y-2 max-h-[48vh] overflow-auto pr-1"
+      className="mt-3 space-y-2 max-h-[48vh] overflow-auto pr-1 overscroll-contain"
     >
       {sections.map((s) => {
         const isActive = s.id === activeId;
@@ -113,7 +80,6 @@ export default function TocClient({
             aria-current={isActive ? "true" : undefined}
           >
             <span className="flex items-center gap-2 min-w-0">
-              {/* left indicator */}
               <span
                 className={[
                   "h-5 w-[3px] rounded-full transition",
@@ -126,7 +92,9 @@ export default function TocClient({
             <span
               className={[
                 "transition",
-                isActive ? "text-blue-600" : "text-slate-400 group-hover:text-blue-600",
+                isActive
+                  ? "text-blue-600"
+                  : "text-slate-400 group-hover:text-blue-600",
               ].join(" ")}
             >
               →

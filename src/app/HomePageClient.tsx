@@ -411,8 +411,8 @@ export default function HomePageClient() {
       </section>
 
       {/* ===== METRICS SECTION ===== */}
-      <section className="mx-auto mt-10 w-full max-w-6xl px-4">
-        <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/60 p-6 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:p-10">
+      <section className="mx-auto mt-5 md:mt-10 w-full max-w-6xl px-2 md:px-4">
+        <div className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/60 p-4 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.35)] backdrop-blur-xl md:p-10">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute -top-24 right-0 h-60 w-60 rounded-full bg-[#125FF9]/10 blur-3xl" />
             <div className="absolute -bottom-24 left-0 h-60 w-60 rounded-full bg-[#008FBE]/10 blur-3xl" />

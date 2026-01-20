@@ -50,9 +50,9 @@ type CategoryPageProps = {
 };
 
 /* ------------------------------ Metadata ------------------------------ */
-export async function generateMetadata(
-  { params }: CategoryPageProps
-): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: CategoryPageProps): Promise<Metadata> {
   const { category } = await params;
 
   const displayTitle = displayTitleMap[category] || "Category";
@@ -62,11 +62,7 @@ export async function generateMetadata(
   return {
     title,
     description,
-
-    alternates: {
-      canonical: `/categories/${category}`,
-    },
-
+    alternates: { canonical: `/categories/${category}` },
     openGraph: {
       title,
       description,
@@ -82,7 +78,6 @@ export async function generateMetadata(
         },
       ],
     },
-
     twitter: {
       card: "summary_large_image",
       title,
@@ -140,12 +135,10 @@ const calculatorsData: Record<string, CalculatorItem[]> = {
       id: "heart-rate",
     },
   ],
-
   "unit-conversions": [
     {
       title: "Length Converter",
-      description:
-        "Convert between meters, kilometers, miles, feet, and more.",
+      description: "Convert between meters, kilometers, miles, feet, and more.",
       icon: Ruler,
       id: "length",
     },
@@ -181,19 +174,16 @@ const calculatorsData: Record<string, CalculatorItem[]> = {
       id: "volume",
     },
   ],
-
   finance: [
     {
       title: "Simple Interest Calculator",
-      description:
-        "Calculate interest earned or paid on a principal amount.",
+      description: "Calculate interest earned or paid on a principal amount.",
       icon: Percent,
       id: "simple-interest",
     },
     {
       title: "Compound Interest Calculator",
-      description:
-        "Find out how your money grows with compounding interest.",
+      description: "Find out how your money grows with compounding interest.",
       icon: PiggyBank,
       id: "compound-interest",
     },
@@ -222,7 +212,6 @@ const calculatorsData: Record<string, CalculatorItem[]> = {
       id: "currency-converter",
     },
   ],
-
   "maths-science": [
     {
       title: "Scientific Calculator",
@@ -261,7 +250,6 @@ const calculatorsData: Record<string, CalculatorItem[]> = {
       id: "statistics",
     },
   ],
-
   "everyday-life": [
     {
       title: "Tip Calculator",
@@ -303,6 +291,30 @@ const calculatorsData: Record<string, CalculatorItem[]> = {
 };
 
 /* ------------------------------ Helpers ------------------------------ */
+const FALLBACK_CHIPS = [
+  "Fast",
+  "Accurate",
+  "Simple",
+  "Clean UI",
+  "Instant",
+  "Free",
+];
+
+function normalizeChips(chips: string[], size = 6) {
+  const uniq = Array.from(new Set(chips.map((c) => c.trim()).filter(Boolean)));
+
+  // Fill with fallback chips if less than required
+  for (const f of FALLBACK_CHIPS) {
+    if (uniq.length >= size) break;
+    if (!uniq.includes(f)) uniq.push(f);
+  }
+
+  // Still not enough? repeat safe generic labels
+  while (uniq.length < size) uniq.push("Calculator");
+
+  return uniq.slice(0, size);
+}
+
 function getChips(category: string, title: string): string[] {
   const t = title.toLowerCase();
   const chips: string[] = [];
@@ -313,12 +325,15 @@ function getChips(category: string, title: string): string[] {
     if (t.includes("calorie")) chips.push("Calories", "BMR", "TDEE", "Goal");
     if (t.includes("body fat"))
       chips.push("% estimate", "Fitness", "Body fat", "Measure");
-    if (t.includes("steps")) chips.push("Walking", "Steps", "Calories", "Activity");
-    if (t.includes("heart rate")) chips.push("Max HR", "Zones", "Pulse", "Workout");
+    if (t.includes("steps"))
+      chips.push("Walking", "Steps", "Calories", "Activity");
+    if (t.includes("heart rate"))
+      chips.push("Max HR", "Zones", "Pulse", "Workout");
   }
 
   if (category === "finance") {
-    if (t.includes("mortgage")) chips.push("Home loan", "Installment", "Monthly", "Rate");
+    if (t.includes("mortgage"))
+      chips.push("Home loan", "Installment", "Monthly", "Rate");
     if (t.includes("emi") || t.includes("loan"))
       chips.push("Monthly payment", "Breakdown", "Interest", "Tenure");
     if (t.includes("compound"))
@@ -326,39 +341,51 @@ function getChips(category: string, title: string): string[] {
     if (t.includes("simple interest"))
       chips.push("Principal", "Rate", "Time", "Interest");
     if (t.includes("currency")) chips.push("Rates", "Forex", "USD", "EUR");
-    if (t.includes("investment")) chips.push("ROI", "Forecast", "Returns", "Future");
+    if (t.includes("investment"))
+      chips.push("ROI", "Forecast", "Returns", "Future");
   }
 
   if (category === "unit-conversions") {
-    if (t.includes("temperature")) chips.push("C ↔ F", "Kelvin", "Convert", "Quick");
+    if (t.includes("temperature"))
+      chips.push("C ↔ F", "Kelvin", "Convert", "Quick");
     if (t.includes("length")) chips.push("m ↔ ft", "km ↔ mi", "inch", "cm");
-    if (t.includes("weight")) chips.push("kg ↔ lb", "g ↔ oz", "Convert", "Quick");
-    if (t.includes("speed")) chips.push("km/h ↔ mph", "m/s", "Knots", "Convert");
-    if (t.includes("area")) chips.push("sq ft ↔ sq m", "acre", "hectare", "Convert");
-    if (t.includes("volume")) chips.push("L ↔ gal", "ml ↔ L", "cups", "Convert");
+    if (t.includes("weight"))
+      chips.push("kg ↔ lb", "g ↔ oz", "Convert", "Quick");
+    if (t.includes("speed"))
+      chips.push("km/h ↔ mph", "m/s", "Knots", "Convert");
+    if (t.includes("area"))
+      chips.push("sq ft ↔ sq m", "acre", "hectare", "Convert");
+    if (t.includes("volume"))
+      chips.push("L ↔ gal", "ml ↔ L", "cups", "Convert");
   }
 
   if (category === "maths-science") {
     if (t.includes("scientific")) chips.push("sin/cos", "log", "pi", "Power");
-    if (t.includes("physics")) chips.push("Force", "Energy", "Velocity", "Motion");
+    if (t.includes("physics"))
+      chips.push("Force", "Energy", "Velocity", "Motion");
     if (t.includes("chemistry"))
       chips.push("Molar mass", "Concentration", "Solution", "Moles");
-    if (t.includes("algebra")) chips.push("Equations", "Simplify", "Solve", "Variables");
-    if (t.includes("geometry")) chips.push("Area", "Volume", "Perimeter", "Shapes");
-    if (t.includes("statistics")) chips.push("Mean", "Median", "Std dev", "Variance");
+    if (t.includes("algebra"))
+      chips.push("Equations", "Simplify", "Solve", "Variables");
+    if (t.includes("geometry"))
+      chips.push("Area", "Volume", "Perimeter", "Shapes");
+    if (t.includes("statistics"))
+      chips.push("Mean", "Median", "Std dev", "Variance");
   }
 
   if (category === "everyday-life") {
-    if (t.includes("tip")) chips.push("Split bill", "Percent", "Restaurant", "Quick");
+    if (t.includes("tip"))
+      chips.push("Split bill", "Percent", "Restaurant", "Quick");
     if (t.includes("age")) chips.push("DOB", "Years", "Months", "Days");
     if (t.includes("time zone")) chips.push("UTC", "Convert", "World", "Time");
-    if (t.includes("discount")) chips.push("Final price", "% off", "Sale", "Savings");
+    if (t.includes("discount"))
+      chips.push("Final price", "% off", "Sale", "Savings");
     if (t.includes("gpa")) chips.push("Grades", "Semester", "Points", "Score");
     if (t.includes("day")) chips.push("Date diff", "Days", "Calendar", "Count");
   }
 
-  if (chips.length === 0) chips.push("Fast", "Accurate", "Simple");
-  return chips.slice(0, 6);
+  // ✅ Make every card show exactly 6 chips
+  return normalizeChips(chips, 6);
 }
 
 /* ------------------------------ Page ------------------------------ */
@@ -369,17 +396,15 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const calculators = calculatorsData[category] || [];
 
   return (
-    <div className="min-h-screen bg-[#F7FAFF] text-gray-900">
+    <div className="relative min-h-screen bg-[#F7FAFF] text-gray-900">
       {/* Background */}
       <div className="pointer-events-none absolute inset-0">
-        {/* soft grid */}
         <div className="absolute inset-0 opacity-[0.06] [background-image:linear-gradient(to_right,#000_1px,transparent_1px),linear-gradient(to_bottom,#000_1px,transparent_1px)] [background-size:56px_56px]" />
-        {/* glow blobs */}
-        <div className="pointer-events-none absolute -top-16 right-0 z-0 h-40 w-40 rounded-full bg-[#125FF9]/10 blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-20 left-0 z-0 h-40 w-40 rounded-full bg-[#008FBE]/10 blur-3xl" />
+        <div className="absolute -top-16 right-0 z-0 h-40 w-40 rounded-full bg-[#125FF9]/10 blur-3xl" />
+        <div className="absolute -bottom-20 left-0 z-0 h-40 w-40 rounded-full bg-[#008FBE]/10 blur-3xl" />
       </div>
 
-      <section className="mx-auto max-w-6xl px-4 py-14 sm:py-16 md:py-20">
+      <section className="relative mx-auto max-w-6xl px-4 py-14 sm:py-16 md:py-20">
         {/* header */}
         <div className="mx-auto max-w-3xl text-center">
           <div className="flex items-center justify-center">
@@ -409,26 +434,35 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           {calculators.map((calc) => {
             const Icon = calc.icon;
             const chips = getChips(category, calc.title);
+            const href = `/categories/${category}/${calc.id}`;
 
             return (
-              <div key={calc.id} className="group relative">
+              <div key={calc.id} className="group relative h-full">
                 <div className="pointer-events-none absolute -inset-0.5 rounded-3xl bg-gradient-to-r from-[#008FBE]/25 via-[#125FF9]/20 to-[#008FBE]/20 opacity-0 blur-xl transition duration-500 group-hover:opacity-100" />
 
                 <div
                   className="
-                    relative flex h-full min-h-[420px] flex-col overflow-hidden rounded-3xl
-                    border border-black/10 bg-white/75
-                    shadow-[0_22px_60px_-34px_rgba(0,0,0,0.35)]
-                    backdrop-blur-xl transition
-                    hover:-translate-y-1 hover:bg-white/95
+                    relative flex h-full flex-col overflow-hidden rounded-3xl
+border border-black/10 bg-white/75
+shadow-[0_22px_60px_-34px_rgba(0,0,0,0.35)]
+backdrop-blur-xl transition
+hover:-translate-y-1 hover:bg-white/95
+
                   "
                 >
+                  {/* ✅ click anywhere */}
+                  <Link
+                    href={href}
+                    aria-label={`Open ${calc.title}`}
+                    className="absolute inset-0 z-[1] rounded-3xl"
+                  />
+
                   <div className="h-[4px] w-full bg-gradient-to-r from-[#008FBE] to-[#125FF9]" />
 
-                  <div className="relative flex flex-1 flex-col p-7">
+                  <div className="relative z-[2] flex flex-1 flex-col p-4 md:p-7">
                     {/* top */}
                     <div className="flex items-start gap-4">
-                      <div className="relative">
+                      <div className="relative shrink-0">
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#008FBE]/20 to-[#125FF9]/20 blur-md opacity-70" />
                         <div className="relative grid h-14 w-14 place-items-center rounded-2xl border border-black/10 bg-white shadow-sm">
                           <Icon className="h-7 w-7 text-gray-900" />
@@ -445,17 +479,17 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       </div>
                     </div>
 
-                    {/* POPULAR FOR */}
+                    {/* chips */}
                     <div className="mt-8">
                       <p className="text-sm font-semibold uppercase tracking-wide text-gray-500">
                         Popular calculators
                       </p>
 
-                      {/* Equal width pills */}
+                      {/* ✅ always 6 chips => consistent layout */}
                       <div className="mt-4 grid grid-cols-2 gap-3">
-                        {chips.map((c) => (
+                        {chips.map((c, idx) => (
                           <span
-                            key={c}
+                            key={`${c}-${idx}`}
                             className="
                               w-full truncate text-center
                               rounded-full border border-black/10 bg-white
@@ -470,38 +504,32 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
                       </div>
                     </div>
 
-                    {/* footer */}
-                    <div className="mt-auto pt-10">
-                      <div className="h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+                   {/* footer */}
+<div className="mt-auto pt-6">
+  <div className="h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
 
-                      <div className="mt-6 flex items-center justify-between gap-4">
-                        <div className="text-base text-gray-800">
-                          <span className="font-semibold text-gray-900">
-                            Instant
-                          </span>{" "}
-                          results
-                        </div>
+  <div className="mt-6 flex">
+    <Link
+      href={href}
+      className="
+        flex w-full items-center justify-center
+        rounded-lg
+        px-5 py-3
+        text-sm font-semibold
+        text-white
+        bg-gradient-to-r from-sky-500 to-indigo-600
+        shadow-sm
+        hover:shadow-md
+        hover:brightness-105
+        transition
+      "
+    >
+      Open calculator <ArrowUpRight className="ml-1 h-3 w-3" />
+    </Link>
+  </div>
+</div>
 
-                        <Link
-                          href={`/categories/${category}/${calc.id}`}
-                          className="
-                            inline-flex items-center gap-2
-                            rounded-full px-4 py-2
-                            text-sm font-semibold text-white
-                            bg-gradient-to-r from-[#008FBE] to-[#125FF9]
-                            shadow-[0_16px_40px_-18px_rgba(18,95,249,0.55)]
-                            hover:shadow-[0_18px_46px_-18px_rgba(18,95,249,0.60)]
-                            hover:brightness-105 transition
-                            whitespace-nowrap
-                          "
-                        >
-                          Open calculator <ArrowUpRight className="h-3 w-3" />
-                        </Link>
-                      </div>
-                    </div>
                   </div>
-
-                  <div className="h-10 bg-transparent" />
                 </div>
               </div>
             );
