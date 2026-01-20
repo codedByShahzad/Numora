@@ -162,7 +162,7 @@ export default function CurrencyConverterPage() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
+      <div className="mx-auto max-w-5xl">
         <div className="mx-auto max-w-2xl">
           {/* Header */}
           <div className="text-center">
@@ -361,10 +361,7 @@ export default function CurrencyConverterPage() {
                           {result.rateLine}
                         </p>
 
-                        <p className="mt-2 text-xs text-gray-500">
-                          Note: Rates here are sample (static). For live rates,
-                          connect an exchange-rate API.
-                        </p>
+                        
                       </div>
 
                       <button

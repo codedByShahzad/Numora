@@ -157,7 +157,7 @@ export default function SimpleInterestCalculator() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
+      <div className="mx-auto max-w-5xl ">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
@@ -345,7 +345,7 @@ export default function SimpleInterestCalculator() {
                       </button>
                     </div>
 
-                    <div className="mt-5 grid grid-cols-3 gap-3">
+                    <div className="mt-5 grid md:grid-cols-3 gap-3">
                       <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-center">
                         <div className="text-xs text-gray-600">Principal</div>
                         <div className="mt-1 text-lg font-semibold text-gray-900">

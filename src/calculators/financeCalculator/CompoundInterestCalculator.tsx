@@ -269,7 +269,7 @@ export default function CompoundInterestCalculator() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
+      <div className="mx-auto max-w-5xl ">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
@@ -281,7 +281,7 @@ export default function CompoundInterestCalculator() {
             </div>
 
             <h1 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
-              Compound Interest{" "}
+              Compound Interest{" "} 
               <span className="bg-gradient-to-r from-[#008FBE] to-[#125FF9] bg-clip-text text-transparent">
                 Calculator
               </span>

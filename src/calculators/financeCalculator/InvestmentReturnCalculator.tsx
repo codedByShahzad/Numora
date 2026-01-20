@@ -173,7 +173,7 @@ export default function InvestmentReturnCalculator() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
+      <div className="mx-auto max-w-5xl ">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
@@ -414,10 +414,7 @@ export default function InvestmentReturnCalculator() {
                     </div>
 
                     <div className="mt-5 h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
-                    <p className="mt-4 text-xs text-gray-600">
-                      Note: This is an estimate. Real returns can vary year to
-                      year.
-                    </p>
+                   
                   </div>
                 )}
               </div>
