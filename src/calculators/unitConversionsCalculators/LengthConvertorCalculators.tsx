@@ -8,6 +8,8 @@ import {
   Copy,
   AlertTriangle,
   ArrowLeftRight,
+  ChevronDown,
+  Sparkles,
 } from "lucide-react";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
@@ -32,8 +34,10 @@ const safeNum = (v: string) => {
 
 const formatNumber = (n: number) => {
   if (!Number.isFinite(n)) return "—";
-  if (Math.abs(n) >= 1_000_000) return n.toLocaleString(undefined, { maximumFractionDigits: 4 });
-  if (Math.abs(n) >= 1) return n.toLocaleString(undefined, { maximumFractionDigits: 6 });
+  if (Math.abs(n) >= 1_000_000)
+    return n.toLocaleString(undefined, { maximumFractionDigits: 4 });
+  if (Math.abs(n) >= 1)
+    return n.toLocaleString(undefined, { maximumFractionDigits: 6 });
   return n.toLocaleString(undefined, { maximumFractionDigits: 10 });
 };
 
@@ -43,7 +47,11 @@ export default function LengthConverterPage() {
   const [toUnit, setToUnit] = useState<UnitKey>("km");
 
   const [error, setError] = useState<string | null>(null);
-  const [result, setResult] = useState<string>("");
+
+  // ✅ keep both: raw string (for copy) + numeric (for highlight UI)
+  const [resultText, setResultText] = useState<string>("");
+  const [convertedValue, setConvertedValue] = useState<number | null>(null);
+
   const [copied, setCopied] = useState(false);
 
   const chips = useMemo(
@@ -52,12 +60,12 @@ export default function LengthConverterPage() {
   );
 
   const onValueChange = (v: string) => {
-    // prevent negative + allow decimals
     const re = /^\d*\.?\d*$/;
     if (!re.test(v)) return;
     setValue(v);
     setError(null);
-    setResult("");
+    setResultText("");
+    setConvertedValue(null);
     setCopied(false);
   };
 
@@ -67,12 +75,14 @@ export default function LengthConverterPage() {
     const n = safeNum(value);
     if (!Number.isFinite(n)) {
       setError("Please enter a valid length value.");
-      setResult("");
+      setResultText("");
+      setConvertedValue(null);
       return;
     }
     if (n < 0) {
       setError("Length cannot be negative.");
-      setResult("");
+      setResultText("");
+      setConvertedValue(null);
       return;
     }
 
@@ -80,7 +90,9 @@ export default function LengthConverterPage() {
     const converted = meters / lengthUnits[toUnit].factor;
 
     setError(null);
-    setResult(
+    setConvertedValue(converted);
+
+    setResultText(
       `Convert Length\n` +
         `From: ${formatNumber(n)} ${lengthUnits[fromUnit].label}\n` +
         `To: ${formatNumber(converted)} ${lengthUnits[toUnit].label}`
@@ -91,7 +103,8 @@ export default function LengthConverterPage() {
     setFromUnit(toUnit);
     setToUnit(fromUnit);
     setError(null);
-    setResult("");
+    setResultText("");
+    setConvertedValue(null);
     setCopied(false);
   };
 
@@ -100,14 +113,15 @@ export default function LengthConverterPage() {
     setFromUnit("m");
     setToUnit("km");
     setError(null);
-    setResult("");
+    setResultText("");
+    setConvertedValue(null);
     setCopied(false);
   };
 
   const copyResult = async () => {
-    if (!result) return;
+    if (!resultText) return;
     try {
-      await navigator.clipboard.writeText(result);
+      await navigator.clipboard.writeText(resultText);
       setCopied(true);
       setTimeout(() => setCopied(false), 1200);
     } catch {}
@@ -125,15 +139,15 @@ export default function LengthConverterPage() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
+      {/* ✅ responsive padding */}
+      <div className="mx-auto max-w-5xl ">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
-
             <div className="flex justify-center">
               <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
                 <Ruler className="h-4 w-4 text-[#125FF9]" />
-              Unit Conversions • Calculator
+                Unit Conversions • Calculator
               </HoverBorderGradient>
             </div>
 
@@ -145,7 +159,8 @@ export default function LengthConverterPage() {
             </h1>
 
             <p className="mt-3 text-sm text-gray-600 sm:text-base">
-              Convert between meters, kilometers, miles, feet, and more — clean and accurate.
+              Convert between meters, kilometers, miles, feet, and more — clean
+              and accurate.
             </p>
 
             <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
@@ -177,7 +192,7 @@ export default function LengthConverterPage() {
                       Enter the length you want to convert (no negatives).
                     </p>
 
-                    <div className="mt-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                    <div className="mt-3 h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                       <input
                         value={value}
                         onChange={(e) => onValueChange(e.target.value)}
@@ -206,15 +221,15 @@ export default function LengthConverterPage() {
                     </div>
 
                     <div className="mt-4 space-y-2 text-sm text-gray-700">
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between gap-3">
                         <span className="text-gray-600">From</span>
-                        <span className="font-semibold text-gray-900">
+                        <span className="font-semibold text-gray-900 text-right">
                           {lengthUnits[fromUnit].label}
                         </span>
                       </div>
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between gap-3">
                         <span className="text-gray-600">To</span>
-                        <span className="font-semibold text-gray-900">
+                        <span className="font-semibold text-gray-900 text-right">
                           {lengthUnits[toUnit].label}
                         </span>
                       </div>
@@ -235,16 +250,18 @@ export default function LengthConverterPage() {
                       Select input unit.
                     </p>
 
-                    <div className="mt-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                    {/* ✅ dropdown fixed (height + chevron) */}
+                    <div className="mt-3 relative h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                       <select
                         value={fromUnit}
                         onChange={(e) => {
                           setFromUnit(e.target.value as UnitKey);
                           setError(null);
-                          setResult("");
+                          setResultText("");
+                          setConvertedValue(null);
                           setCopied(false);
                         }}
-                        className="w-full bg-transparent text-sm text-gray-900 outline-none"
+                        className="h-full w-full appearance-none bg-transparent text-sm text-gray-900 outline-none pr-8"
                       >
                         {Object.entries(lengthUnits).map(([key, unit]) => (
                           <option key={key} value={key}>
@@ -252,6 +269,7 @@ export default function LengthConverterPage() {
                           </option>
                         ))}
                       </select>
+                      <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                     </div>
                   </div>
 
@@ -264,16 +282,18 @@ export default function LengthConverterPage() {
                       Select output unit.
                     </p>
 
-                    <div className="mt-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                    {/* ✅ dropdown fixed (height + chevron) */}
+                    <div className="mt-3 relative h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                       <select
                         value={toUnit}
                         onChange={(e) => {
                           setToUnit(e.target.value as UnitKey);
                           setError(null);
-                          setResult("");
+                          setResultText("");
+                          setConvertedValue(null);
                           setCopied(false);
                         }}
-                        className="w-full bg-transparent text-sm text-gray-900 outline-none"
+                        className="h-full w-full appearance-none bg-transparent text-sm text-gray-900 outline-none pr-8"
                       >
                         {Object.entries(lengthUnits).map(([key, unit]) => (
                           <option key={key} value={key}>
@@ -281,6 +301,7 @@ export default function LengthConverterPage() {
                           </option>
                         ))}
                       </select>
+                      <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
                     </div>
                   </div>
                 </div>
@@ -326,17 +347,38 @@ export default function LengthConverterPage() {
                   </div>
                 )}
 
-                {/* Result */}
-                {result && (
-                  <div className="mt-6 rounded-3xl border border-black/10 bg-white/70 p-5 shadow-sm">
+                {/* ✅ Highlighted Result (same as Area) */}
+                {resultText && (
+                  <div className="mt-6 rounded-3xl border border-[#125FF9]/20 bg-gradient-to-b from-[#125FF9]/10 to-white p-5 shadow-sm">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      <div className="w-full">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-[#125FF9]">
                           Result
                         </p>
-                        <pre className="mt-2 whitespace-pre-wrap text-sm text-gray-900 leading-relaxed">
-                          {result}
-                        </pre>
+
+                        <div className="mt-3 rounded-2xl border border-[#125FF9]/20 bg-white px-4 py-4 shadow-sm">
+                          <div className="flex flex-wrap items-end justify-between gap-3">
+                            <div>
+                              <div className="text-xs text-gray-500">
+                                Converted value
+                              </div>
+                              <div className="mt-1 text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
+                                {formatNumber(convertedValue ?? NaN)}{" "}
+                                <span className="text-base sm:text-lg font-semibold text-gray-700">
+                                  {lengthUnits[toUnit].label}
+                                </span>
+                              </div>
+                            </div>
+
+                           
+                          </div>
+
+                          <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+
+                          <pre className="mt-4 whitespace-pre-wrap text-sm text-gray-900 leading-relaxed">
+                            {resultText}
+                          </pre>
+                        </div>
                       </div>
 
                       <button
@@ -346,6 +388,7 @@ export default function LengthConverterPage() {
                           rounded-full px-4 py-2 text-sm font-semibold
                           border border-black/10 bg-white
                           shadow-sm hover:bg-gray-50 transition
+                          self-start sm:self-auto
                         "
                       >
                         <Copy className="h-4 w-4" />

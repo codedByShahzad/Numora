@@ -29,11 +29,14 @@ const safeNum = (v: string) => {
   return Number.isFinite(n) ? n : NaN;
 };
 
-const fmt = (n: number) => {
+// ✅ restrict to 2 decimals
+const fmt2 = (n: number) => {
   if (!Number.isFinite(n)) return "—";
-  const r = Math.round(n * 1e12) / 1e12;
-  const s = r.toString();
-  return s.includes(".") ? s.replace(/0+$/, "").replace(/\.$/, "") : s;
+  // show up to 2 decimals (no unnecessary trailing .00)
+  return n.toLocaleString(undefined, {
+    maximumFractionDigits: 2,
+    minimumFractionDigits: 0,
+  });
 };
 
 export default function WeightConverterPage() {
@@ -49,6 +52,7 @@ export default function WeightConverterPage() {
     to: UnitKey;
   } | null>(null);
 
+  const [highlightToValue, setHighlightToValue] = useState<number | null>(null);
   const [copied, setCopied] = useState(false);
 
   const chips = useMemo(
@@ -62,6 +66,7 @@ export default function WeightConverterPage() {
     setValue(v);
     setError(null);
     setResult(null);
+    setHighlightToValue(null);
     setCopied(false);
   };
 
@@ -69,6 +74,7 @@ export default function WeightConverterPage() {
     setFromUnit(toUnit);
     setToUnit(fromUnit);
     setResult(null);
+    setHighlightToValue(null);
     setCopied(false);
     setError(null);
   };
@@ -79,6 +85,7 @@ export default function WeightConverterPage() {
     setToUnit("lb");
     setError(null);
     setResult(null);
+    setHighlightToValue(null);
     setCopied(false);
   };
 
@@ -89,11 +96,13 @@ export default function WeightConverterPage() {
     if (!Number.isFinite(v)) {
       setError("Please enter a valid number.");
       setResult(null);
+      setHighlightToValue(null);
       return;
     }
     if (v < 0) {
       setError("Value cannot be negative.");
       setResult(null);
+      setHighlightToValue(null);
       return;
     }
 
@@ -102,14 +111,15 @@ export default function WeightConverterPage() {
 
     setError(null);
     setResult({ fromValue: v, toValue: converted, from: fromUnit, to: toUnit });
+    setHighlightToValue(converted);
   };
 
   const copyResult = async () => {
     if (!result) return;
 
     const text =
-      `${fmt(result.fromValue)} ${weightUnits[result.from].label} (${weightUnits[result.from].short}) = ` +
-      `${fmt(result.toValue)} ${weightUnits[result.to].label} (${weightUnits[result.to].short})`;
+      `${fmt2(result.fromValue)} ${weightUnits[result.from].label} (${weightUnits[result.from].short}) = ` +
+      `${fmt2(result.toValue)} ${weightUnits[result.to].label} (${weightUnits[result.to].short})`;
 
     try {
       await navigator.clipboard.writeText(text);
@@ -128,14 +138,14 @@ export default function WeightConverterPage() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
+      <div className="mx-auto max-w-5xl ">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
-             <div className="flex justify-center">
+            <div className="flex justify-center">
               <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
                 <Scale className="h-4 w-4 text-[#125FF9]" />
-              Unit Conversions • Converter
+                Unit Conversions • Converter
               </HoverBorderGradient>
             </div>
 
@@ -176,7 +186,7 @@ export default function WeightConverterPage() {
                   Decimals supported. Negative values are not allowed.
                 </p>
 
-                <div className="mt-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                <div className="mt-3 h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                   <input
                     value={value}
                     onChange={(e) => onChangeValue(e.target.value)}
@@ -194,10 +204,11 @@ export default function WeightConverterPage() {
                     onChange={(v) => {
                       setFromUnit(v);
                       setResult(null);
+                      setHighlightToValue(null);
                       setError(null);
                       setCopied(false);
                     }}
-                    alignPlaceholder // ✅ keeps header row same height
+                    alignPlaceholder
                   />
 
                   <UnitSelect
@@ -206,6 +217,7 @@ export default function WeightConverterPage() {
                     onChange={(v) => {
                       setToUnit(v);
                       setResult(null);
+                      setHighlightToValue(null);
                       setError(null);
                       setCopied(false);
                     }}
@@ -267,30 +279,54 @@ export default function WeightConverterPage() {
                   </div>
                 )}
 
-                {/* Result */}
+                {/* ✅ Result (2 decimals everywhere) */}
                 {result && (
-                  <div className="mt-6 rounded-3xl border border-black/10 bg-white/70 p-5 shadow-sm">
+                  <div className="mt-6 rounded-3xl border border-[#125FF9]/20 bg-gradient-to-b from-[#125FF9]/10 to-white p-5 shadow-sm">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      <div className="w-full">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-[#125FF9]">
                           Result
                         </p>
 
-                        <p className="mt-2 text-sm text-gray-900">
-                          <span className="font-semibold">
-                            {fmt(result.fromValue)}
-                          </span>{" "}
-                          {weightUnits[result.from].short}{" "}
-                          <span className="text-gray-500">=</span>{" "}
-                          <span className="font-semibold text-emerald-700">
-                            {fmt(result.toValue)}
-                          </span>{" "}
-                          {weightUnits[result.to].short}
-                        </p>
+                        <div className="mt-3 rounded-2xl border border-[#125FF9]/20 bg-white px-4 py-4 shadow-sm">
+                          <div className="flex flex-wrap items-end justify-between gap-3">
+                            <div>
+                              <div className="text-xs text-gray-500">
+                                Converted value
+                              </div>
+                              <div className="mt-1 text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
+                                {fmt2(highlightToValue ?? result.toValue)}{" "}
+                                <span className="text-base sm:text-lg font-semibold text-gray-700">
+                                  {weightUnits[result.to].label} ({weightUnits[result.to].short})
+                                </span>
+                              </div>
+                            </div>
+                          </div>
 
-                        <p className="mt-1 text-xs text-gray-600">
-                          {weightUnits[result.from].label} → {weightUnits[result.to].label}
-                        </p>
+                          <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+
+                          <p className="mt-4 text-sm text-gray-900 leading-relaxed">
+                            <span className="font-semibold">
+                              {fmt2(result.fromValue)}
+                            </span>{" "}
+                            {weightUnits[result.from].label}{" "}
+                            <span className="text-gray-500">
+                              ({weightUnits[result.from].short})
+                            </span>{" "}
+                            ={" "}
+                            <span className="font-semibold text-emerald-700">
+                              {fmt2(result.toValue)}
+                            </span>{" "}
+                            {weightUnits[result.to].label}{" "}
+                            <span className="text-gray-500">
+                              ({weightUnits[result.to].short})
+                            </span>
+                          </p>
+
+                          <p className="mt-3 text-xs text-gray-600">
+                            Calculated via a common base unit (kilograms) for accuracy.
+                          </p>
+                        </div>
                       </div>
 
                       <button
@@ -300,6 +336,7 @@ export default function WeightConverterPage() {
                           rounded-full px-4 py-2 text-sm font-semibold
                           border border-black/10 bg-white
                           shadow-sm hover:bg-gray-50 transition
+                          self-start sm:self-auto
                         "
                       >
                         <Copy className="h-4 w-4" />
@@ -350,11 +387,9 @@ function UnitSelect({
 }) {
   return (
     <div>
-      {/* ✅ lock header row height so both columns align */}
       <div className="flex items-end justify-between min-h-[34px]">
         <label className="block text-sm font-semibold text-gray-900">{label}</label>
 
-        {/* ✅ placeholder keeps From column same height even without extra */}
         {extra ? (
           extra
         ) : alignPlaceholder ? (
@@ -364,7 +399,6 @@ function UnitSelect({
         ) : null}
       </div>
 
-      {/* ✅ consistent select height */}
       <div className="mt-2 relative h-[52px] rounded-2xl border border-black/10 bg-white px-4 shadow-sm flex items-center">
         <select
           value={value}
@@ -378,7 +412,6 @@ function UnitSelect({
           ))}
         </select>
 
-        {/* ✅ perfectly centered chevron */}
         <ChevronDown className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
       </div>
     </div>

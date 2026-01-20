@@ -9,6 +9,7 @@ import {
   AlertTriangle,
   ArrowLeftRight,
   ChevronDown,
+  Sparkles,
 } from "lucide-react";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
@@ -57,6 +58,9 @@ export default function VolumeConverterPage() {
     to: VolumeUnitKey;
   } | null>(null);
 
+  // ✅ for highlighted UI
+  const [highlightToValue, setHighlightToValue] = useState<number | null>(null);
+
   const [copied, setCopied] = useState(false);
 
   const chips = useMemo(
@@ -70,6 +74,7 @@ export default function VolumeConverterPage() {
     setValue(v);
     setError(null);
     setResult(null);
+    setHighlightToValue(null);
     setCopied(false);
   };
 
@@ -78,6 +83,7 @@ export default function VolumeConverterPage() {
     setToUnit(fromUnit);
     setError(null);
     setResult(null);
+    setHighlightToValue(null);
     setCopied(false);
   };
 
@@ -87,6 +93,7 @@ export default function VolumeConverterPage() {
     setToUnit("ml");
     setError(null);
     setResult(null);
+    setHighlightToValue(null);
     setCopied(false);
   };
 
@@ -97,6 +104,7 @@ export default function VolumeConverterPage() {
     if (!Number.isFinite(v)) {
       setError("Please enter a valid number.");
       setResult(null);
+      setHighlightToValue(null);
       return;
     }
 
@@ -105,6 +113,7 @@ export default function VolumeConverterPage() {
 
     setError(null);
     setResult({ fromValue: v, toValue: converted, from: fromUnit, to: toUnit });
+    setHighlightToValue(converted);
   };
 
   const copyResult = async () => {
@@ -133,15 +142,14 @@ export default function VolumeConverterPage() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-14 sm:py-16">
+      <div className="mx-auto max-w-5xl">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
-
-             <div className="flex justify-center">
+            <div className="flex justify-center">
               <HoverBorderGradient className="inline-flex items-center gap-2 rounded-full border border-black/5 bg-white px-3 py-1 text-xs text-gray-700 shadow-sm">
                 <Beaker className="h-4 w-4 text-[#125FF9]" />
-              Unit Conversions • Calculator
+                Unit Conversions • Calculator
               </HoverBorderGradient>
             </div>
 
@@ -176,12 +184,14 @@ export default function VolumeConverterPage() {
               <div className="p-6 sm:p-8">
                 {/* Value */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-900">Enter value</label>
+                  <label className="block text-sm font-semibold text-gray-900">
+                    Enter value
+                  </label>
                   <p className="mt-1 text-xs text-gray-600">
                     Decimals supported (e.g. 2.5). No negative values.
                   </p>
 
-                  <div className="mt-3 rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30">
+                  <div className="mt-3 h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#125FF9]/30 flex items-center">
                     <input
                       type="text"
                       inputMode="decimal"
@@ -193,22 +203,23 @@ export default function VolumeConverterPage() {
                   </div>
                 </div>
 
-                {/* From/To + Swap (inline like SaaS tools) */}
+                {/* From/To + Swap */}
                 <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label className="block text-sm font-semibold text-gray-900">From</label>
                     <p className="mt-1 text-xs text-gray-600">Input unit.</p>
 
-                    <div className="mt-3 relative rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm">
+                    <div className="mt-3 relative h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm flex items-center">
                       <select
                         value={fromUnit}
                         onChange={(e) => {
                           setFromUnit(e.target.value as VolumeUnitKey);
                           setError(null);
                           setResult(null);
+                          setHighlightToValue(null);
                           setCopied(false);
                         }}
-                        className="w-full appearance-none bg-transparent pr-8 text-sm text-gray-900 outline-none"
+                        className="h-full w-full appearance-none bg-transparent pr-8 text-sm text-gray-900 outline-none"
                       >
                         {Object.entries(volumeUnits).map(([key, unit]) => (
                           <option key={key} value={key}>
@@ -227,7 +238,6 @@ export default function VolumeConverterPage() {
                         <p className="mt-1 text-xs text-gray-600">Output unit.</p>
                       </div>
 
-                      {/* Swap as small button near selectors (clean + consistent) */}
                       <button
                         type="button"
                         onClick={swapUnits}
@@ -244,16 +254,17 @@ export default function VolumeConverterPage() {
                       </button>
                     </div>
 
-                    <div className="mt-3 relative rounded-2xl border border-black/10 bg-white px-4 py-3 shadow-sm">
+                    <div className="mt-3 relative h-12 rounded-2xl border border-black/10 bg-white px-4 shadow-sm flex items-center">
                       <select
                         value={toUnit}
                         onChange={(e) => {
                           setToUnit(e.target.value as VolumeUnitKey);
                           setError(null);
                           setResult(null);
+                          setHighlightToValue(null);
                           setCopied(false);
                         }}
-                        className="w-full appearance-none bg-transparent pr-8 text-sm text-gray-900 outline-none"
+                        className="h-full w-full appearance-none bg-transparent pr-8 text-sm text-gray-900 outline-none"
                       >
                         {Object.entries(volumeUnits).map(([key, unit]) => (
                           <option key={key} value={key}>
@@ -266,7 +277,7 @@ export default function VolumeConverterPage() {
                   </div>
                 </div>
 
-                {/* Actions (Convert + Reset SAME ROW like Physics) */}
+                {/* Actions */}
                 <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
                   <button
                     onClick={convert}
@@ -308,33 +319,50 @@ export default function VolumeConverterPage() {
                   </div>
                 )}
 
-                {/* Result */}
+                {/* ✅ Highlighted Result (same style as others) */}
                 {result && (
-                  <div className="mt-6 rounded-3xl border border-black/10 bg-white/70 p-5 shadow-sm">
+                  <div className="mt-6 rounded-3xl border border-[#125FF9]/20 bg-gradient-to-b from-[#125FF9]/10 to-white p-5 shadow-sm">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">
+                      <div className="w-full">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-[#125FF9]">
                           Result
                         </p>
 
-                        <p className="mt-2 text-sm text-gray-900">
-                          <span className="font-semibold">{fmt(result.fromValue)}</span>{" "}
-                          {volumeUnits[result.from].label}{" "}
-                          <span className="text-gray-500">({volumeUnits[result.from].short})</span>{" "}
-                          ={" "}
-                          <span className="font-semibold text-emerald-700">
-                            {fmt(result.toValue)}
-                          </span>{" "}
-                          {volumeUnits[result.to].label}{" "}
-                          <span className="text-gray-500">({volumeUnits[result.to].short})</span>
-                        </p>
+                        <div className="mt-3 rounded-2xl border border-[#125FF9]/20 bg-white px-4 py-4 shadow-sm">
+                          <div className="flex flex-wrap items-end justify-between gap-3">
+                            <div>
+                              <div className="text-xs text-gray-500">Converted value</div>
+                              <div className="mt-1 text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900">
+                                {fmt(highlightToValue ?? result.toValue)}{" "}
+                                <span className="text-base sm:text-lg font-semibold text-gray-700">
+                                  {volumeUnits[result.to].label} ({volumeUnits[result.to].short})
+                                </span>
+                              </div>
+                            </div>
 
-                        <p className="mt-2 text-xs text-gray-600">
-                          Calculated via a common base unit (liters) for accuracy.
-                        </p>
+                            
+                          </div>
+
+                          <div className="mt-4 h-px w-full bg-gradient-to-r from-transparent via-black/10 to-transparent" />
+
+                          <p className="mt-4 text-sm text-gray-900 leading-relaxed">
+                            <span className="font-semibold">{fmt(result.fromValue)}</span>{" "}
+                            {volumeUnits[result.from].label}{" "}
+                            <span className="text-gray-500">({volumeUnits[result.from].short})</span>{" "}
+                            ={" "}
+                            <span className="font-semibold text-emerald-700">
+                              {fmt(result.toValue)}
+                            </span>{" "}
+                            {volumeUnits[result.to].label}{" "}
+                            <span className="text-gray-500">({volumeUnits[result.to].short})</span>
+                          </p>
+
+                          <p className="mt-3 text-xs text-gray-600">
+                            Calculated via a common base unit (liters) for accuracy.
+                          </p>
+                        </div>
                       </div>
 
-                      {/* Copy on RIGHT (like your request) */}
                       <button
                         onClick={copyResult}
                         className="
