@@ -308,7 +308,7 @@ export default function PhysicsCalculator() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-7 sm:py-8">
+      <div className="mx-auto max-w-5xl">
         <div className="mx-auto max-w-3xl">
           {/* Header */}
           <div className="text-center">
@@ -350,7 +350,7 @@ export default function PhysicsCalculator() {
 
               <div className="p-6 sm:p-8">
                 {/* Tabs */}
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                   <TabButton active={tab === "forces"} onClick={() => setTab("forces")} title="Forces" />
                   <TabButton active={tab === "energy"} onClick={() => setTab("energy")} title="Energy" />
                   <TabButton active={tab === "motion"} onClick={() => setTab("motion")} title="Motion" />
