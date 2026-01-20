@@ -376,7 +376,7 @@ export default function LoanEmiCalculator() {
                       </button>
                     </div>
 
-                    <div className="mt-5 grid grid-cols-3 gap-3">
+                    <div className="mt-5 grid md:grid-cols-3 gap-3">
                       <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-center">
                         <div className="text-xs text-gray-600">EMI</div>
                         <div className="mt-1 text-lg font-semibold text-gray-900">
