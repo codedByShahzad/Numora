@@ -37,9 +37,10 @@ export default function ContactForm() {
 
   const isSending = status === "sending";
 
-  // ✅ Keep your endpoint same
+  // ✅ UPDATED: send to support@numoro.net
   const FORM_ENDPOINT =
-    "https://formsubmit.co/ajax/mr.shahzad.developer@gmail.com";
+  "https://formsubmit.co/ajax/ad4b02da563b5f1e3f0ada2dc3301d5d";
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,7 +48,7 @@ export default function ContactForm() {
     setErrorMsg("");
 
     try {
-      // ✅ Use FormData (more reliable with FormSubmit + avoids CORS preflight)
+      // ✅ Use FormData (reliable with FormSubmit + avoids CORS preflight)
       const fd = new FormData();
       fd.append("name", formData.name);
       fd.append("email", formData.email);
@@ -65,7 +66,6 @@ export default function ContactForm() {
         body: fd,
       });
 
-      // ✅ Read response for better error reporting
       const data = await response.json().catch(() => null);
 
       if (response.ok) {
@@ -80,19 +80,18 @@ export default function ContactForm() {
         setStatus("error");
       }
     } catch (error: unknown) {
-  console.error("Form submission error:", error);
+      console.error("Form submission error:", error);
 
-  const msg =
-    error instanceof Error
-      ? error.message
-      : typeof error === "string"
-      ? error
-      : "Network error";
+      const msg =
+        error instanceof Error
+          ? error.message
+          : typeof error === "string"
+          ? error
+          : "Network error";
 
-  setErrorMsg(msg);
-  setStatus("error");
-}
-
+      setErrorMsg(msg);
+      setStatus("error");
+    }
   };
 
   return (
@@ -104,10 +103,10 @@ export default function ContactForm() {
           Contact form
         </div>
 
-        <h3 className="mt-4 text-xl font-semibold text-gray-900">
+        <h3 className="mt-4 text-xl font-semibold text-gray-900 sm:text-2xl">
           Send us a message
         </h3>
-        <p className="mt-1 text-sm leading-relaxed text-gray-600">
+        <p className="mt-1 text-sm leading-relaxed text-gray-600 sm:text-base">
           Share your question, feedback, or a calculator request. Include details
           so we can respond faster.
         </p>
@@ -131,6 +130,8 @@ export default function ContactForm() {
               }
               placeholder="Your name"
               className={inputClass}
+              inputMode="text"
+              autoComplete="name"
             />
           </Field>
 
@@ -149,6 +150,8 @@ export default function ContactForm() {
               }
               placeholder="you@example.com"
               className={inputClass}
+              inputMode="email"
+              autoComplete="email"
             />
           </Field>
         </div>
@@ -170,6 +173,8 @@ export default function ContactForm() {
             }
             placeholder="What is this about?"
             className={inputClass}
+            inputMode="text"
+            autoComplete="off"
           />
         </Field>
 
@@ -179,7 +184,7 @@ export default function ContactForm() {
           required
           icon={<MessageSquareText className="h-4 w-4 text-gray-500" />}
           hint="If it’s a bug: steps to reproduce + expected result. If it’s a request: formula + inputs/outputs."
-          iconAlign="top" // ✅ FIX: icon aligns nicely for textarea
+          iconAlign="top"
         >
           <textarea
             rows={6}
@@ -193,8 +198,8 @@ export default function ContactForm() {
           />
         </Field>
 
-        {/* Actions row (SaaS style) */}
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+        {/* Actions row (responsive) */}
+        <div className="flex flex-col gap-3 sm:flex-row sm:gap-4">
           <button
             type="submit"
             disabled={isSending}
@@ -231,6 +236,7 @@ export default function ContactForm() {
               text-gray-900 border border-black/10 bg-white
               shadow-sm hover:bg-gray-50 transition
               disabled:opacity-60 disabled:cursor-not-allowed
+              sm:w-[180px]
             "
           >
             Clear form
@@ -259,7 +265,7 @@ export default function ContactForm() {
         )}
       </div>
 
-      <p className="mt-2 text-center text-xs text-gray-500">
+      <p className="mt-2 px-2 text-center text-xs leading-relaxed text-gray-500 sm:px-0">
         By sending this message, you agree to share your contact details so we
         can reply.
       </p>
@@ -316,7 +322,7 @@ function Field({
       </div>
 
       {hint ? (
-        <p className="text-xs text-gray-500 leading-relaxed">{hint}</p>
+        <p className="text-xs leading-relaxed text-gray-500">{hint}</p>
       ) : null}
     </div>
   );
@@ -344,10 +350,10 @@ function StatusBar({
 
   return (
     <div
-      className={`flex items-center gap-2 rounded-2xl border px-4 py-3 text-sm ${cfg.box}`}
+      className={`flex items-start gap-2 rounded-2xl border px-4 py-3 text-sm ${cfg.box}`}
     >
       {cfg.icon}
-      <span>{text}</span>
+      <span className="break-words leading-relaxed">{text}</span>
     </div>
   );
 }
