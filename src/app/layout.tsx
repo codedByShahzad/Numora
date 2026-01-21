@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 
   metadataBase: new URL("https://numoro.net"),
 
-  icons: {
-    icon: "/logo.png",
-  },
+ icons: {
+  icon: "/favicon.ico",
+},
 
   openGraph: {
     title: "Numoro – Fast Everyday Calculators",
