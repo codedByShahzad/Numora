@@ -52,7 +52,7 @@ export default function ContactForm() {
       const fd = new FormData();
       fd.append("name", formData.name);
       fd.append("email", formData.email);
-      fd.append("_subject", formData.subject); // ✅ FormSubmit uses _subject
+      fd.append("_subject", formData.subject); 
       fd.append("message", formData.message);
 
       // optional quality-of-life fields for FormSubmit
