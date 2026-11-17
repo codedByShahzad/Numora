@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import BlogListClient from "./BlogListClient";
+import BlogListClient from "../BlogListClient";
+import { getAllPosts, toListItem } from "@/lib/solvix";
+
+// Re-check Solvix for new, updated or unpublished posts every 60 seconds.
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -37,6 +41,7 @@ export const metadata: Metadata = {
 };
 
 
-export default function BlogPage() {
-  return <BlogListClient />;
+export default async function BlogPage() {
+  const posts = await getAllPosts();
+  return <BlogListClient posts={posts.map(toListItem)} />;
 }

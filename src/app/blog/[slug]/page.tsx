@@ -2,20 +2,37 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CalendarDays, Clock, Folder, ArrowUpRight } from "lucide-react";
-import { BLOGS, getBlogBySlug } from "../../../lib/blog";
+import { CalendarDays, Clock, Folder, ArrowUpRight, UserRound } from "lucide-react";
+import { BLOGS } from "../../../lib/blog";
 import type { BlogBlock, BlogSection } from "../../../lib/blog";
+import { getAllPosts, getPostBySlug } from "@/lib/solvix";
 
 import TocClient from "./TocClient";
+import RichContentRenderer from "./RichContent";
 
-// ✅ REQUIRED when using `output: "export"` with dynamic routes
-export function generateStaticParams() {
-  return BLOGS.map((b) => ({ slug: b.slug }));
+// Posts come from Solvix. Known posts are pre-rendered at build time, new ones
+// are rendered on first visit, and every page re-checks Solvix every 60 s so
+// edits appear and unpublished/deleted posts turn into 404s.
+export const revalidate = 60;
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  try {
+    const posts = await getAllPosts();
+    return posts.map((b) => ({ slug: b.slug }));
+  } catch (error) {
+    // Don't fail the build if Solvix is unreachable: pages render on demand.
+    console.error("[solvix] generateStaticParams:", (error as Error).message);
+    return BLOGS.map((b) => ({ slug: b.slug }));
+  }
 }
-export const dynamicParams = false;
 
-/** ✅ Change this to your real domain */
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://numorrra.netlify.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://numoro.net";
+
+/** The post URL as served (next.config uses `trailingSlash: true`). */
+function withTrailingSlash(path: string) {
+  return path.endsWith("/") ? path : `${path}/`;
+}
 
 function toISODateSafe(dateStr?: string) {
   if (!dateStr) return undefined;
@@ -30,7 +47,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const blog = getBlogBySlug(slug);
+  const blog = await getPostBySlug(slug);
 
   if (!blog) {
     return {
@@ -59,9 +76,10 @@ export async function generateMetadata({
     };
   }
 
-  const title = blog.seoTitle ?? blog.title;
-  const description = blog.seoDescription ?? blog.subtitle;
-  const canonicalPath = blog.canonicalPath ?? `/blog/${blog.slug}`;
+  // The root layout's title template already appends "| Numoro".
+  const title = (blog.seoTitle ?? blog.title).replace(/\s*\|\s*Numoro\s*$/i, "").trim();
+  const description = blog.seoDescription || blog.subtitle;
+  const canonicalPath = withTrailingSlash(blog.canonicalPath ?? `/blog/${blog.slug}`);
   const image = blog.ogImage ?? blog.heroImage;
 
   const publishedTime =
@@ -89,6 +107,10 @@ export async function generateMetadata({
       description,
       images: [{ url: image, width: 1200, height: 630, alt: title }],
       publishedTime,
+      modifiedTime: blog.updatedISO ?? publishedTime,
+      section: blog.category,
+      tags: blog.keywords,
+      ...(blog.authorName ? { authors: [blog.authorName] } : {}),
     },
     twitter: {
       card: "summary_large_image",
@@ -179,22 +201,55 @@ export default async function BlogDetailPage({
 }) {
   const { slug } = await params;
 
-  const blog = getBlogBySlug(slug);
+  const posts = await getAllPosts();
+  const blog = posts.find((b) => b.slug === slug);
   if (!blog) return notFound();
 
-  const related = BLOGS.filter(
-    (b) => b.category === blog.category && b.slug !== blog.slug
-  )
-    .sort(
-      (a, b) =>
-        new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
-    )
+  // `posts` is already sorted newest first.
+  const related = posts
+    .filter((b) => b.category === blog.category && b.slug !== blog.slug)
     .slice(0, 6);
 
-  const tocSections = blog.sections.map((s) => ({ id: s.id, title: s.title }));
+  // Rich-text posts: H2 entries of the Solvix TOC. Older posts: their sections.
+  const tocSections = blog.rich
+    ? blog.rich.toc.filter((e) => e.level === 2).map((e) => ({ id: e.id, title: e.title }))
+    : blog.sections.map((s) => ({ id: s.id, title: s.title }));
+
+  const articleUrl = new URL(
+    withTrailingSlash(blog.canonicalPath ?? `/blog/${blog.slug}`),
+    SITE_URL
+  ).toString();
+  const publishedTime = blog.publishISO ?? toISODateSafe(blog.publishDate);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: blog.title,
+    description: blog.seoDescription || blog.subtitle,
+    image: [new URL(blog.ogImage ?? blog.heroImage, SITE_URL).toString()],
+    url: articleUrl,
+    mainEntityOfPage: articleUrl,
+    datePublished: publishedTime,
+    dateModified: blog.updatedISO ?? publishedTime,
+    articleSection: blog.category,
+    keywords: blog.keywords?.join(", "),
+    author: blog.authorName
+      ? { "@type": "Person", name: blog.authorName }
+      : { "@type": "Organization", name: "Numoro" },
+    publisher: {
+      "@type": "Organization",
+      name: "Numoro",
+      logo: { "@type": "ImageObject", url: new URL("/logo.png", SITE_URL).toString() },
+    },
+  };
 
   return (
     <div className="relative min-h-[92vh] bg-gray-50">
+      <script
+        type="application/ld+json"
+        // JSON.stringify output with "<" escaped so it can't close the tag.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+      />
       <GridBackground />
 
       {/* ✅ removed scroll-smooth here to stop weird jump behavior */}
@@ -262,6 +317,16 @@ export default async function BlogDetailPage({
                 <span className="text-slate-700 font-medium">{blog.category}</span>
               </div>
 
+              {blog.authorName ? (
+                <div className="flex items-start justify-between gap-3">
+                  <span className="text-slate-500 inline-flex items-center gap-2">
+                    <UserRound className="w-4 h-4" />
+                    Author
+                  </span>
+                  <span className="text-slate-700 font-medium">{blog.authorName}</span>
+                </div>
+              ) : null}
+
               <div className="flex items-start justify-between gap-3">
                 <span className="text-slate-500 inline-flex items-center gap-2">
                   <Clock className="w-4 h-4" />
@@ -299,11 +364,15 @@ export default async function BlogDetailPage({
             {/* LEFT */}
             <div className="lg:col-span-8">
               <div className="rounded-3xl border border-slate-200 bg-white/80 shadow-sm p-5 sm:p-6 md:p-8">
-                <div className="space-y-10">
-                  {blog.sections.map((s) => (
-                    <SectionRenderer key={s.id} section={s} />
-                  ))}
-                </div>
+                {blog.rich ? (
+                  <RichContentRenderer content={blog.rich} />
+                ) : (
+                  <div className="space-y-10">
+                    {blog.sections.map((s) => (
+                      <SectionRenderer key={s.id} section={s} />
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -334,6 +403,18 @@ export default async function BlogDetailPage({
                       {blog.category}
                     </span>
                   </div>
+
+                  {blog.authorName ? (
+                    <div className="flex items-start justify-between gap-3">
+                      <span className="text-slate-500 inline-flex items-center gap-2">
+                        <UserRound className="w-4 h-4" />
+                        Author
+                      </span>
+                      <span className="text-slate-700 font-medium">
+                        {blog.authorName}
+                      </span>
+                    </div>
+                  ) : null}
 
                   <div className="flex items-start justify-between gap-3">
                     <span className="text-slate-500 inline-flex items-center gap-2">

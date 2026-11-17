@@ -3,7 +3,7 @@
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { BLOGS } from "../../lib/blog";
+import type { BlogListItem } from "../../lib/solvix";
 import { CalendarDays, Clock, Folder } from "lucide-react";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 
@@ -32,15 +32,15 @@ const slugify = (text: string) =>
     .replace(/[^\w\s-]/g, "")
     .replace(/\s+/g, "-");
 
-export default function BlogListClient() {
+export default function BlogListClient({ posts }: { posts: BlogListItem[] }) {
   const [query, setQuery] = useState("");
 
   // ✅ Categories from existing BLOGS (unique)
   const categories = useMemo(() => {
     const set = new Set<string>();
-    BLOGS.forEach((b) => set.add(b.category));
+    posts.forEach((b) => set.add(b.category));
     return Array.from(set).sort((a, b) => a.localeCompare(b));
-  }, []);
+  }, [posts]);
 
   // ✅ Build searchable text (title + subtitle + category + slug)
   // const searchableBlogs = useMemo(() => {
@@ -67,7 +67,7 @@ export default function BlogListClient() {
   // - Otherwise do normal search across title/subtitle/category
 const filteredBlogs = useMemo(() => {
   const q = query.trim().toLowerCase();
-  if (!q) return BLOGS;
+  if (!q) return posts;
 
   // category match
   const categoryHit = categories.find(
@@ -75,13 +75,13 @@ const filteredBlogs = useMemo(() => {
   );
 
   if (categoryHit) {
-    return BLOGS.filter(
+    return posts.filter(
       (b) => (b.category ?? "").toLowerCase() === categoryHit.toLowerCase()
     );
   }
 
   // normal search (no _search field)
-  return BLOGS.filter((b) => {
+  return posts.filter((b) => {
     const cat = b.category ?? "";
     const haystack = [
       b.title,
@@ -97,7 +97,7 @@ const filteredBlogs = useMemo(() => {
 
     return haystack.includes(q);
   });
-}, [query, categories]);
+}, [query, categories, posts]);
 
 
   // ✅ Aceternity UI placeholders: include categories + common searches
@@ -255,7 +255,12 @@ const filteredBlogs = useMemo(() => {
         </div>
 
         {/* Empty state */}
-        {filteredBlogs.length === 0 ? (
+        {posts.length === 0 ? (
+          <div className="mt-12 text-center">
+            <p className="text-sm text-slate-600">No articles have been published yet.</p>
+            <p className="mt-2 text-xs text-slate-500">New posts will appear here as soon as they are published.</p>
+          </div>
+        ) : filteredBlogs.length === 0 ? (
           <div className="mt-12 text-center">
             <p className="text-sm text-slate-600">
               No blogs found for{" "}
