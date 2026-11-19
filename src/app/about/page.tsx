@@ -20,14 +20,14 @@ import {
   Users,
   Globe,
   Star,
-  Quote,
 } from "lucide-react";
 import FAQAccordion from "@/components/FAQAccordion";
+import { CALCULATORS, CATEGORIES } from "@/lib/site/catalog";
 
 export const metadata: Metadata = {
-  title: "About",
+  title: "About Us: How We Build Our Calculators",
   description:
-    "Learn about Numoro — your trusted hub for quick, accurate, and user-friendly calculators.",
+    "Learn about Numoro: free online calculators for US tax, seller and payment fees, EV charging, health, finance and conversions, built on documented formulas.",
 
   keywords: [
     "About Numoro",
@@ -42,14 +42,14 @@ export const metadata: Metadata = {
   ],
 
   alternates: {
-    canonical: "/about",
+    canonical: "/about/",
   },
 
   openGraph: {
     title: "About Numoro",
     description:
       "Numoro is your trusted hub for health, finance, science, and everyday life calculators.",
-    url: "/about",
+    url: "/about/",
     siteName: "Numoro",
     images: [
       {
@@ -149,31 +149,10 @@ export default function AboutPage() {
   ];
 
   const stats = [
-    { icon: Calculator, label: "Calculators", value: "50+" },
-    { icon: Users, label: "Users helped", value: "10k+" },
-    { icon: ShieldCheck, label: "Validated inputs", value: "100%" },
+    { icon: Calculator, label: "Calculators", value: String(CALCULATORS.length) },
+    { icon: Users, label: "Categories", value: String(CATEGORIES.length) },
+    { icon: ShieldCheck, label: "Cost to use", value: "Free" },
     { icon: Star, label: "Focus", value: "Clarity" },
-  ];
-
-  const testimonials = [
-    {
-      name: "Product Designer",
-      role: "SaaS team",
-      quote:
-        "Numoro feels like a polished product — quick answers, clean breakdowns, zero distractions.",
-    },
-    {
-      name: "Student",
-      role: "Everyday use",
-      quote:
-        "The unit conversions and GPA tools are the fastest I’ve used. The UI is super clear.",
-    },
-    {
-      name: "Entrepreneur",
-      role: "Finance planning",
-      quote:
-        "Loan and ROI calculators give exactly what I need — inputs, results, and context.",
-    },
   ];
 
   const faqs = [
@@ -209,7 +188,7 @@ export default function AboutPage() {
         <div className="absolute -bottom-40 right-[-140px] h-[520px] w-[520px] rounded-full bg-[#125FF9]/12 blur-3xl" />
       </div>
 
-      <main className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
+      <div className="mx-auto max-w-6xl px-4 py-14 sm:py-16">
         {/* HERO */}
         <section className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
@@ -384,7 +363,7 @@ export default function AboutPage() {
               return (
                 <Link
                   key={f.id}
-                  href={`/categories/${f.id}`}
+                  href={`/${f.id}/`}
                   className={[
                     "group relative block focus:outline-none",
                     !isLast ? "lg:col-span-3" : "lg:col-span-2 lg:col-start-3",
@@ -438,47 +417,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* TESTIMONIALS */}
-        <section className="mt-16">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl">
-              Loved for clarity
-            </h2>
-            <p className="mt-2 text-sm text-gray-600 sm:text-base">
-              A calm UI, consistent patterns, and results that make sense.
-            </p>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="relative overflow-hidden rounded-3xl border border-black/10 bg-white/80 p-6 shadow-[0_18px_44px_-34px_rgba(0,0,0,0.35)] backdrop-blur-xl"
-              >
-                <div className="pointer-events-none absolute -left-20 -top-20 h-48 w-48 rounded-full bg-[#008FBE]/10 blur-2xl" />
-                <div className="relative">
-                  <div className="flex items-center gap-2 text-sm font-semibold text-gray-900">
-                    <Quote className="h-4 w-4 text-[#125FF9]" />
-                    {t.role}
-                  </div>
-                  <p className="mt-3 text-sm leading-relaxed text-gray-700">“{t.quote}”</p>
-                  <div className="mt-5 flex items-center justify-between">
-                    <div>
-                      <div className="text-sm font-semibold text-gray-900">{t.name}</div>
-                      <div className="text-xs text-gray-600">Verified user</div>
-                    </div>
-                    <div className="inline-flex items-center gap-1">
-                      {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4 text-[#125FF9]" />
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* FAQ (now fully smooth) */}
         <section className="mt-16">
           <div className="mx-auto max-w-3xl text-center">
@@ -522,7 +460,7 @@ export default function AboutPage() {
                 </Link>
 
                 <Link
-                  href="/contact"
+                  href="/contact/"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-2xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-gray-900 shadow-sm transition hover:bg-white/80 sm:w-auto"
                 >
                   Share feedback
@@ -547,7 +485,7 @@ export default function AboutPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 }

@@ -5,11 +5,6 @@ import type { LucideIcon } from "lucide-react";
 
 import { useRouter } from "next/navigation";
 import {
-  Heart,
-  Scale,
-  DollarSign,
-  Beaker,
-  Clock,
   Sparkles,
   ArrowUpRight,
   Hash,
@@ -21,35 +16,41 @@ import {
 import { CategoryCard } from "@/components/CategoryCard";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
+import { iconForCategory } from "@/lib/site/icons";
 
-const slugify = (text: string) =>
-  text
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, "and")
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-");
-
-type Cat = {
+/** Category card data passed from the server page (built from the catalog). */
+export type HomeCategory = {
   id: string;
   title: string;
   description: string;
-  icon: LucideIcon;
+  iconName: string;
   calculators: string[];
-  count: number;
   badge: string;
 };
 
-type CalcItem = {
+/** Searchable calculator entry passed from the server page. */
+export type HomeCalculator = {
   name: string;
   categoryId: string;
   categoryTitle: string;
   href: string;
   keywords: string[];
-  searchText: string;
 };
 
-export default function HomePageClient() {
+type Cat = HomeCategory & { icon: LucideIcon };
+type CalcItem = HomeCalculator & { searchText: string };
+
+export default function HomePageClient({
+  categories: categoryData,
+  calculators,
+  featuredIds,
+  totals,
+}: {
+  categories: HomeCategory[];
+  calculators: HomeCalculator[];
+  featuredIds: string[];
+  totals: { calculators: number; categories: number };
+}) {
   const router = useRouter();
 
   const [query, setQuery] = useState("");
@@ -58,141 +59,23 @@ export default function HomePageClient() {
   const searchWrapRef = useRef<HTMLDivElement | null>(null);
 
   const categories = useMemo<Cat[]>(
-    () => [
-      {
-        id: "health",
-        title: "Health",
-        description:
-          "Track BMI, calorie needs, hydration, and heart-rate zones with clear insights.",
-        icon: Heart,
-        calculators: [
-          "BMI",
-          "Calorie",
-          "Water Intake",
-          "Body Fat",
-          "Heart Rate",
-          "Steps to Calories",
-        ],
-        count: 12,
-        badge: "Most used",
-      },
-      {
-        id: "unit-conversions",
-        title: "Unit Conversions",
-        description:
-          "Fast, accurate conversions for length, weight, temperature, speed, and more.",
-        icon: Scale,
-        calculators: ["Length", "Weight", "Temperature", "Speed", "Area", "Volume"],
-        count: 25,
-        badge: "Instant",
-      },
-      {
-        id: "finance",
-        title: "Finance",
-        description:
-          "EMI, loans, interest, investments, and currency tools for smarter planning.",
-        icon: DollarSign,
-        calculators: ["Loan EMI", "Compound Interest", "Mortgage", "Discount", "Currency"],
-        count: 18,
-        badge: "High traffic",
-      },
-      {
-        id: "maths-science",
-        title: "Maths & Science",
-        description:
-          "Scientific, algebra, geometry, statistics—built for speed and accuracy.",
-        icon: Beaker,
-        calculators: ["Scientific", "Algebra", "Geometry", "Statistics", "Physics"],
-        count: 30,
-        badge: "Power tools",
-      },
-      {
-        id: "everyday-life",
-        title: "Everyday Life",
-        description:
-          "Daily calculators like age, date-diff, tips, and time-zone conversions.",
-        icon: Clock,
-        calculators: ["Age", "Date Difference", "Tip", "Timezone", "Discount"],
-        count: 15,
-        badge: "Daily",
-      },
-    ],
-    []
+    () => categoryData.map((c) => ({ ...c, icon: iconForCategory(c.iconName) })),
+    [categoryData]
   );
 
-  const featured = categories.slice(0, 3);
-
-  const CALC_ALIASES: Record<string, string[]> = useMemo(
-    () => ({
-      BMI: ["body mass index", "bmi calculator", "weight height bmi"],
-      Calorie: ["calories", "calorie intake", "tdee", "bmr", "calorie needs"],
-      "Water Intake": ["hydration", "water per day", "drink water"],
-      "Body Fat": ["body fat percentage", "fat percent", "bf%"],
-      "Heart Rate": ["hr zones", "target heart rate", "pulse"],
-      "Steps to Calories": ["steps calories", "walk calories", "pedometer"],
-
-      Length: ["meter to feet", "feet to meter", "inch to cm", "cm to inch"],
-      Weight: ["kg to lbs", "lbs to kg", "pounds to kilograms"],
-      Temperature: [
-        "celsius to fahrenheit",
-        "fahrenheit to celsius",
-        "c to f",
-        "f to c",
-      ],
-      Speed: ["kmh to mph", "mph to kmh"],
-      Area: ["sq ft to sq m", "square feet", "square meter"],
-      Volume: ["liters to gallons", "ml to liters", "cups to ml"],
-
-      "Loan EMI": ["emi", "installment", "loan payment", "monthly payment"],
-      "Compound Interest": ["interest", "investment growth", "compound", "future value"],
-      Mortgage: ["home loan", "house loan", "mortgage payment"],
-      Discount: ["sale price", "percentage off", "price reduction"],
-      Currency: ["exchange rate", "forex", "usd to pkr", "eur to usd"],
-
-      Scientific: ["scientific calculator", "sin cos tan", "log", "ln"],
-      Algebra: ["equations", "solve x", "linear algebra"],
-      Geometry: ["triangle", "circle", "area perimeter"],
-      Statistics: ["mean median mode", "standard deviation", "variance"],
-      Physics: ["force", "velocity", "acceleration", "energy"],
-
-      Age: ["age calculator", "date of birth", "dob"],
-      "Date Difference": ["days between", "date diff", "time between dates"],
-      Tip: ["tip calculator", "restaurant tip", "gratuity"],
-      Timezone: ["time zone", "world clock", "utc converter"],
-    }),
-    []
+  const featured = useMemo(
+    () => featuredIds.map((id) => categories.find((c) => c.id === id)).filter((c): c is Cat => Boolean(c)),
+    [categories, featuredIds]
   );
 
-  const allCalculators = useMemo<CalcItem[]>(() => {
-    return categories.flatMap((cat) =>
-      cat.calculators.map((name) => {
-        const aliases = CALC_ALIASES[name] ?? [];
-        const href = `/categories/${cat.id}/${slugify(name)}`;
-
-        const keywords = [
-          name,
-          ...aliases,
-          cat.title,
-          cat.id,
-          href,
-          cat.title === "Unit Conversions" ? "convert conversion converter" : "",
-          cat.title === "Finance" ? "loan interest emi" : "",
-          cat.title === "Health" ? "fitness bmi calories" : "",
-          cat.title === "Everyday Life" ? "daily utility" : "",
-          cat.title === "Maths & Science" ? "math science formula" : "",
-        ].filter(Boolean);
-
-        return {
-          name,
-          categoryId: cat.id,
-          categoryTitle: cat.title,
-          href,
-          keywords,
-          searchText: keywords.join(" ").toLowerCase(),
-        };
-      })
-    );
-  }, [categories, CALC_ALIASES]);
+  const allCalculators = useMemo<CalcItem[]>(
+    () =>
+      calculators.map((c) => ({
+        ...c,
+        searchText: [c.name, c.categoryTitle, ...c.keywords].join(" ").toLowerCase(),
+      })),
+    [calculators]
+  );
 
   const calculatorResults = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -207,13 +90,10 @@ export default function HomePageClient() {
     return categories.filter((c) => {
       const inTitle = c.title.toLowerCase().includes(q);
       const inDesc = c.description.toLowerCase().includes(q);
-      const inCalcs = c.calculators.some((x) => {
-        const aliases = CALC_ALIASES[x] ?? [];
-        return `${x} ${aliases.join(" ")}`.toLowerCase().includes(q);
-      });
+      const inCalcs = allCalculators.some((x) => x.categoryId === c.id && x.searchText.includes(q));
       return inTitle || inDesc || inCalcs;
     });
-  }, [categories, query, CALC_ALIASES]);
+  }, [categories, query, allCalculators]);
 
   useEffect(() => {
     const onDown = (e: MouseEvent) => {
@@ -232,11 +112,11 @@ export default function HomePageClient() {
 
   const placeholders = useMemo(
     () => [
-      "Search calculators: BMI, Loan EMI, Temperature…",
-      "Try “Compound Interest” to estimate growth",
+      "Search calculators: Etsy fees, overtime, BMI…",
+      "Try “Stripe” to see what a payment costs",
+      "Find the “EV charging” cost for your state",
       "Convert “Celsius to Fahrenheit” instantly",
-      "Calculate “Body Fat %” in seconds",
-      "Find “Age” or “Date Difference” quickly",
+      "Calculate “Loan EMI” in seconds",
     ],
     []
   );
@@ -309,8 +189,9 @@ export default function HomePageClient() {
             </h1>
 
             <p className="mt-4 text-base text-gray-600 sm:text-lg">
-              From BMI and calories to EMI and conversions — Numoro gives you quick
-              results with clean breakdowns and standard formulas.
+              From overtime tax and seller fees to EV charging, loans and
+              conversions — Numoro gives you quick results with clean
+              breakdowns, standard formulas and dated sources.
             </p>
 
             <div ref={searchWrapRef} className="mt-7 w-full text-left">
@@ -366,7 +247,7 @@ export default function HomePageClient() {
                         No calculators found for{" "}
                         <span className="font-semibold">“{query}”</span>.
                         <div className="mt-2 text-xs text-gray-500">
-                          Try: BMI, Loan EMI, Temperature, Compound Interest…
+                          Try: Etsy, Stripe, overtime, BMI, Loan EMI…
                         </div>
                       </div>
                     )}
@@ -392,17 +273,25 @@ export default function HomePageClient() {
 
             <div className="mt-10">
               <p className="text-xs font-medium text-gray-500">
-                Common calculators people use daily
+                Popular calculators
               </p>
 
               <div className="mt-3 flex flex-wrap items-center justify-center gap-2">
-                {["BMI", "Loan EMI", "C → F", "Age", "Tip", "Currency"].map((x) => (
-                  <span
-                    key={x}
-                    className="rounded-full border border-black/10 bg-white/70 px-3 py-1 text-xs text-gray-700 shadow-sm"
+                {[
+                  { t: "No Tax on Overtime", href: "/tax/no-tax-on-overtime-calculator/" },
+                  { t: "Etsy fees", href: "/ecommerce-fees/etsy-fee-calculator/" },
+                  { t: "Stripe fees", href: "/business/stripe-fee-calculator/" },
+                  { t: "EV charging", href: "/energy/ev-charging-cost-calculator/" },
+                  { t: "BMI", href: "/health/bmi-calculator/" },
+                  { t: "Loan EMI", href: "/finance/loan-emi-calculator/" },
+                ].map((x) => (
+                  <a
+                    key={x.t}
+                    href={x.href}
+                    className="rounded-full border border-black/10 bg-white/70 px-3 py-1 text-xs text-gray-700 shadow-sm hover:text-[#125FF9]"
                   >
-                    {x}
-                  </span>
+                    {x.t}
+                  </a>
                 ))}
               </div>
             </div>
@@ -436,7 +325,7 @@ export default function HomePageClient() {
               </div>
 
               <button
-                onClick={() => router.push("/categories")}
+                onClick={() => router.push("/categories/")}
                 className="
                   inline-flex items-center gap-2 rounded-full
                   bg-gradient-to-r from-[#008FBE] to-[#125FF9]
@@ -453,23 +342,23 @@ export default function HomePageClient() {
               {[
                 {
                   label: "Calculators",
-                  value: "80+",
-                  sub: "Everyday + advanced tools",
-                  hint: "Health • Finance • Conversions",
+                  value: String(totals.calculators),
+                  sub: "Everyday + rule-based tools",
+                  hint: "Tax • Fees • Energy • Health • Finance",
                   icon: <Sparkles className="h-5 w-5" />,
                 },
                 {
                   label: "Categories",
-                  value: "10+",
+                  value: String(totals.categories),
                   sub: "Easy to browse",
                   hint: "Find what you need fast",
                   icon: <Hash className="h-5 w-5" />,
                 },
                 {
-                  label: "Avg. open time",
-                  value: "2s",
-                  sub: "Quick results",
-                  hint: "Optimized for speed",
+                  label: "Cost to use",
+                  value: "Free",
+                  sub: "No sign-up needed",
+                  hint: "Runs in your browser",
                   icon: <ArrowUpRight className="h-5 w-5" />,
                   highlight: true,
                 },
@@ -491,7 +380,7 @@ export default function HomePageClient() {
                     {s.highlight ? (
                       <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-semibold text-gray-800 shadow-sm">
                         <span className="h-2 w-2 rounded-full bg-emerald-500" />
-                        Fast results
+                        Private by design
                       </div>
                     ) : null}
                   </div>
@@ -517,16 +406,16 @@ export default function HomePageClient() {
             <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
               {[
                 {
-                  title: "Conversions that feel instant",
-                  desc: "Length, weight, temperature, speed & more.",
+                  title: "Seller & payment fees",
+                  desc: "Etsy, TikTok Shop and Stripe fees, line by line.",
                 },
                 {
-                  title: "Finance with clarity",
-                  desc: "EMI, interest and discounts with simple breakdowns.",
+                  title: "Tax rules, explained",
+                  desc: "No Tax on Overtime with IRS sources and review dates.",
                 },
                 {
-                  title: "Health metrics made simple",
-                  desc: "BMI, calories, hydration and heart-rate zones.",
+                  title: "Everyday math",
+                  desc: "Health, loans, conversions and dates in seconds.",
                 },
               ].map((f) => (
                 <div
@@ -556,8 +445,8 @@ export default function HomePageClient() {
           </h2>
 
           <p className="mx-auto mt-2 max-w-xl text-sm text-gray-600 sm:text-base">
-            Start with the most used calculators across health, finance, and
-            conversions.
+            Start with our newest rule-based calculators for tax, seller fees and
+            payments.
           </p>
         </div>
 
@@ -565,7 +454,7 @@ export default function HomePageClient() {
           {featured.map((item) => (
             <ClickableCard
               key={item.id}
-              href={`/categories/${item.id}`}
+              href={`/${item.id}/`}
               className="
                 group relative isolate block overflow-hidden rounded-3xl
                 border border-black/10 bg-white/70
@@ -614,7 +503,7 @@ export default function HomePageClient() {
           </h2>
 
         <p className="mx-auto mt-2 max-w-xl text-sm text-gray-600 sm:text-base">
-            Explore calculators by category — health, finance, science,
+            Explore calculators by category — tax, fees, energy, health, finance, science,
             conversions, and more.
           </p>
         </div>
@@ -623,7 +512,7 @@ export default function HomePageClient() {
           {filteredCategories.map((item) => (
             <ClickableCard
               key={item.id}
-              href={`/categories/${item.id}`}
+              href={`/${item.id}/`}
               className="
                 group relative isolate block overflow-hidden rounded-3xl
                 border border-black/10 bg-white/70
@@ -640,7 +529,7 @@ export default function HomePageClient() {
               <div className="absolute right-4 top-4 z-10">
                 <span className="inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold shadow-sm ring-1 ring-black/10 bg-white/80 text-gray-800">
                   <span className="h-2 w-2 rounded-full bg-[#008FBE]" />
-                  {item.count}+ tools
+                  {item.calculators.length} {item.calculators.length === 1 ? "tool" : "tools"}
                 </span>
               </div>
 
@@ -675,7 +564,7 @@ export default function HomePageClient() {
             </div>
 
             <button
-              onClick={() => router.push("/categories")}
+              onClick={() => router.push("/categories/")}
               className="
                 inline-flex items-center justify-center gap-2
                 rounded-full px-6 py-3 text-sm font-semibold text-white

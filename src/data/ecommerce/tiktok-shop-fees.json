@@ -1,0 +1,83 @@
+{
+  "id": "tiktok-shop-seller-fees",
+  "name": "TikTok Shop seller fees",
+  "lastVerified": "2026-11-19",
+  "verificationNote": "TikTok Seller University and Seller Center pages need a seller login and could not be opened directly. Default rates are taken from TikTok's public category tables as quoted by several independent sources checked between September and November 2026. Rates vary by category, seller programme and date, so always confirm the rate shown in your Seller Center and use the custom rate if yours differs.",
+  "countries": {
+    "US": {
+      "label": "United States",
+      "currency": "USD",
+      "feeName": "Referral fee",
+      "feeBase": "Referral fee rate x (customer payment + TikTok-funded platform discount - tax). Seller-funded discounts reduce the base.",
+      "processingIncluded": true,
+      "presets": [
+        {
+          "id": "standard",
+          "label": "Most categories (6%)",
+          "rate": 0.06
+        },
+        {
+          "id": "reduced",
+          "label": "Select jewelry & pre-owned (5%)",
+          "rate": 0.05
+        },
+        {
+          "id": "new_seller",
+          "label": "New-seller promotion (3%, first 30 days)",
+          "rate": 0.03
+        }
+      ],
+      "defaultPreset": "standard",
+      "rateNote": "Some seller reports from August 2026 say the standard US rate rose to 8%. TikTok's public US table still showed 6% when we checked. If your Seller Center shows a different rate, choose Custom.",
+      "notIncluded": [
+        "Refund administration fee (20% of the refunded referral fee, up to $5 per SKU)",
+        "Fulfilled by TikTok (FBT) storage fees, unless you include them as shipping/fulfilment cost",
+        "Withdrawal fees, Shop Ads and sample costs",
+        "Sales tax (collected and remitted by TikTok, excluded from the fee base)"
+      ]
+    },
+    "GB": {
+      "label": "United Kingdom",
+      "currency": "GBP",
+      "feeName": "Platform commission",
+      "feeBase": "Commission rate x the order amount after seller-funded discounts. TikTok states the UK rate is inclusive of VAT.",
+      "processingIncluded": true,
+      "presets": [
+        {
+          "id": "standard",
+          "label": "Most categories (9%, VAT included)",
+          "rate": 0.09
+        },
+        {
+          "id": "reduced",
+          "label": "Specified electronics / beauty (5%)",
+          "rate": 0.05
+        }
+      ],
+      "defaultPreset": "standard",
+      "rateNote": "TikTok's UK Seller Centre lists a 9% platform commission, inclusive of VAT, for most categories (page last revised September 2025, checked by independent sources in September 2026). Some categories and new-seller programmes have reduced rates. Confirm in Seller Center.",
+      "notIncluded": [
+        "Fees charged by TikTok on self-shipped orders in some programmes (add them as an additional fee)",
+        "Fulfilled by TikTok storage fees, Shop Ads and sample costs",
+        "VAT you owe on your own sales if you are VAT-registered"
+      ]
+    }
+  },
+  "sources": [
+    {
+      "title": "TikTok Shop Seller University (US): referral fee category table",
+      "url": "https://seller-us.tiktok.com/university/essay?knowledge_id=5988482086864682",
+      "date": "as quoted Oct 2026"
+    },
+    {
+      "title": "TikTok Shop Seller University (US): referral fee calculation",
+      "url": "https://seller-us.tiktok.com/university/essay?knowledge_id=5982454398175018&lang=en",
+      "date": "as quoted 2026"
+    },
+    {
+      "title": "Augmentum Media: TikTok Shop fees for brands (quotes the UK Seller Centre commission page)",
+      "url": "https://www.augmentum-media.com/blog/tiktok-shop-for-brands",
+      "date": "Sept 2026"
+    }
+  ]
+}

@@ -1,0 +1,298 @@
+{
+  "id": "us-residential-electricity-prices",
+  "name": "Average residential electricity price by state",
+  "unit": "cents per kWh",
+  "dataPeriod": "2026-08",
+  "dataPeriodLabel": "August 2026 (preliminary)",
+  "publisher": "U.S. Energy Information Administration (EIA), Electric Power Monthly, Table 5.6.A",
+  "releaseDate": "2026-10-23",
+  "lastVerified": "2026-11-19",
+  "verificationNote": "Values were taken from two independent republications of EIA Table 5.6.A for August 2026 whose overlapping rows match exactly; eia.gov itself could not be fetched from our research environment. Averages include fixed charges and taxes spread over all kWh sold, vary by month and are not your tariff. Enter the rate from your own bill for an accurate result.",
+  "usAverageCentsPerKwh": 18.16,
+  "states": [
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "centsPerKwh": 16.33
+    },
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "centsPerKwh": 29.41
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "centsPerKwh": 15.05
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "centsPerKwh": 14.37
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "centsPerKwh": 29.75
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "centsPerKwh": 17.17
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "centsPerKwh": 24.51
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "centsPerKwh": 18.7
+    },
+    {
+      "code": "DC",
+      "name": "District of Columbia",
+      "centsPerKwh": 25.98
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "centsPerKwh": 14.99
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "centsPerKwh": 15.9
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "centsPerKwh": 47.18
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "centsPerKwh": 13.37
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "centsPerKwh": 19.32
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "centsPerKwh": 17.02
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "centsPerKwh": 17.06
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "centsPerKwh": 15.47
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "centsPerKwh": 13.8
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "centsPerKwh": 12.87
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "centsPerKwh": 32.11
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "centsPerKwh": 21.4
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "centsPerKwh": 30.48
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "centsPerKwh": 22.99
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "centsPerKwh": 17.2
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "centsPerKwh": 14.43
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "centsPerKwh": 16.02
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "centsPerKwh": 15.57
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "centsPerKwh": 13.54
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "centsPerKwh": 12.72
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "centsPerKwh": 27.64
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "centsPerKwh": 24.61
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "centsPerKwh": 16.51
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "centsPerKwh": 28.65
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "centsPerKwh": 14.95
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "centsPerKwh": 13.31
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "centsPerKwh": 19.38
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "centsPerKwh": 14.82
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "centsPerKwh": 15.92
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "centsPerKwh": 21.77
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "centsPerKwh": 28.18
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "centsPerKwh": 15.76
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "centsPerKwh": 15.15
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "centsPerKwh": 13.42
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "centsPerKwh": 15.91
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "centsPerKwh": 13.31
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "centsPerKwh": 23.84
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "centsPerKwh": 17.64
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "centsPerKwh": 14.63
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "centsPerKwh": 16.31
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "centsPerKwh": 19.41
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "centsPerKwh": 14.43
+    }
+  ],
+  "gasoline": {
+    "defaultPricePerGallon": 3.99,
+    "label": "U.S. average regular gasoline, week of November 9, 2026: $3.995/gal",
+    "publisher": "EIA Gasoline and Diesel Fuel Update (via FRED series GASREGW)",
+    "date": "2026-11-09",
+    "url": "https://fred.stlouisfed.org/series/GASREGW"
+  },
+  "defaults": {
+    "chargingEfficiency": 0.88,
+    "milesPerKwh": 3.5,
+    "gasMpg": 30
+  },
+  "sources": [
+    {
+      "title": "EIA Electric Power Monthly, Table 5.6.A: Average price of electricity to ultimate customers by end-use sector, by state",
+      "url": "https://www.eia.gov/electricity/monthly/epm_table_grapher.php?t=epmt_5_6_a",
+      "date": "August 2026 data, released 2026-10-23"
+    },
+    {
+      "title": "EIA Gasoline and Diesel Fuel Update (U.S. regular gasoline retail price, via FRED GASREGW)",
+      "url": "https://fred.stlouisfed.org/series/GASREGW",
+      "date": "week of 2026-11-09"
+    },
+    {
+      "title": "U.S. Department of Energy, fueleconomy.gov: official EV efficiency ratings (kWh/100 mi)",
+      "url": "https://www.fueleconomy.gov/",
+      "date": "current"
+    }
+  ]
+}

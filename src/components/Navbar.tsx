@@ -10,18 +10,18 @@ const Navbar = () => {
 
   const navMenu = [
     { title: "Home", href: "/" },
-    { title: "Categories", href: "/categories" },
-    { title: "About", href: "/about" },
-    { title: "Blogs", href: "/blog" },
+    { title: "Categories", href: "/categories/" },
+    { title: "About", href: "/about/" },
+    { title: "Blog", href: "/blog/" },
   ];
 
   return (
     <nav className=" top-0 z-[9999] border-b border-gray-200 bg-white/70 backdrop-blur-md relative">
       <div className="max-w-[100rem] mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <Image src="/logo.png" width={25} height={25} alt="Numoro logo" />
-          <h1 className="text-xl font-semibold text-gray-900">Numoro</h1>
+        <Link href="/" className="flex items-center gap-2" aria-label="Numoro home">
+          <Image src="/logo.png" width={25} height={25} alt="" priority />
+          <span className="text-xl font-semibold text-gray-900">Numoro</span>
         </Link>
 
         {/* Desktop Menu */}
@@ -38,7 +38,7 @@ const Navbar = () => {
 
           {/* Contact Button */}
           <Link
-            href="/contact"
+            href="/contact/"
             className="ml-2 rounded-lg bg-gradient-to-r from-[#008FBE] to-[#125FF9] text-white px-4 py-2 text-sm font-medium"
           >
             Contact
@@ -60,7 +60,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="absolute top-full left-0 w-full border-t border-gray-200 bg-white shadow-md md:hidden z-[9999]">
           <ul className="flex flex-col gap-4 p-4 text-gray-700">
-            {[...navMenu, { title: "Contact", href: "/contact" }].map((item) => (
+            {[...navMenu, { title: "Contact", href: "/contact/" }].map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}

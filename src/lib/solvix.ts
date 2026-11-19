@@ -292,8 +292,26 @@ function fromLocal(post: BlogPost): NumoroPost {
  * Pages let that bubble up: with ISR, Next.js then keeps serving the last
  * good version, and only a page that was never generated shows the error UI.
  */
+let warnedNotConfigured = false;
+
+/** True when all three Solvix variables are set. */
+export function isSolvixConfigured() {
+  return Boolean(
+    process.env.SOLVIX_API_URL?.trim() && process.env.SOLVIX_API_KEY?.trim() && process.env.SOLVIX_API_SECRET?.trim()
+  );
+}
+
 export async function getAllPosts(): Promise<NumoroPost[]> {
-  const raw = await fetchSolvixBlogs();
+  // Without Solvix credentials (local development, preview builds) fall back to
+  // the posts stored in the repo instead of failing the whole page. When Solvix
+  // IS configured, errors still propagate so ISR keeps the last good version.
+  let raw: unknown[] = [];
+  if (isSolvixConfigured()) {
+    raw = await fetchSolvixBlogs();
+  } else if (!warnedNotConfigured) {
+    warnedNotConfigured = true;
+    console.warn("[solvix] SOLVIX_API_URL / SOLVIX_API_KEY / SOLVIX_API_SECRET not set: showing local blog posts only.");
+  }
 
   const fromSolvix: NumoroPost[] = [];
   const seen = new Set<string>();

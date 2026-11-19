@@ -100,9 +100,9 @@ export function CategoryCard({
             <div className="mt-6 flex flex-col w-full items-center justify-center gap-3">
               <div className="text-sm text-slate-600">
                 <span className="font-semibold text-slate-900">
-                  {calculators.length}+
+                  {calculators.length}
                 </span>{" "}
-                tools inside
+                {calculators.length === 1 ? "tool" : "tools"} inside
               </div>
 
               <div className="w-full">

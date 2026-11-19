@@ -1,42 +1,56 @@
 import type { MetadataRoute } from "next";
-import { calculatorsData } from "./data";
-import { getAllPosts } from "@/lib/solvix";
+import { CALCULATORS, CATEGORIES, absoluteUrl, calculatorPath, categoryPath } from "@/lib/site/catalog";
+import { getAllPosts, type NumoroPost } from "@/lib/solvix";
+import { BLOGS } from "@/lib/blog";
 
 /**
- * /sitemap.xml — the site's pages plus every published blog post.
- * Blog entries come from Solvix, so new posts are added (and unpublished or
- * deleted ones removed) automatically when the sitemap revalidates.
+ * /sitemap.xml — every indexable page: home, hubs, calculators, blog.
+ * Blog entries come from Solvix plus the local posts in src/lib/blogPosts.ts.
+ * If Solvix is unreachable the sitemap still renders, with the local posts,
+ * so Search Console never gets an error for it.
  * URLs end with "/" because next.config uses `trailingSlash: true`.
  */
-export const revalidate = 60;
+export const revalidate = 3600;
 
-const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://numoro.net").replace(/\/+$/, "");
-
-const url = (path: string) => `${SITE_URL}${path.endsWith("/") ? path : `${path}/`}`;
+// Date the page content or the rules behind it last changed meaningfully.
+const CONTENT_UPDATED = "2026-11-19";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const pages: MetadataRoute.Sitemap = ["/", "/categories/", "/blog/", "/about/", "/contact/"].map((path) => ({
-    url: url(path),
-    changeFrequency: path === "/blog/" ? "daily" : "monthly",
-    priority: path === "/" ? 1 : 0.7,
+  const pages: MetadataRoute.Sitemap = [
+    { url: absoluteUrl("/"), changeFrequency: "weekly", priority: 1, lastModified: CONTENT_UPDATED },
+    { url: absoluteUrl("/categories/"), changeFrequency: "monthly", priority: 0.6, lastModified: CONTENT_UPDATED },
+    { url: absoluteUrl("/blog/"), changeFrequency: "weekly", priority: 0.6 },
+    { url: absoluteUrl("/about/"), changeFrequency: "yearly", priority: 0.3 },
+    { url: absoluteUrl("/contact/"), changeFrequency: "yearly", priority: 0.3 },
+  ];
+
+  const hubs: MetadataRoute.Sitemap = CATEGORIES.map((c) => ({
+    url: absoluteUrl(categoryPath(c.slug)),
+    changeFrequency: "monthly",
+    priority: 0.7,
+    lastModified: CONTENT_UPDATED,
   }));
 
-  const calculators: MetadataRoute.Sitemap = Object.entries(calculatorsData).flatMap(([category, items]) => [
-    { url: url(`/categories/${category}`), changeFrequency: "monthly" as const, priority: 0.7 },
-    ...items.map((item) => ({
-      url: url(`/categories/${category}/${item.id}`),
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
-    })),
-  ]);
+  const calculators: MetadataRoute.Sitemap = CALCULATORS.map((c) => ({
+    url: absoluteUrl(calculatorPath(c)),
+    changeFrequency: c.kind === "new" ? "weekly" : "monthly",
+    priority: c.kind === "new" ? 0.9 : 0.7,
+    ...(c.kind === "new" ? { lastModified: CONTENT_UPDATED } : {}),
+  }));
 
-  const posts = await getAllPosts();
+  let posts: Pick<NumoroPost, "slug" | "canonicalPath" | "updatedISO" | "publishISO">[];
+  try {
+    posts = await getAllPosts();
+  } catch (error) {
+    console.error("[sitemap] Solvix unavailable, listing local posts only:", (error as Error).message);
+    posts = BLOGS;
+  }
   const blogPosts: MetadataRoute.Sitemap = posts.map((post) => ({
-    url: url(post.canonicalPath ?? `/blog/${post.slug}`),
+    url: absoluteUrl(post.canonicalPath ?? `/blog/${post.slug}`),
     lastModified: post.updatedISO ?? post.publishISO,
-    changeFrequency: "weekly",
-    priority: 0.6,
+    changeFrequency: "monthly",
+    priority: 0.5,
   }));
 
-  return [...pages, ...calculators, ...blogPosts];
+  return [...pages, ...hubs, ...calculators, ...blogPosts];
 }

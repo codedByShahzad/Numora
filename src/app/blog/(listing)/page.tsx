@@ -6,19 +6,19 @@ import { getAllPosts, toListItem } from "@/lib/solvix";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Guides on Tax, Seller Fees, EV Costs & More",
   description:
-    "Clear explainers, product notes, and practical guides on health, finance, conversions, and everyday calculations — in Numoro style.",
+    "Practical Numoro guides on US overtime tax, Etsy, TikTok Shop and Stripe fees, EV charging costs and everyday maths, with sources and worked examples.",
 
   alternates: {
-    canonical: "/blog",
+    canonical: "/blog/",
   },
 
   openGraph: {
-    title: "Blog | Numoro",
+    title: "Guides on Tax, Seller Fees, EV Costs & More | Numoro",
     description:
       "Clear explainers, product notes, and practical guides on health, finance, conversions, and everyday calculations.",
-    url: "/blog",
+    url: "/blog/",
     siteName: "Numoro",
     type: "website",
     images: [
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Blog | Numoro",
+    title: "Guides on Tax, Seller Fees, EV Costs & More | Numoro",
     description:
       "Practical guides and clear explainers for calculators and everyday problem solving.",
     images: ["/og.png"],

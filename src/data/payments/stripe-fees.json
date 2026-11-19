@@ -1,0 +1,73 @@
+{
+  "id": "stripe-standard-pricing",
+  "name": "Stripe standard (pay-as-you-go) pricing",
+  "lastVerified": "2026-11-19",
+  "verificationNote": "stripe.com pricing pages could not be fetched directly from our research environment. US rates were cross-checked against several independent sources that quote stripe.com/pricing (Sept-Oct 2026); UK rates against several sources quoting stripe.com/gb/pricing (October 2026). Check Stripe's page or your Dashboard before relying on them, and use the custom override for negotiated (IC+ or volume) pricing.",
+  "countries": {
+    "US": {
+      "label": "United States",
+      "currency": "USD",
+      "effectiveFrom": "2026-09-28",
+      "methods": {
+        "card_online": {
+          "label": "Card or wallet, online",
+          "cardTypes": {
+            "domestic": { "label": "US card", "rate": 0.029, "fixed": 0.30 },
+            "international": { "label": "International card", "rate": 0.044, "fixed": 0.30, "surchargeOf": 0.015 }
+          },
+          "currencyConversionRate": 0.01,
+          "manualEntryRate": 0.005
+        },
+        "card_in_person": {
+          "label": "Card in person (Stripe Terminal)",
+          "cardTypes": {
+            "domestic": { "label": "US card", "rate": 0.027, "fixed": 0.05 },
+            "international": { "label": "International card", "rate": 0.042, "fixed": 0.05, "surchargeOf": 0.015 }
+          },
+          "currencyConversionRate": 0.01,
+          "manualEntryRate": null
+        },
+        "ach_debit": {
+          "label": "ACH Direct Debit",
+          "cardTypes": {
+            "domestic": { "label": "US bank account", "rate": 0.008, "fixed": 0, "cap": 5 }
+          },
+          "currencyConversionRate": null,
+          "manualEntryRate": null
+        }
+      },
+      "otherFees": [
+        "Disputes: $15 per dispute, plus a further $15 if you contest it",
+        "Stripe Billing, Invoicing, Tax, Radar for Fraud Teams and Instant Payouts are priced separately"
+      ]
+    },
+    "GB": {
+      "label": "United Kingdom",
+      "currency": "GBP",
+      "effectiveFrom": "2026-10-01",
+      "methods": {
+        "card_online": {
+          "label": "Card or wallet, online",
+          "cardTypes": {
+            "domestic": { "label": "Standard UK card", "rate": 0.015, "fixed": 0.20 },
+            "premium": { "label": "Premium UK card", "rate": 0.028, "fixed": 0.20 },
+            "eea": { "label": "EEA card", "rate": 0.025, "fixed": 0.20 },
+            "international": { "label": "Other international card", "rate": 0.0315, "fixed": 0.20 }
+          },
+          "currencyConversionRate": 0.02,
+          "manualEntryRate": null
+        }
+      },
+      "otherFees": [
+        "Disputes: GBP 20 per dispute, plus a further GBP 20 if you contest it",
+        "Stripe Billing, Invoicing, Tax and Instant Payouts are priced separately"
+      ]
+    }
+  },
+  "sources": [
+    { "title": "Stripe pricing (United States)", "url": "https://stripe.com/pricing", "date": "rates as quoted Sept-Oct 2026" },
+    { "title": "Stripe pricing (United Kingdom)", "url": "https://stripe.com/gb/pricing", "date": "rates as quoted Oct 2026" },
+    { "title": "NerdWallet: Stripe fees, pricing and calculator", "url": "https://www.nerdwallet.com/business/software/learn/stripe-fees", "date": "2026" },
+    { "title": "PaymentCloud: Stripe fees explained", "url": "https://paymentcloudinc.com/blog/stripe-fees/", "date": "2026" }
+  ]
+}

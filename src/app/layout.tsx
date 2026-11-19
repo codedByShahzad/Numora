@@ -3,7 +3,6 @@ import "./globals.css";
 import Footer from "@/components/Footer";
 import type { Metadata, Viewport } from "next";
 
-/* ✅ ADD THIS */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -58,8 +57,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[10000] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#125FF9] focus:shadow"
+        >
+          Skip to content
+        </a>
         <Navbar />
-        {children}
+        <main id="main">{children}</main>
         <Footer />
       </body>
     </html>

@@ -3,78 +3,22 @@
 import React, { useMemo, useState } from "react";
 import { CategoryCard } from "@/components/CategoryCard";
 import type { LucideIcon } from "lucide-react";
-import { Heart, Scale, DollarSign, Beaker, Clock } from "lucide-react";
 import { HoverBorderGradient } from "./ui/hover-border-gradient";
+import { iconForCategory } from "@/lib/site/icons";
 
-type Cat = {
+export type CategoryListItem = {
   id: string;
   title: string;
   description: string;
-  icon: LucideIcon;
+  iconName: string;
   calculators: string[];
   badge?: string;
 };
 
-const slugify = (text: string) =>
-  text
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, "and")
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-");
+type Cat = CategoryListItem & { icon: LucideIcon };
 
-export default function CategoriesClient() {
-  // ✅ Make categories stable (prevents deps changing every render)
-  const categories: Cat[] = useMemo(
-    () => [
-      {
-        id: "health",
-        title: "Health",
-        description:
-          "Calculate BMI, water intake, calories, and other health metrics for a better lifestyle.",
-        icon: Heart,
-        calculators: ["BMI Calculator", "Water Intake", "Calorie Counter"],
-        badge: "Most used",
-      },
-      {
-        id: "unit-conversions",
-        title: "Unit Conversions",
-        description:
-          "Convert between different units of measurement including height, weight, distance, and temperature.",
-        icon: Scale,
-        calculators: ["Height", "Weight", "Distance", "Temperature"],
-        badge: "Essential",
-      },
-      {
-        id: "finance",
-        title: "Finance",
-        description:
-          "Calculate loans, EMI, discounts, and currency conversions for smart financial planning.",
-        icon: DollarSign,
-        calculators: ["Loan Calculator", "EMI", "Discount", "Currency"],
-        badge: "Popular",
-      },
-      {
-        id: "maths-science",
-        title: "Maths & Science",
-        description:
-          "Advanced scientific calculations, physics formulas, and chemistry computations.",
-        icon: Beaker,
-        calculators: ["Scientific", "Physics", "Chemistry"],
-        badge: "Pro",
-      },
-      {
-        id: "everyday-life",
-        title: "Everyday Life",
-        description:
-          "Simple daily calculations including tip calculator, age calculator, and time zones.",
-        icon: Clock,
-        calculators: ["Tip Calculator", "Age Calculator", "Time Zone"],
-        badge: "Quick tools",
-      },
-    ],
-    []
-  );
+export default function CategoriesClient({ items }: { items: CategoryListItem[] }) {
+  const categories: Cat[] = useMemo(() => items.map((c) => ({ ...c, icon: iconForCategory(c.iconName) })), [items]);
 
   const [query, setQuery] = useState("");
 
@@ -118,8 +62,8 @@ export default function CategoriesClient() {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-slate-600">
-            Find the perfect calculator for your need — fast, clean, and
-            organized like a modern SaaS experience.
+            Every Numoro calculator, grouped by topic — from US tax and seller
+            fees to health, finance, conversions and everyday math.
           </p>
         </div>
 
@@ -129,7 +73,7 @@ export default function CategoriesClient() {
             {filtered.map((item) => (
               <CategoryCard
                 key={item.id}
-                id={slugify(item.id)}
+                id={item.id}
                 title={item.title}
                 description={item.description}
                 icon={item.icon}

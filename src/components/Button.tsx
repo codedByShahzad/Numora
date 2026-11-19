@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Button({ title, id }: { title: string; id: string }) {
   return (
     <Link
-      href={`/categories/${id}`}
+      href={`/${id}/`}
       className="
         flex w-full items-center justify-center
         rounded-lg

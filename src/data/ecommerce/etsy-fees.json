@@ -1,0 +1,143 @@
+{
+  "id": "etsy-seller-fees",
+  "name": "Etsy seller fees",
+  "effectiveFrom": "2026-06-22",
+  "lastVerified": "2026-11-19",
+  "global": {
+    "listingFeeUSD": 0.2,
+    "transactionFeeRate": 0.065,
+    "offsiteAdsRates": { "none": 0, "standard": 0.15, "discounted": 0.12 },
+    "offsiteAdsCapUSD": 100,
+    "currencyConversionRate": 0.025
+  },
+  "feeBases": {
+    "listing": "$0.20 USD per item sold (a multi-quantity listing is charged another $0.20 for each additional unit sold). Billed in USD and converted for sellers whose payment account is in another currency.",
+    "transaction": "6.5% of the item price x quantity + shipping charged + gift wrap/personalisation. Sales tax collected by Etsy is not included.",
+    "processing": "Percentage of the total sale price (items + shipping + gift wrap + any sales tax Etsy collects) plus a fixed fee per order. Rate depends on the country of the seller's bank account.",
+    "regulatory": "Regulatory Operating fee in some countries, charged on item price + shipping + gift wrap/personalisation.",
+    "offsiteAds": "15% of the order total (12% for shops with $10,000+ USD sales in any 365-day period) on orders attributed to an Etsy Offsite Ad, capped at $100 USD per order.",
+    "currencyConversion": "2.5% of the sale amount when the listing currency is different from the payment account currency.",
+    "vatOnFees": "Many countries require Etsy to add VAT/GST to seller fees unless the seller has given Etsy a VAT ID. Rates here are the standard national rates; edit the field if yours differs."
+  },
+  "markets": {
+    "US": {
+      "label": "United States",
+      "currency": "USD",
+      "processingRate": 0.03,
+      "processingFixed": 0.25,
+      "regulatoryRate": 0,
+      "vatOnFeesDefault": 0,
+      "usdToLocal": 1,
+      "fxNote": "Fees are billed in USD."
+    },
+    "GB": {
+      "label": "United Kingdom",
+      "currency": "GBP",
+      "processingRate": 0.04,
+      "processingFixed": 0.2,
+      "regulatoryRate": 0.0048,
+      "vatOnFeesDefault": 0.2,
+      "usdToLocal": 0.72,
+      "fxNote": "USD-billed fees converted at about 0.72 GBP per USD (derived from GOV.UK consular rates, November 2026). Edit for today's rate."
+    },
+    "CA_DOMESTIC": {
+      "label": "Canada (domestic or US orders)",
+      "currency": "CAD",
+      "processingRate": 0.03,
+      "processingFixed": 0.25,
+      "regulatoryRate": 0.005,
+      "vatOnFeesDefault": 0,
+      "usdToLocal": 1.4,
+      "fxNote": "About 1.40 CAD per USD (GOV.UK consular rates, November 2026). GST/HST on fees depends on your province and registration: enter your rate."
+    },
+    "CA_INTERNATIONAL": {
+      "label": "Canada (other international orders)",
+      "currency": "CAD",
+      "processingRate": 0.04,
+      "processingFixed": 0.25,
+      "regulatoryRate": 0.005,
+      "vatOnFeesDefault": 0,
+      "usdToLocal": 1.4,
+      "fxNote": "About 1.40 CAD per USD (GOV.UK consular rates, November 2026). GST/HST on fees depends on your province and registration: enter your rate."
+    },
+    "AU_DOMESTIC": {
+      "label": "Australia (domestic orders)",
+      "currency": "AUD",
+      "processingRate": 0.03,
+      "processingFixed": 0.25,
+      "regulatoryRate": 0,
+      "vatOnFeesDefault": 0.1,
+      "usdToLocal": 1.42,
+      "fxNote": "About 1.42 AUD per USD (GOV.UK consular rates, November 2026). Default GST on fees is Australia's 10% standard rate."
+    },
+    "AU_INTERNATIONAL": {
+      "label": "Australia (international orders)",
+      "currency": "AUD",
+      "processingRate": 0.04,
+      "processingFixed": 0.25,
+      "regulatoryRate": 0,
+      "vatOnFeesDefault": 0.1,
+      "usdToLocal": 1.42,
+      "fxNote": "About 1.42 AUD per USD (GOV.UK consular rates, November 2026). Default GST on fees is Australia's 10% standard rate."
+    },
+    "DE": {
+      "label": "Germany",
+      "currency": "EUR",
+      "processingRate": 0.04,
+      "processingFixed": 0.3,
+      "regulatoryRate": 0,
+      "vatOnFeesDefault": 0.19,
+      "usdToLocal": 0.89,
+      "fxNote": "About 0.89 EUR per USD (GOV.UK consular rates, November 2026). Default VAT on fees is Germany's 19% standard rate."
+    },
+    "FR": {
+      "label": "France",
+      "currency": "EUR",
+      "processingRate": 0.04,
+      "processingFixed": 0.3,
+      "regulatoryRate": 0.0114,
+      "vatOnFeesDefault": 0.2,
+      "usdToLocal": 0.89,
+      "fxNote": "About 0.89 EUR per USD (GOV.UK consular rates, November 2026). Default VAT on fees is France's 20% standard rate."
+    }
+  },
+  "notIncluded": [
+    "One-time shop setup fee charged to some new shops",
+    "Etsy Ads (on-site advertising) and Etsy Plus subscription",
+    "Shipping labels bought through Etsy (enter them as your shipping cost instead)",
+    "Fees on refunds, chargebacks and deposit/payout fees in some countries",
+    "Income tax on your profit"
+  ],
+  "sources": [
+    {
+      "title": "Etsy Help: Payment processing fees by country (Etsy Payments)",
+      "url": "https://help.etsy.com/hc/articles/115015628847",
+      "date": "checked 2026-11-19"
+    },
+    {
+      "title": "Etsy Help: What is a Regulatory Operating Fee?",
+      "url": "https://help.etsy.com/hc/en-us/articles/1500011073202-What-is-a-Regulatory-Operating-Fee",
+      "date": "checked 2026-11-19"
+    },
+    {
+      "title": "Etsy Help: How Etsy's Offsite Ads work",
+      "url": "https://help.etsy.com/hc/articles/360000338367",
+      "date": "checked 2026-11-19"
+    },
+    {
+      "title": "Etsy Help: What are the fees and taxes for selling on Etsy?",
+      "url": "https://help.etsy.com/hc/en-us/articles/115014483627-",
+      "date": "checked 2026-11-19"
+    },
+    {
+      "title": "Etsy Help: How VAT is collected on seller fees",
+      "url": "https://help.etsy.com/hc/en-us/articles/360040584433-How-VAT-Is-Collected-on-Seller-Fees",
+      "date": "checked 2026-11-19"
+    },
+    {
+      "title": "GOV.UK: Consular rates of exchange, November 2026 (used for default currency conversion of USD-billed fees)",
+      "url": "https://www.gov.uk/csv-preview/6ae4b56f3d3bf10d23546232/consular-exchange-rates-November-2026.csv",
+      "date": "2026-11-02"
+    }
+  ]
+}

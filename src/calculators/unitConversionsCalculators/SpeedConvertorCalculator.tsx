@@ -9,7 +9,6 @@ import {
   AlertTriangle,
   ArrowLeftRight,
   ChevronDown,
-  Sparkles,
 } from "lucide-react";
 import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 

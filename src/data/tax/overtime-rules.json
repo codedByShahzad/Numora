@@ -1,0 +1,105 @@
+{
+  "id": "us-qualified-overtime-deduction",
+  "name": "Deduction for qualified overtime compensation (No Tax on Overtime)",
+  "country": "US",
+  "legalBasis": "Internal Revenue Code section 225, added by Public Law 119-21 (One Big Beautiful Bill Act, signed July 4, 2025), section 70202",
+  "lastVerified": "2026-11-19",
+  "assumptions": [
+    "Only the FLSA-required premium (the 'half' of time-and-a-half for hours over 40 in a workweek) is qualified overtime compensation. Premiums above what the FLSA requires, and premiums paid only under state law, a union contract or employer policy, do not qualify.",
+    "Employees who are exempt from FLSA overtime cannot claim the deduction, even if they receive overtime pay.",
+    "The cap applies first; the MAGI reduction is then subtracted from the capped amount (Schedule 1-A, Part III). The reduction is $100 for each full $1,000 of MAGI above the threshold; a partial $1,000 is dropped (Schedule 1-A says to decrease the result to the next lower whole number).",
+    "Married people must file a joint return to claim the deduction; married filing separately gets $0. Qualifying surviving spouse and head of household use the $12,500 cap and $150,000 threshold, because only a joint return gets the higher amounts.",
+    "A valid Social Security number (valid for employment) must appear on the return.",
+    "The deduction reduces federal taxable income only. It does not reduce Social Security or Medicare (FICA) taxes, and state income tax treatment depends on each state.",
+    "Estimated savings = deduction x the marginal federal rate the user selects. A large deduction can move part of the income into a lower bracket, so the true saving can be slightly lower."
+  ],
+  "phaseOut": {
+    "stepAmount": 1000,
+    "reductionPerStep": 100,
+    "rounding": "floor"
+  },
+  "years": {
+    "2025": {
+      "available": true,
+      "capSingle": 12500,
+      "capJoint": 25000,
+      "thresholdSingle": 150000,
+      "thresholdJoint": 300000,
+      "reporting": "transition",
+      "reportingNote": "For 2025, employers were not required to report qualified overtime separately. Notice 2025-69 lets employees use a premium shown on a pay statement or W-2 box 14, one-third of total overtime pay paid at time-and-a-half (one-quarter at double time), or another reasonable method."
+    },
+    "2026": {
+      "available": true,
+      "capSingle": 12500,
+      "capJoint": 25000,
+      "thresholdSingle": 150000,
+      "thresholdJoint": 300000,
+      "reporting": "required",
+      "reportingNote": "From tax year 2026 employers must report qualified overtime separately, most commonly in Form W-2 box 12 with code TT (Form 1099-NEC box 1d or 1099-MISC box 14 for non-employees). Only reported amounts count; if the amount is too low, ask the employer for a corrected W-2. Form 4852 cannot be used to claim unreported overtime."
+    },
+    "2027": {
+      "available": true,
+      "capSingle": 12500,
+      "capJoint": 25000,
+      "thresholdSingle": 150000,
+      "thresholdJoint": 300000,
+      "reporting": "required",
+      "reportingNote": "Same rules as 2026 unless Congress or the IRS changes them. Amounts in section 225 are not indexed for inflation."
+    },
+    "2028": {
+      "available": true,
+      "capSingle": 12500,
+      "capJoint": 25000,
+      "thresholdSingle": 150000,
+      "thresholdJoint": 300000,
+      "reporting": "required",
+      "reportingNote": "2028 is the last tax year the deduction applies under current law."
+    }
+  },
+  "marginalRates": [
+    0.1,
+    0.12,
+    0.22,
+    0.24,
+    0.32,
+    0.35,
+    0.37
+  ],
+  "sources": [
+    {
+      "title": "IRS FS-2026-01: Questions and answers about the new deduction for qualified overtime compensation (superseded in part by FS-2026-13, August 2026)",
+      "url": "https://www.irs.gov/newsroom/questions-and-answers-about-the-new-deduction-for-qualified-overtime-compensation",
+      "date": "2026-01"
+    },
+    {
+      "title": "IRS: What to know about the No Tax on Overtime deduction",
+      "url": "https://www.irs.gov/newsroom/what-to-know-about-the-no-tax-on-overtime-deduction",
+      "date": "2026-03-05"
+    },
+    {
+      "title": "IRS Tax Tip 2026-06: How to take advantage of no tax on tips and overtime",
+      "url": "https://www.irs.gov/node/154881",
+      "date": "2026-01-26"
+    },
+    {
+      "title": "IRS: Treasury and IRS guidance for individuals who received tips or overtime during tax year 2025 (Notice 2025-69)",
+      "url": "https://www.irs.gov/node/152641",
+      "date": "2025-11-21"
+    },
+    {
+      "title": "IRS FS-2026-04: Schedule 1-A, Additional Deductions - what to know about the new form",
+      "url": "https://www.irs.gov/node/157821",
+      "date": "2026-03"
+    },
+    {
+      "title": "Schedule 1-A (Form 1040), Additional Deductions (PDF)",
+      "url": "https://www.irs.gov/pub/irs-pdf/f1040s1a.pdf",
+      "date": "2025 tax year"
+    },
+    {
+      "title": "U.S. Department of Labor, Fact Sheet #17A: Exemptions for executive, administrative, professional, computer and outside sales employees",
+      "url": "https://www.dol.gov/agencies/whd/fact-sheets/17a-overtime",
+      "date": "current"
+    }
+  ]
+}

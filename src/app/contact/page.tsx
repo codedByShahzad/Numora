@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Numoro. Have questions, feedback, or suggestions? Fill out our contact form and we’ll respond as soon as possible.",
+    "Contact the Numoro team to report an outdated fee or tax rate, suggest a calculator, share feedback or ask a question, by form or at support@numoro.net.",
   keywords: [
     "Numoro contact",
     "calculator support",
@@ -23,12 +23,12 @@ export const metadata: Metadata = {
     "calculator request",
     "partnerships",
   ],
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: "/contact/" },
   openGraph: {
     title: "Contact Numoro",
     description:
       "Have questions, feedback, or want a new calculator added? Contact Numoro and we’ll reply as soon as possible.",
-    url: "/contact",
+    url: "/contact/",
     siteName: "Numoro",
     type: "website",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Numoro – Contact" }],
@@ -57,7 +57,7 @@ export default function ContactPage() {
         <div className="absolute -bottom-20 left-0 h-40 w-40 rounded-full bg-[#008FBE]/10 blur-3xl" />
       </div>
 
-      <main className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-8">
+      <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14 lg:px-8 lg:py-8">
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-medium text-gray-700 shadow-sm">
@@ -183,7 +183,7 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 }

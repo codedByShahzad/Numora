@@ -6,6 +6,8 @@ import { CalendarDays, Clock, Folder, ArrowUpRight, UserRound } from "lucide-rea
 import { BLOGS } from "../../../lib/blog";
 import type { BlogBlock, BlogSection } from "../../../lib/blog";
 import { getAllPosts, getPostBySlug } from "@/lib/solvix";
+import type { ReactNode } from "react";
+import { calculatorPath, getCalculatorById } from "@/lib/site/catalog";
 
 import TocClient from "./TocClient";
 import RichContentRenderer from "./RichContent";
@@ -138,6 +140,45 @@ function GridBackground() {
   );
 }
 
+
+/**
+ * Inline markup for local posts: [text](/path-or-url) links and **bold**.
+ * Internal links use next/link; external ones open in a new tab.
+ */
+function renderInline(text: string): ReactNode[] {
+  const out: ReactNode[] = [];
+  const re = /\[([^\]]+)\]\(([^)\s]+)\)|\*\*([^*]+)\*\*/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  let i = 0;
+  while ((m = re.exec(text))) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    if (m[1] && m[2]) {
+      const href = m[2];
+      out.push(
+        href.startsWith("/") ? (
+          <Link key={i++} href={href} className="font-medium text-blue-700 underline-offset-2 hover:underline">
+            {m[1]}
+          </Link>
+        ) : (
+          <a key={i++} href={href} target="_blank" rel="noopener noreferrer" className="font-medium text-blue-700 underline-offset-2 hover:underline">
+            {m[1]}
+          </a>
+        )
+      );
+    } else if (m[3]) {
+      out.push(
+        <strong key={i++} className="font-semibold text-slate-800">
+          {m[3]}
+        </strong>
+      );
+    }
+    last = re.lastIndex;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
+}
+
 function SectionRenderer({ section }: { section: BlogSection }) {
   return (
     <section id={section.id} className="scroll-mt-24">
@@ -150,7 +191,7 @@ function SectionRenderer({ section }: { section: BlogSection }) {
           if (block.type === "p") {
             return (
               <p key={idx} className="text-slate-600 leading-relaxed">
-                {block.text}
+                {renderInline(block.text)}
               </p>
             );
           }
@@ -170,7 +211,7 @@ function SectionRenderer({ section }: { section: BlogSection }) {
             return (
               <ul key={idx} className="list-disc pl-5 space-y-2 text-slate-600">
                 {block.items.map((it: string, i: number) => (
-                  <li key={i}>{it}</li>
+                  <li key={i}>{renderInline(it)}</li>
                 ))}
               </ul>
             );
@@ -182,7 +223,7 @@ function SectionRenderer({ section }: { section: BlogSection }) {
                 key={idx}
                 className="rounded-2xl border border-blue-100 bg-blue-50/60 p-4 text-slate-700"
               >
-                <p className="leading-relaxed">{block.text}</p>
+                <p className="leading-relaxed">{renderInline(block.text)}</p>
               </div>
             );
           }
@@ -204,6 +245,10 @@ export default async function BlogDetailPage({
   const posts = await getAllPosts();
   const blog = posts.find((b) => b.slug === slug);
   if (!blog) return notFound();
+
+  const calculators = (blog.calculatorIds ?? [])
+    .map((id) => getCalculatorById(id))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c));
 
   // `posts` is already sorted newest first.
   const related = posts
@@ -298,7 +343,7 @@ export default async function BlogDetailPage({
         {/* ✅ MOBILE / TABLET: Post details + TOC inline (no sticky) */}
         <div className="mt-6 lg:hidden space-y-4">
           <div className="rounded-3xl border border-slate-200 bg-white/80 shadow-sm p-5">
-            <h3 className="text-sm font-semibold text-slate-900">Post details</h3>
+            <p className="text-sm font-semibold text-slate-900">Post details</p>
 
             <div className="mt-4 space-y-3 text-sm">
               <div className="flex items-start justify-between gap-3">
@@ -340,9 +385,9 @@ export default async function BlogDetailPage({
           <div className="rounded-3xl border border-slate-200 bg-white/80 shadow-sm p-5">
             <details className="group">
               <summary className="cursor-pointer list-none flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-slate-900">
+                <span className="text-sm font-semibold text-slate-900">
                   Table of contents
-                </h3>
+                </span>
                 <span className="text-xs text-slate-500 group-open:hidden">
                   Tap to open
                 </span>
@@ -363,6 +408,23 @@ export default async function BlogDetailPage({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             {/* LEFT */}
             <div className="lg:col-span-8">
+              {calculators.length > 0 && (
+                <div className="mb-6 rounded-3xl border border-blue-100 bg-blue-50/60 p-5">
+                  <p className="text-sm font-semibold text-slate-900">Run your own numbers</p>
+                  <ul className="mt-2 flex flex-wrap gap-2">
+                    {calculators.map((c) => (
+                      <li key={c.id}>
+                        <Link
+                          href={calculatorPath(c)}
+                          className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#008FBE] to-[#125FF9] px-4 py-2 text-sm font-medium text-white hover:shadow-md"
+                        >
+                          {c.name} <ArrowUpRight className="h-4 w-4" />
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div className="rounded-3xl border border-slate-200 bg-white/80 shadow-sm p-5 sm:p-6 md:p-8">
                 {blog.rich ? (
                   <RichContentRenderer content={blog.rich} />
@@ -379,9 +441,9 @@ export default async function BlogDetailPage({
             {/* RIGHT (desktop only sticky) */}
             <aside className="hidden lg:block lg:col-span-4 self-start lg:sticky lg:top-24">
               <div className="rounded-3xl border border-slate-200 bg-white/80 shadow-sm p-6">
-                <h3 className="text-sm font-semibold text-slate-900">
+                <p className="text-sm font-semibold text-slate-900">
                   Post details
-                </h3>
+                </p>
 
                 <div className="mt-4 space-y-3 text-sm">
                   <div className="flex items-start justify-between gap-3">
@@ -429,9 +491,9 @@ export default async function BlogDetailPage({
 
                 <div className="mt-6 h-px bg-slate-200/70" />
 
-                <h3 className="mt-6 text-sm font-semibold text-slate-900">
+                <p className="mt-6 text-sm font-semibold text-slate-900">
                   Table of contents
-                </h3>
+                </p>
 
                 <TocClient sections={tocSections} />
 
@@ -450,12 +512,12 @@ export default async function BlogDetailPage({
         {related.length > 0 && (
           <section className="mt-10">
             <div className="flex items-center justify-between gap-4">
-              <h3 className="text-lg font-semibold text-slate-900">
+              <h2 className="text-lg font-semibold text-slate-900">
                 Related posts
-              </h3>
+              </h2>
 
               <Link
-                href="/blog"
+                href="/blog/"
                 className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#008FBE] to-[#125FF9] px-4 py-2 text-sm font-medium text-white hover:shadow-md"
               >
                 <span>View all</span>
@@ -467,7 +529,7 @@ export default async function BlogDetailPage({
               {related.map((p) => (
                 <Link
                   key={p.slug}
-                  href={`/blog/${p.slug}`}
+                  href={`/blog/${p.slug}/`}
                   className="group rounded-3xl border border-slate-200 bg-white/80 shadow-sm overflow-hidden hover:border-blue-200 hover:bg-blue-50/30 transition"
                 >
                   <div className="relative h-40">
@@ -486,9 +548,9 @@ export default async function BlogDetailPage({
                   </div>
 
                   <div className="p-5">
-                    <h4 className="text-base font-semibold text-slate-900 group-hover:text-blue-700 transition line-clamp-2">
+                    <h3 className="text-base font-semibold text-slate-900 group-hover:text-blue-700 transition line-clamp-2">
                       {p.title}
-                    </h4>
+                    </h3>
                     <p className="mt-2 text-sm text-slate-600 line-clamp-2">
                       {p.subtitle}
                     </p>

@@ -1,0 +1,765 @@
+{
+  "categories": [
+    {
+      "slug": "tax",
+      "name": "Tax & Pay",
+      "icon": "Receipt",
+      "badge": "New",
+      "short": "US paycheck and tax deduction calculators built on IRS rules.",
+      "metaTitle": "Tax & Pay Calculators: US Deductions and Paychecks",
+      "metaDescription": "Free US tax and pay calculators built on current IRS rules, starting with the No Tax on Overtime deduction, with sources and review dates on every page.",
+      "intro": [
+        "Tax & Pay is where Numoro keeps calculators for US paychecks and federal tax deductions. Each tool follows the current law and IRS guidance for the tax year you pick, shows the formula and every step behind the number, and lists the official sources with the date the rules were last checked.",
+        "The first calculator covers the deduction for qualified overtime under the 2025 tax law, often called \"no tax on overtime\". It works out the half-time premium, applies the $12,500 or $25,000 cap and the income phase-out, and estimates the federal tax you save. These are estimates to help you plan and check your W-2, not tax advice: confirm the final figure with your tax software or a tax professional."
+      ],
+      "guide": [
+        [
+          "I worked overtime and want to know what I can deduct",
+          "no-tax-on-overtime"
+        ]
+      ]
+    },
+    {
+      "slug": "ecommerce-fees",
+      "name": "E-commerce Fees",
+      "icon": "ShoppingBag",
+      "badge": "New",
+      "short": "Marketplace fee and profit calculators for online sellers.",
+      "metaTitle": "E-commerce Fee Calculators for Etsy & TikTok Shop",
+      "metaDescription": "Marketplace fee calculators for online sellers. See Etsy and TikTok Shop fees line by line, your real profit and margin, and the price you need to charge.",
+      "intro": [
+        "Marketplace fees are easy to underestimate: a sale that looks profitable at list price can lose money once transaction, payment processing, advertising and affiliate fees are taken out. The E-commerce Fees calculators show every deduction on a single order, then your payout, profit and margin after product and shipping costs.",
+        "Each calculator uses the platform's published rates for the seller's country, with the date we last checked them, and lets you override a rate when your account differs. Reverse mode answers the question most sellers really have: what price do I need to charge to keep a set profit? Fees change, so treat the results as estimates and compare them with your platform statements."
+      ],
+      "guide": [
+        [
+          "I sell handmade or vintage items on Etsy",
+          "etsy-fees"
+        ],
+        [
+          "I sell through TikTok Shop with creator affiliates",
+          "tiktok-shop-fees"
+        ]
+      ]
+    },
+    {
+      "slug": "business",
+      "name": "Business & Freelance",
+      "icon": "Briefcase",
+      "badge": "New",
+      "short": "Payment fees and pricing tools for freelancers and small businesses.",
+      "metaTitle": "Business & Freelance Calculators: Payment Fees",
+      "metaDescription": "Calculators for freelancers and small businesses, starting with Stripe fees, net payouts, the amount to charge to receive a target and a PayPal comparison.",
+      "intro": [
+        "Business & Freelance gathers calculators for people who invoice clients, sell online or run a small business. The first tool is a Stripe fee calculator: it shows the processing fee on a payment for a US or UK Stripe account, including international card, currency conversion and manual entry surcharges, and what actually lands in your account.",
+        "Reverse mode tells you how much to charge so you receive an exact amount after fees, which is useful when quoting a client or passing card fees on. A side-by-side comparison shows what the same payment would cost through PayPal. Rates come from each provider's published standard pricing, dated on the page, and you can enter your own negotiated rate instead."
+      ],
+      "guide": [
+        [
+          "I want to know what Stripe will take from a payment",
+          "stripe-fees"
+        ],
+        [
+          "I need to charge enough to receive an exact amount",
+          "stripe-fees"
+        ]
+      ]
+    },
+    {
+      "slug": "energy",
+      "name": "Energy & EV",
+      "icon": "Zap",
+      "badge": "New",
+      "short": "Electricity and electric-vehicle cost calculators.",
+      "metaTitle": "Energy & EV Calculators: Charging and Power Costs",
+      "metaDescription": "Energy and EV calculators with dated state electricity prices: work out EV charging cost per session, per mile and per month, and compare it with gasoline.",
+      "intro": [
+        "Energy & EV is for working out what electricity really costs you. The EV Charging Cost Calculator turns your battery size, charge level and electricity rate into the cost of one charging session, the cost per mile and per 100 miles, and a weekly, monthly and yearly running cost based on how far you drive.",
+        "It includes average residential electricity prices for every US state from the U.S. Energy Information Administration, with the month the data covers, and it accounts for the energy lost while charging. An optional comparison shows what the same miles would cost in a gasoline car. For the most accurate answer, type in the rate from your own electricity bill."
+      ],
+      "guide": [
+        [
+          "I charge my EV at home and want the real cost",
+          "ev-charging-cost"
+        ],
+        [
+          "I'm comparing an EV with a gas car",
+          "ev-charging-cost"
+        ]
+      ]
+    },
+    {
+      "slug": "health",
+      "name": "Health",
+      "icon": "Heart",
+      "badge": "Most used",
+      "legacy": "/categories/health",
+      "short": "BMI, calories, hydration and heart-rate tools.",
+      "metaTitle": "Health Calculators: BMI, Calories, Water & Heart",
+      "metaDescription": "Free health calculators for BMI, daily calories, water intake, body fat, steps to calories and heart-rate zones, using standard published formulas.",
+      "intro": [
+        "Numoro's health calculators turn a few measurements into numbers that are useful for planning: Body Mass Index, daily calorie needs, how much water to drink, estimated body fat, calories burned from steps and heart-rate training zones. Each one uses a standard, widely published formula and shows a clear breakdown of the result.",
+        "These tools give general estimates for healthy adults. They can't account for medical conditions, pregnancy, medications or individual differences, so use them as a starting point and talk to a doctor or registered dietitian before making significant changes to your diet or exercise. Each page lists the inputs it needs, and nothing you type is stored or sent anywhere."
+      ]
+    },
+    {
+      "slug": "finance",
+      "name": "Finance",
+      "icon": "DollarSign",
+      "badge": "Popular",
+      "legacy": "/categories/finance",
+      "short": "Interest, loans, mortgages and investments.",
+      "metaTitle": "Finance Calculators: Loans, Interest & Mortgages",
+      "metaDescription": "Free finance calculators for simple and compound interest, loan EMIs, mortgage payments, investment returns and currency conversion, with clear breakdowns.",
+      "intro": [
+        "The finance calculators cover the everyday money questions: how much interest a loan or deposit earns, what a monthly loan or mortgage payment will be, and how an investment could grow with regular contributions. Each one shows the result with a breakdown of interest versus principal or contributions versus growth.",
+        "Results are estimates based on the numbers you enter and the standard formulas for each product. Lenders may add fees, round payments differently or use other compounding rules, so check the official quote before you sign anything. For marketplace and payment fees, see the E-commerce Fees and Business & Freelance calculators, which use dated fee schedules."
+      ]
+    },
+    {
+      "slug": "unit-conversions",
+      "name": "Unit Conversions",
+      "icon": "Scale",
+      "badge": "Instant",
+      "legacy": "/categories/unit-conversions",
+      "short": "Length, weight, temperature, speed, area and volume.",
+      "metaTitle": "Unit Converters: Length, Weight, Temperature & More",
+      "metaDescription": "Free unit converters for length, weight, temperature, speed, area and volume, using exact conversion factors between metric and imperial units.",
+      "intro": [
+        "Numoro's unit converters switch between metric and imperial units for length, weight, temperature, speed, area and volume. They use exact, standard conversion factors (for example, one inch is exactly 2.54 centimeters) and format the result so it's easy to copy.",
+        "Use them for recipes, travel, shopping, homework or engineering estimates. For very large or very small numbers, check the number of decimal places you need before relying on the rounded display. Every converter runs in your browser, so nothing you type is sent anywhere, and each page explains which units it supports. If you need a unit that isn't listed, the Maths & Science calculators can help with the arithmetic."
+      ]
+    },
+    {
+      "slug": "maths-science",
+      "name": "Maths & Science",
+      "icon": "Beaker",
+      "badge": "Power tools",
+      "legacy": "/categories/maths-science",
+      "short": "Scientific, algebra, geometry, physics and chemistry.",
+      "metaTitle": "Maths & Science Calculators: Algebra & Geometry",
+      "metaDescription": "Free maths and science calculators: a scientific calculator, algebra and quadratic solver, geometry formulas, physics equations and chemistry molarity tools.",
+      "intro": [
+        "The maths and science calculators are built for students, teachers and anyone checking their working. There's a full scientific calculator, an algebra solver for linear and quadratic equations, geometry formulas for common 2D and 3D shapes, and physics and chemistry tools that keep track of units.",
+        "Where it helps, the calculators show the formula and the steps, so you can follow the method rather than just copy an answer. Numbers are worked out in your browser with standard formulas, and results are rounded only for display. If you are learning a topic, try the problem by hand first, then use the calculator to check each step and spot where a mistake crept in."
+      ]
+    },
+    {
+      "slug": "everyday-life",
+      "name": "Everyday Life",
+      "icon": "Clock",
+      "badge": "Daily",
+      "legacy": "/categories/everyday-life",
+      "short": "Tips, age, dates, discounts, GPA and time zones.",
+      "metaTitle": "Everyday Calculators: Tip, Age, Discount & Dates",
+      "metaDescription": "Free everyday calculators for splitting a tip, finding your exact age, sale prices and discounts, GPA, days between dates and converting time zones.",
+      "intro": [
+        "Everyday Life collects the small calculations that come up all the time: splitting a restaurant bill and tip, finding an exact age, working out a sale price, counting days between dates, converting a meeting time to another time zone and calculating a grade point average.",
+        "They're quick to use on a phone, need no sign-up and run entirely in your browser, so nothing you enter is saved. The date tools follow the Gregorian calendar, including leap years, and the time-zone converter uses the time-zone rules built into your browser, so daylight-saving time is taken into account."
+      ]
+    }
+  ],
+  "calculators": [
+    {
+      "id": "no-tax-on-overtime",
+      "category": "tax",
+      "slug": "no-tax-on-overtime-calculator",
+      "name": "No Tax on Overtime Calculator",
+      "short": "Estimate your qualified overtime deduction, phase-out and federal tax saved.",
+      "metaTitle": "No Tax on Overtime Calculator 2026: Your Deduction",
+      "metaDescription": "Estimate your no tax on overtime deduction for 2025–2028. Enter your rate, FLSA overtime hours or W-2 code TT amount and MAGI to see the tax you save.",
+      "legacyPaths": [],
+      "related": [
+        "compound-interest",
+        "investment-return",
+        "loan-emi"
+      ],
+      "keywords": [
+        "overtime tax",
+        "obbba overtime",
+        "schedule 1-a",
+        "w-2 code tt",
+        "overtime deduction",
+        "qualified overtime"
+      ],
+      "kind": "new"
+    },
+    {
+      "id": "etsy-fees",
+      "category": "ecommerce-fees",
+      "slug": "etsy-fee-calculator",
+      "name": "Etsy Fee Calculator",
+      "short": "Every Etsy fee, your profit and margin, plus the price to charge for a target profit.",
+      "metaTitle": "Etsy Fee Calculator: Fees, Profit & Price to Charge",
+      "metaDescription": "Calculate Etsy listing, transaction, processing, Offsite Ads and regulatory fees for US, UK and other sellers, then see profit, margin and the price to charge.",
+      "legacyPaths": [],
+      "related": [
+        "tiktok-shop-fees",
+        "stripe-fees",
+        "discount",
+        "currency-converter"
+      ],
+      "keywords": [
+        "etsy fees",
+        "etsy profit",
+        "etsy seller fees",
+        "offsite ads",
+        "etsy uk fees"
+      ],
+      "kind": "new"
+    },
+    {
+      "id": "tiktok-shop-fees",
+      "category": "ecommerce-fees",
+      "slug": "tiktok-shop-fee-calculator",
+      "name": "TikTok Shop Fee Calculator",
+      "short": "Commission, affiliate payouts, shipping and profit per order for US and UK sellers.",
+      "metaTitle": "TikTok Shop Fee Calculator: Commission & Profit",
+      "metaDescription": "Work out TikTok Shop referral or commission fees, creator affiliate payouts, shipping and product costs to see your payout and profit per order in the US or UK.",
+      "legacyPaths": [],
+      "related": [
+        "etsy-fees",
+        "stripe-fees",
+        "discount"
+      ],
+      "keywords": [
+        "tiktok shop fees",
+        "tiktok commission",
+        "tiktok shop profit",
+        "affiliate commission",
+        "tiktok referral fee"
+      ],
+      "kind": "new"
+    },
+    {
+      "id": "stripe-fees",
+      "category": "business",
+      "slug": "stripe-fee-calculator",
+      "name": "Stripe Fee Calculator",
+      "short": "Stripe fees for US and UK accounts, what you receive, and what to charge to net a set amount.",
+      "metaTitle": "Stripe Fee Calculator: Fees, Net & Amount to Charge",
+      "metaDescription": "See Stripe's fee on any payment for US or UK accounts, with international card, currency conversion and manual entry costs, plus the amount to charge to net X.",
+      "legacyPaths": [],
+      "related": [
+        "etsy-fees",
+        "tiktok-shop-fees",
+        "currency-converter",
+        "discount"
+      ],
+      "keywords": [
+        "stripe fees",
+        "stripe processing fee",
+        "stripe vs paypal",
+        "stripe uk fees",
+        "reverse stripe fee"
+      ],
+      "kind": "new"
+    },
+    {
+      "id": "ev-charging-cost",
+      "category": "energy",
+      "slug": "ev-charging-cost-calculator",
+      "name": "EV Charging Cost Calculator",
+      "short": "Cost per charge, per mile and per month at home, with US state electricity prices and a gas comparison.",
+      "metaTitle": "EV Charging Cost Calculator: Cost per Charge & Mile",
+      "metaDescription": "Find what it costs to charge an electric car at home. Enter battery size, charge level and your state's power price to see cost per charge, mile and month.",
+      "legacyPaths": [],
+      "related": [
+        "loan-emi",
+        "length",
+        "discount"
+      ],
+      "keywords": [
+        "ev charging cost",
+        "cost to charge electric car",
+        "ev vs gas",
+        "electricity cost per kwh",
+        "charging cost by state"
+      ],
+      "kind": "new"
+    },
+    {
+      "id": "bmi",
+      "category": "health",
+      "slug": "bmi-calculator",
+      "name": "BMI Calculator",
+      "short": "Body Mass Index and weight category for adults.",
+      "metaTitle": "BMI Calculator: Body Mass Index for Adults",
+      "metaDescription": "Calculate your Body Mass Index from height and weight in metric or imperial units and see which adult BMI category you fall into, with a clear breakdown.",
+      "legacyPaths": [
+        "/categories/health/bmi"
+      ],
+      "related": [],
+      "keywords": [
+        "body mass index",
+        "weight height bmi"
+      ],
+      "kind": "existing"
+    },
+    {
+      "id": "water-intake",
+      "category": "health",
+      "slug": "water-intake-calculator",
+      "name": "Water Intake Calculator",
+      "short": "How much water to drink each day.",
+      "metaTitle": "Water Intake Calculator: Daily Water Needs",
+      "metaDescription": "Estimate how much water to drink per day from your body weight and activity level, shown in litres and glasses so you can spread your intake across the day.",
+      "legacyPaths": [
+        "/categories/health/water-intake"
+      ],
+      "related": [],
+      "keywords": [
+        "hydration",
+        "water per day",
+        "drink water"
+      ],
+      "kind": "existing"
+    },
+    {
+      "id": "calorie",
+      "category": "health",
+      "slug": "calorie-calculator",
+      "name": "Calorie Calculator",
+      "short": "Daily calories for maintenance, weight loss or gain.",
+      "metaTitle": "Calorie Calculator: TDEE, Weight Loss & Gain",
+      "metaDescription": "Estimate your daily calorie needs (TDEE) from age, sex, height, weight and activity, plus calorie targets for losing or gaining weight at a steady, safer pace.",
+      "legacyPaths": [
+        "/categories/health/calorie"
+      ],
+      "related": [],
+      "keywords": [
+        "calories",
+        "tdee",
+        "bmr",
+        "calorie needs"
+      ],
+      "kind": "existing"
+    },
+    {
+      "id": "body-fat",
+      "category": "health",
+      "slug": "body-fat-calculator",
+      "name": "Body Fat Calculator",
+      "short": "Body fat percentage with the U.S. Navy method.",
+      "metaTitle": "Body Fat Calculator: U.S. Navy Method",
+      "metaDescription": "Estimate your body fat percentage with the U.S. Navy tape-measure method using height, neck, waist and hip measurements, and see your fat and lean mass split.",
+      "legacyPaths": [
+        "/categories/health/body-fat"
+      ],
+      "related": [],
+      "keywords": [
+        "body fat percentage",
+        "navy method",
+        "bf%"
+      ],
+      "kind": "existing"
+    },
+    {
+      "id": "steps-to-calories",
+      "category": "health",
+      "slug": "steps-to-calories-calculator",
+      "name": "Steps to Calories Calculator",
+      "short": "Calories burned from your daily steps.",
+      "metaTitle": "Steps to Calories Calculator: Calories from Steps",
+      "metaDescription": "Convert your daily step count into an estimate of calories burned using your body weight, a quick way to see what a walk adds to your activity for the day.",
+      "legacyPaths": [
+        "/categories/health/steps-to-calories"
+      ],
+      "related": [],
+      "keywords": [
+        "steps calories",
+        "walking calories",
+        "pedometer"
+      ],
+      "kind": "existing"
+    },
+    {
+      "id": "heart-rate",
+      "category": "health",
+      "slug": "heart-rate-calculator",
+      "name": "Heart Rate Calculator",
+      "short": "Maximum heart rate and training zones.",
+      "metaTitle": "Heart Rate Zone Calculator: Max & Target HR",
+      "metaDescription": "Find your estimated maximum heart rate and five target training zones from your age and resting heart rate, using the Karvonen heart-rate reserve method.",
+      "legacyPaths": [
+        "/categories/health/heart-rate"
+      ],
+      "related": [],
+      "keywords": [
+        "hr zones",
+        "target heart rate",
+        "max heart rate",
+        "pulse"
+      ],
+      "kind": "existing"
+    },
+    {
+      "id": "length",
+      "category": "unit-conversions",
+      "slug": "length-converter",
+      "name": "Length Converter",
+      "short": "Length conversions.",
+      "metaTitle": "Length Converter: Meters, Feet, Miles & More",
+      "metaDescription": "Convert meters, kilometers, miles, feet, inches and centimeters instantly with precise conversion factors and clean, copy-ready results for any length.",
+      "legacyPaths": [
+        "/categories/unit-conversions/length"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "weight",
+      "category": "unit-conversions",
+      "slug": "weight-converter",
+      "name": "Weight Converter",
+      "short": "Weight conversions.",
+      "metaTitle": "Weight Converter: kg, lb, oz & Grams",
+      "metaDescription": "Convert kilograms, grams, pounds and ounces instantly with exact conversion factors, ideal for cooking, shipping parcels, fitness tracking and everyday weights.",
+      "legacyPaths": [
+        "/categories/unit-conversions/weight"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "temperature",
+      "category": "unit-conversions",
+      "slug": "temperature-converter",
+      "name": "Temperature Converter",
+      "short": "Temperature conversions.",
+      "metaTitle": "Temperature Converter: Celsius, Fahrenheit, Kelvin",
+      "metaDescription": "Convert between Celsius, Fahrenheit and Kelvin instantly, with the formula shown and checks that stop impossible values below absolute zero.",
+      "legacyPaths": [
+        "/categories/unit-conversions/temperature"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "speed",
+      "category": "unit-conversions",
+      "slug": "speed-converter",
+      "name": "Speed Converter",
+      "short": "Speed conversions.",
+      "metaTitle": "Speed Converter: km/h, mph, m/s & Knots",
+      "metaDescription": "Convert speed between km/h, mph, meters per second and knots instantly with exact factors, useful for driving, running, sailing and physics homework.",
+      "legacyPaths": [
+        "/categories/unit-conversions/speed"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "area",
+      "category": "unit-conversions",
+      "slug": "area-converter",
+      "name": "Area Converter",
+      "short": "Area conversions.",
+      "metaTitle": "Area Converter: Square Feet, Meters & Acres",
+      "metaDescription": "Convert square meters, square feet, acres, hectares and more instantly with exact factors, for land, rooms, flooring and property listings worldwide.",
+      "legacyPaths": [
+        "/categories/unit-conversions/area"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "volume",
+      "category": "unit-conversions",
+      "slug": "volume-converter",
+      "name": "Volume Converter",
+      "short": "Volume conversions.",
+      "metaTitle": "Volume Converter: Liters, Gallons & Cups",
+      "metaDescription": "Convert liters, milliliters, US gallons, cubic meters and kitchen measures like cups and tablespoons instantly, with exact conversion factors.",
+      "legacyPaths": [
+        "/categories/unit-conversions/volume"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "simple-interest",
+      "category": "finance",
+      "slug": "simple-interest-calculator",
+      "name": "Simple Interest Calculator",
+      "short": "Interest on a principal over time.",
+      "metaTitle": "Simple Interest Calculator: Interest & Total",
+      "metaDescription": "Calculate simple interest earned or owed from principal, annual rate and time in years or months, with the total amount and the I = P × R × T formula shown.",
+      "legacyPaths": [
+        "/categories/finance/simple-interest"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "compound-interest",
+      "category": "finance",
+      "slug": "compound-interest-calculator",
+      "name": "Compound Interest Calculator",
+      "short": "Growth with compounding and monthly deposits.",
+      "metaTitle": "Compound Interest Calculator with Monthly Deposits",
+      "metaDescription": "See how savings grow with compound interest. Enter principal, rate, years, compounding frequency and optional monthly deposits to get future value and interest.",
+      "legacyPaths": [
+        "/categories/finance/compound-interest"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "loan-emi",
+      "category": "finance",
+      "slug": "loan-emi-calculator",
+      "name": "Loan EMI Calculator",
+      "short": "Monthly EMI, total interest and total payment.",
+      "metaTitle": "Loan EMI Calculator: Monthly Payment & Interest",
+      "metaDescription": "Calculate the monthly EMI for a car, personal or home loan from amount, interest rate and tenure, with total interest, total payment and first-month split.",
+      "legacyPaths": [
+        "/categories/finance/loan-emi"
+      ],
+      "related": [],
+      "keywords": [
+        "emi",
+        "car loan",
+        "personal loan"
+      ],
+      "kind": "existing"
+    },
+    {
+      "id": "mortgage",
+      "category": "finance",
+      "slug": "mortgage-calculator",
+      "name": "Mortgage Calculator",
+      "short": "Monthly payment with taxes, insurance and PMI.",
+      "metaTitle": "Mortgage Calculator: Payment with Taxes & PMI",
+      "metaDescription": "Estimate your monthly mortgage payment including principal and interest, property tax, home insurance and PMI, from home price, down payment, rate and term.",
+      "legacyPaths": [
+        "/categories/finance/mortgage"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "investment-return",
+      "category": "finance",
+      "slug": "investment-return-calculator",
+      "name": "Investment Return Calculator",
+      "short": "Future value, contributions and profit.",
+      "metaTitle": "Investment Return Calculator: Future Value & ROI",
+      "metaDescription": "Project the future value of an investment from starting amount, regular contributions, expected return and years, with total contributed and total growth.",
+      "legacyPaths": [
+        "/categories/finance/investment-return"
+      ],
+      "related": [],
+      "keywords": [
+        "roi"
+      ],
+      "kind": "existing"
+    },
+    {
+      "id": "currency-converter",
+      "category": "finance",
+      "slug": "currency-converter",
+      "name": "Currency Converter",
+      "short": "Convert major currencies with reference rates.",
+      "metaTitle": "Currency Converter: Quick Reference Estimates",
+      "metaDescription": "Convert between major world currencies such as USD, EUR, GBP and PKR using fixed reference rates for quick estimates. Check your bank for live rates and fees.",
+      "legacyPaths": [
+        "/categories/finance/currency-converter"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "scientific",
+      "category": "maths-science",
+      "slug": "scientific-calculator",
+      "name": "Scientific Calculator",
+      "short": "Trig, logs, powers and constants.",
+      "metaTitle": "Scientific Calculator Online: Trig, Logs & Powers",
+      "metaDescription": "Free online scientific calculator with trigonometry in degrees or radians, logarithms, powers, roots, factorials and constants like pi, right in your browser.",
+      "legacyPaths": [
+        "/categories/maths-science/scientific"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "physics",
+      "category": "maths-science",
+      "slug": "physics-calculator",
+      "name": "Physics Calculator",
+      "short": "Motion, force and energy formulas with units.",
+      "metaTitle": "Physics Calculator: Force, Motion & Energy",
+      "metaDescription": "Solve common physics formulas such as speed, acceleration, force, work, kinetic and potential energy and power. Pick a formula, enter values, get units.",
+      "legacyPaths": [
+        "/categories/maths-science/physics"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "chemistry",
+      "category": "maths-science",
+      "slug": "chemistry-calculator",
+      "name": "Chemistry Calculator",
+      "short": "Molarity, density and moles.",
+      "metaTitle": "Chemistry Calculator: Molarity, Moles & Density",
+      "metaDescription": "Calculate molarity, moles, mass and density with clear steps and correct units, handy for chemistry homework, lab prep and checking solution concentrations.",
+      "legacyPaths": [
+        "/categories/maths-science/chemistry"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "algebra",
+      "category": "maths-science",
+      "slug": "algebra-calculator",
+      "name": "Algebra Calculator",
+      "short": "Expressions, linear and quadratic equations.",
+      "metaTitle": "Algebra Calculator: Linear & Quadratic Equations",
+      "metaDescription": "Evaluate expressions, solve linear equations and find the roots of quadratic equations with step-by-step working, including the discriminant of a quadratic.",
+      "legacyPaths": [
+        "/categories/maths-science/algebra"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "geometry",
+      "category": "maths-science",
+      "slug": "geometry-calculator",
+      "name": "Geometry Calculator",
+      "short": "Area, perimeter, volume and surface area.",
+      "metaTitle": "Geometry Calculator: Area, Perimeter & Volume",
+      "metaDescription": "Calculate area, perimeter, volume and surface area for circles, rectangles, triangles, spheres, cylinders, cones and more, with the formula for each shape.",
+      "legacyPaths": [
+        "/categories/maths-science/geometry"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "tip",
+      "category": "everyday-life",
+      "slug": "tip-calculator",
+      "name": "Tip Calculator",
+      "short": "Tip amount and bill split per person.",
+      "metaTitle": "Tip Calculator: Tip Amount & Split the Bill",
+      "metaDescription": "Work out the tip on a restaurant bill, add tax if you need to, and split the bill and tip between any number of people to see exactly what each person owes.",
+      "legacyPaths": [
+        "/categories/everyday-life/tip"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "age",
+      "category": "everyday-life",
+      "slug": "age-calculator",
+      "name": "Age Calculator",
+      "short": "Exact age in years, months and days.",
+      "metaTitle": "Age Calculator: Exact Age in Years, Months, Days",
+      "metaDescription": "Calculate your exact age from your date of birth in years, months and days. Pick a birth date and get an instant, accurate answer that handles leap years.",
+      "legacyPaths": [
+        "/categories/everyday-life/age"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "time-zone",
+      "category": "everyday-life",
+      "slug": "time-zone-converter",
+      "name": "Time Zone Converter",
+      "short": "Convert times between world cities.",
+      "metaTitle": "Time Zone Converter: World City Times",
+      "metaDescription": "Convert a time between popular world cities and time zones in 12-hour or 24-hour format, so you can schedule calls and meetings across countries easily.",
+      "legacyPaths": [
+        "/categories/everyday-life/time-zone"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "discount",
+      "category": "everyday-life",
+      "slug": "discount-calculator",
+      "name": "Discount Calculator",
+      "short": "Sale price and savings from a percent off.",
+      "metaTitle": "Discount Calculator: Sale Price & Savings",
+      "metaDescription": "Enter an original price and a percentage off to get the final sale price and how much you save, with an optional sales tax added to the discounted price.",
+      "legacyPaths": [
+        "/categories/everyday-life/discount"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "gpa",
+      "category": "everyday-life",
+      "slug": "gpa-calculator",
+      "name": "GPA Calculator",
+      "short": "Grade point average from courses and credits.",
+      "metaTitle": "GPA Calculator: Semester & Cumulative GPA",
+      "metaDescription": "Calculate your grade point average on a 4.0 scale by adding each course with its credit hours and letter grade. Add or remove courses and see your GPA update.",
+      "legacyPaths": [
+        "/categories/everyday-life/gpa"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    },
+    {
+      "id": "day-calculator",
+      "category": "everyday-life",
+      "slug": "day-calculator",
+      "name": "Day Calculator",
+      "short": "Day of the week and days between dates.",
+      "metaTitle": "Day Calculator: Days Between Dates & Weekday",
+      "metaDescription": "Find the day of the week for any date, or count the number of days between two dates, useful for deadlines, notice periods, trips and countdowns to events.",
+      "legacyPaths": [
+        "/categories/everyday-life/day-calculator"
+      ],
+      "related": [],
+      "keywords": [],
+      "kind": "existing"
+    }
+  ],
+  "retired": [
+    {
+      "from": "/categories/finance/statistics",
+      "to": "/maths-science/",
+      "reason": "Statistics calculator was listed but never built"
+    },
+    {
+      "from": "/categories/maths-science/statistics",
+      "to": "/maths-science/",
+      "reason": "Statistics calculator was listed but never built"
+    },
+    {
+      "from": "/payments/stripe-fee-calculator",
+      "to": "/business/stripe-fee-calculator/",
+      "reason": "Alias from the build spec"
+    }
+  ]
+}

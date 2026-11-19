@@ -1,5 +1,4 @@
-
-
+import { LOCAL_POSTS } from "./blogPosts";
 export type BlogBlock =
   | { type: "p"; text: string }
   | { type: "h3"; text: string }
@@ -16,7 +15,7 @@ export type BlogPost = {
   slug: string;
   title: string;
   subtitle: string;
-  heroImage: string; // online image URL
+  heroImage: string; // online image URL or a /public path
   category: string;
   publishDate: string; // human readable (e.g. "October 15, 2025")
   readingTime: string;
@@ -32,14 +31,17 @@ export type BlogPost = {
   ogImage?: string; // if you want different OG image than heroImage
   publishISO?: string; // ISO date for OG / schema (e.g. "2025-10-15T00:00:00.000Z")
   canonicalPath?: string; // e.g. "/blog/ai-in-healthcare"
+
+  /** Calculator ids (src/data/site/catalog.json) this post supports. */
+  calculatorIds?: string[];
 };
 
-export const BLOGS: BlogPost[] = [
 
-
-
-
-];
+/**
+ * Posts that live in the repo. Solvix posts are merged with these in
+ * src/lib/solvix.ts; a Solvix post with the same slug replaces the local one.
+ */
+export const BLOGS: BlogPost[] = LOCAL_POSTS;
 
 export function getBlogBySlug(slug: string) {
   return BLOGS.find((b) => b.slug === slug) || null;
@@ -50,3 +52,8 @@ export function getRelatedBlogs(slugs: string[]) {
   return BLOGS.filter((b) => set.has(b.slug));
 }
 
+/** Local posts that support any of the given calculators. */
+export function getPostsForCalculators(ids: string[]) {
+  const set = new Set(ids);
+  return BLOGS.filter((b) => b.calculatorIds?.some((id) => set.has(id)));
+}

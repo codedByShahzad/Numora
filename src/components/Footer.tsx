@@ -1,25 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/logo.png";
+import { CATEGORIES, categoryPath } from "@/lib/site/catalog";
 
 const Footer = () => {
   const quickLinks = [
     { name: "Home", href: "/" },
-    { name: "Categories", href: "/categories" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
+    { name: "All categories", href: "/categories/" },
+    { name: "Blog", href: "/blog/" },
+    { name: "About", href: "/about/" },
+    { name: "Contact", href: "/contact/" },
   ];
 
-  const categories = [
-    { name: "Health", href: "/categories/health" },
-    { name: "Finance", href: "/categories/finance" },
-    { name: "Unit Conversions", href: "/categories/unit-conversions" },
-    { name: "Maths & Science", href: "/categories/maths-science" },
-    { name: "Everyday Life", href: "/categories/everyday-life" },
-  ];
+  const categories = CATEGORIES.map((c) => ({ name: c.name, href: categoryPath(c.slug) }));
 
   const Heading = ({ children }: { children: React.ReactNode }) => (
-    <h3 className="text-gray-900 font-semibold tracking-wide inline-block">
+    <h2 className="text-gray-900 font-semibold tracking-wide inline-block">
       <span
         className="relative inline-block
         after:absolute after:left-0 after:-bottom-2
@@ -27,7 +23,7 @@ const Footer = () => {
       >
         {children}
       </span>
-    </h3>
+    </h2>
   );
 
   return (
@@ -38,13 +34,12 @@ const Footer = () => {
           {/* BRAND */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3">
-              <Image src={logo} alt="logo" className="w-8 h-auto" />
-              <h2 className="text-2xl font-semibold text-gray-900">Numoro</h2>
+              <Image src={logo} alt="" className="w-8 h-auto" />
+              <p className="text-2xl font-semibold text-gray-900">Numoro</p>
             </div>
 
             <p className="mt-4 sm:text-lg text-gray-600 leading-relaxed max-w-md">
-              Your trusted calculation hub for health, finance, science, and
-              everyday math. Simple, accurate, and always free.
+              Free calculators for tax, seller fees, payments, energy, health, finance and everyday math. Every result shows how it was worked out.
             </p>
           </div>
 
@@ -104,12 +99,6 @@ const Footer = () => {
                   </a>
                 </div>
 
-                <div>
-                  <p className="text-sm text-gray-500">Call Us</p>
-                  <p className="hover:text-cyan-700 transition">
-                    Book a call now
-                  </p>
-                </div>
               </div>
             </div>
           </div>
